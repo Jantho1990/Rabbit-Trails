@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "LifeEventsHandler",
+"language": "GDScript",
+"path": "res://systems/life_events/LifeEventsHandler.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TestSquare",
+"language": "GDScript",
+"path": "res://entities/test_square/TestSquare.gd"
+} ]
+_global_script_class_icons={
+"LifeEventsHandler": "",
+"TestSquare": ""
+}
+
+[application]
+
+config/name="Rabbit Trails"
+config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://scripts/global.gd"
+GlobalStore="*res://scripts/DataStore.gd"
+math="*res://scripts/math.gd"
+helpers="*res://scripts/helpers.gd"
+draw="*res://scripts/draw.gd"
+Sound="*res://scripts/Sound.gd"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
