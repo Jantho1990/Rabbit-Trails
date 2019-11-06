@@ -11,10 +11,6 @@ func _ready():
 #	pass
 
 
-#func _input(event):
-#	if event is InputEventMouseButton:
-#		var entities = get_tree().get_nodes_in_group("entities")
-#		for entity in entities:
-#			print("ent")
-##		breakpoint
-#		print("ok")
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT:
+		Selection.clear_selection()

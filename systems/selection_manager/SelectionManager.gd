@@ -10,8 +10,8 @@ export(Array, String) var selectable_entities = []
 var selected_entity = null
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	connect("deselect_entity", self, "_on_Deselect_entity")
+#func _ready():
+#	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -24,23 +24,27 @@ func _input(event):
 	if event.pressed:
 		pass
 
-func _on_Deselect_entity():
-	deselect_entity(selected_entity)
-
 func register_entity(entity):
 	var selection_area = entity.get_node("SelectionArea")
 	selection_area.register_entity()
 	selection_area.connect("selection_area_triggered", self, "select_entity")
 
+# Clears any selected entity so nothing is selected.
+func clear_selection():
+	deselect_entity(selected_entity)
+	selected_entity = null
+	print("cleared!")
+
 # Select a entity
 func select_entity(entity = null):
-	breakpoint
-	emit_signal("deselect_entity")
+#	breakpoint
+	deselect_entity(selected_entity)
 	
 	if not entity == null:
 		selected_entity = entity
 		var selection_area = get_selection_area(entity)
 		selection_area.mark_as_selected()
+		print("selected", selected_entity)
 
 func get_selection_area(entity):
 	return entity.get_node("SelectionArea")
@@ -51,7 +55,6 @@ func deselect_entity(entity = null):
 	
 	var selection_area = get_selection_area(entity)
 	selection_area.mark_as_deselected()
-	selected_entity = null
 
 # Determine if entity has a selection node.
 func has_selection_area(entity):

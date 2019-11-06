@@ -11,12 +11,15 @@ func _ready():
 	parent.add_to_group("selectable_entities")
 	Selection.register_entity(parent)
 
+func _physics_process(delta):
+	update()
+
 func _draw():
 	if selected:
 		circle_outline(Vector2(0, 0), 70, Color(255, 0, 0))
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		print("triggered")
 		emit_signal("selection_area_triggered", parent)
 
