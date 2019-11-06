@@ -63,6 +63,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	motion.y += GRAVITY
+	if is_on_floor():
+		print("ON FLOOR")
+		print("state is", state.current)
+		print(global.run_time)
 	
 	if state.current == "jump" and is_on_floor():
 		is_jumping = false
@@ -82,6 +86,7 @@ func _physics_process(delta):
 			pass
 	
 	motion = move_and_slide(motion, UP)
+#	print('bunny', motion)
 
 ###
 # MOVEMENT METHODS
@@ -140,7 +145,7 @@ func look():
 	if result:
 #		print("LOOKING AT ", result)
 		sight_target = result.collider
-		if result.collider.get_class() == "TileMap":
+		if result.collider.get_class() == "TileMap" and not is_jumping and is_on_floor():
 			if (position - result.position).x <= JUMP_THRESHOLD_RANGE and state.current != "jump":
 				state.push("jump")
 		elif result.collider.name == "Player" and state.current != "attack":
@@ -164,7 +169,6 @@ func jump():
 
 # Initiate movement.
 func move():
-	print("moving")
 	if is_on_floor():
 		jump_bump()
 	match int(direction.x):

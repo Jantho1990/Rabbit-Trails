@@ -44,7 +44,6 @@ func _set_private(_throwaway_):
 	print("Not allowed to set private method.")
 
 func _ready():
-	print("states", states)
 	for state in states:
 		if state == default:
 			print(state)
@@ -55,7 +54,6 @@ func _process(delta):
 		just_set = false
 	
 	time += delta
-	print(_stack)
 
 # Add a new state if it is not the current one.
 func add(state):
@@ -75,11 +73,9 @@ func push(state):
 	current = _stack[0]
 	just_set = true
 	time = 0
-	print('pushed', _stack)
 
 # Remove the top state from the stack.
 func pop():
-	print('popping')
 	var removed_state = null
 	if _stack.size() > 0:
 		removed_state = _stack[0]

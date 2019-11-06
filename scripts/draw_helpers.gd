@@ -1,4 +1,5 @@
 extends CanvasItem
+# Can't actually use this, as globals can only extend Node
 
 # Helper functions for drawing things.
 

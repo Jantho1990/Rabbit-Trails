@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/test_gizmos/LiftGizmo.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 50 )
+
+[node name="LiftGizmo" type="Area2D"]
+gravity_vec = Vector2( 0, -1 )
+gravity = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionArea" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

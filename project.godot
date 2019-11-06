@@ -35,8 +35,8 @@ global="*res://scripts/global.gd"
 GlobalStore="*res://scripts/DataStore.gd"
 math="*res://scripts/math.gd"
 helpers="*res://scripts/helpers.gd"
-draw="*res://scripts/draw.gd"
 Sound="*res://scripts/Sound.gd"
+Selection="*res://systems/selection_manager/SelectionManager.gd"
 
 [rendering]
 
