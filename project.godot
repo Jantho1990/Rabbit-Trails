@@ -38,6 +38,10 @@ helpers="*res://scripts/helpers.gd"
 Sound="*res://scripts/Sound.gd"
 Selection="*res://systems/selection_manager/SelectionManager.gd"
 
+[display]
+
+mouse_cursor/custom_image="res://mouse/test_cursor_sm.png"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

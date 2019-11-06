@@ -1,5 +1,11 @@
 extends Node
 
+###
+# Dependencies:
+# - SelectionManager
+# - a parent node
+###
+
 # Can the entity be dragged right now.
 var allowed_to_drag = false
 
