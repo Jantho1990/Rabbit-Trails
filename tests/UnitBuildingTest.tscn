@@ -1,0 +1,40 @@
+[gd_scene format=2]
+
+[node name="UnitBuildingTest" type="Node2D"]
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="InterfaceControl" type="Control" parent="InterfaceLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CommandControl" type="Control" parent="InterfaceLayer/InterfaceControl"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -100.0
+margin_right = 512.0
+
+[node name="ColorRect" type="ColorRect" parent="InterfaceLayer/InterfaceControl/CommandControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.705882, 0.54902, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="InterfaceLayer/InterfaceControl/CommandControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CommandCard" type="Control" parent="InterfaceLayer/InterfaceControl/CommandControl/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InterfaceLayer/InterfaceControl/CommandControl/MarginContainer/CommandCard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="InterfaceLayer/InterfaceControl/CommandControl/MarginContainer/CommandCard/HBoxContainer"]
+margin_right = 66.0
+margin_bottom = 100.0
+text = "Click Me"
