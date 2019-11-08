@@ -12,5 +12,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_Build_button_pressed():
-	GlobalSignal.dispatch("build_button_pressed")
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT:
+		Selection.clear_selection()

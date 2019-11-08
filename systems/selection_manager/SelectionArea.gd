@@ -10,6 +10,7 @@ onready var parent = get_parent()
 func _ready():
 	parent.add_to_group("selectable_entities")
 	Selection.register_entity(parent)
+	print("ready as ever")
 
 func _physics_process(delta):
 	update()
@@ -19,6 +20,7 @@ func _draw():
 		circle_outline(Vector2(0, 0), 70, Color(255, 0, 0))
 
 func _input_event(viewport, event, shape_idx):
+	print('hit')
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		print("triggered")
 		emit_signal("selection_area_triggered", parent)
