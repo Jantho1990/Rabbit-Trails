@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/test_gizmos/GravGizmo.gd" type="Script" id=1]
 [ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -27,3 +28,5 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Draggable" parent="." instance=ExtResource( 3 )]
+
+[node name="Placeable" parent="." instance=ExtResource( 4 )]

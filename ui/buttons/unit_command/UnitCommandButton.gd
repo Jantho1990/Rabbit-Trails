@@ -14,5 +14,5 @@ func _process(delta):
 		visible = false
 
 
-func _on_BuildUnitButton_pressed():
+func _on_UnitCommandButton_pressed():
 	GlobalSignal.dispatch('unit_command', { 'command_name': command_name })

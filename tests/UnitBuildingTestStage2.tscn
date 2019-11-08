@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tests/UnitBuildingTestStage2.gd" type="Script" id=1]
 [ext_resource path="res://ui/buttons/build_unit/BuildUnitButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/buttons/unit_command/UnitCommandButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=4]
-[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://systems/unit_manager/UnitManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=7]
 
 [node name="UnitBuildingTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -62,8 +63,10 @@ command_name = "move_unit"
 buildable_units_path = "res://entities/test_gizmos"
 buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
 
-[node name="GravGizmoContainer" parent="." instance=ExtResource( 5 )]
+[node name="UnitManager" parent="." instance=ExtResource( 5 )]
+
+[node name="GravGizmoContainer" parent="." instance=ExtResource( 6 )]
 container_id = "GravGizmo"
 
-[node name="LiftGizmoContainer" parent="." instance=ExtResource( 6 )]
+[node name="LiftGizmoContainer" parent="." instance=ExtResource( 7 )]
 container_id = "LiftGizmo"
