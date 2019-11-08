@@ -56,15 +56,16 @@ func listen(event_name, node, method_name):
 	###
 	# Should we instead pass in a FuncRef instead of the node and method name?
 	###
+	var listener = { 'node': node, 'method_name': method_name }
 	if _event_listeners.has(event_name) == false:
-		_event_listeners[event_name] = []
-	_event_listeners[event_name].push_front({ 'node': node, 'method_name': method_name })
+		_event_listeners[event_name] = {}
+	_event_listeners[event_name][listener.hash()] = listener
 
 # Remove an event
 func remove(event_name, node, method_name):
-	var listener = { node: node, method_name: method_name }
-	if _event_listeners[event_name].has(listener):
-		_event_listeners[event_name].erase(listener)
+	var listener = { 'node': node, 'method_name': method_name }
+	if _event_listeners[event_name].has(listener.hash()):
+		_event_listeners[event_name].erase(listener.hash())
 	
 	if _event_listeners[event_name].empty():
 		_event_listeners.erase(event_name)
@@ -85,7 +86,7 @@ func callback(event):
 		return
 	
 	var listeners = _event_listeners[name]
-	for listener in listeners:
+	for listener in listeners.values():
 		# If the listener has been freed, remove it
 		if !weakref(listener.node).get_ref():
 			remove(name, weakref(listener.node), listener.method_name)

@@ -33,8 +33,6 @@ func _input(event):
 
 func _on_CommandControl_mouse_entered():
 	mouse_over_ui = true
-	print('mouse entered')
-
 
 func _on_CommandControl_mouse_exited():
 	mouse_over_ui = false
