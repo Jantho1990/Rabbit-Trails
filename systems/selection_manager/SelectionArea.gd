@@ -18,10 +18,14 @@ func _draw():
 	if selected:
 		circle_outline(Vector2(0, 0), 70, Color(255, 0, 0))
 
+# Don't put selection logic here. The game system outside should be the determinant of when a unit should be selected.
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		print("triggered")
-		emit_signal("selection_area_triggered", parent)
+	if not selected and \
+		event is InputEventMouseButton and \
+		event.pressed and \
+		event.button_index == BUTTON_LEFT:
+			print("triggered")
+			emit_signal("selection_area_triggered", parent)
 
 func register_entity():
 	registered = true

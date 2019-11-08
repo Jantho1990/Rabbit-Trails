@@ -13,5 +13,19 @@ func _ready():
 #	pass
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_RIGHT:
-		Selection.clear_selection()
+#	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+#		print("triggered")
+#		emit_signal("selection_area_triggered", parent)
+	
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == BUTTON_LEFT:
+			if not Selection.has_selection():
+#				emit_signal("selection_area_triggered", parent)
+				pass
+			else:
+#				Selection.suppress_selection = true
+				Selection.clear_selection()
+#				Selection.suppress_selection = false
+				print("barf")
+		elif event.button_index == BUTTON_RIGHT:
+			Selection.clear_selection()
