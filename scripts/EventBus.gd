@@ -56,16 +56,16 @@ func listen(event_name, node, method_name):
 	###
 	# Should we instead pass in a FuncRef instead of the node and method name?
 	###
-	var listener = { 'node': node, 'method_name': method_name }
+	var listener = { 'node': node, 'node_id': node.get_instance_id(), 'method_name': method_name }
 	if _event_listeners.has(event_name) == false:
 		_event_listeners[event_name] = {}
-	_event_listeners[event_name][listener.hash()] = listener
+	_event_listeners[event_name][node.get_instance_id()] = listener
 
 # Remove an event
 func remove(event_name, node, method_name):
-	var listener = { 'node': node, 'method_name': method_name }
-	if _event_listeners[event_name].has(listener.hash()):
-		_event_listeners[event_name].erase(listener.hash())
+	var listener = { 'node': node, 'node_id': node.get_instance_id(), 'method_name': method_name }
+	if _event_listeners[event_name].has(node.get_instance_id()):
+		_event_listeners[event_name].erase(node.get_instance_id())
 	
 	if _event_listeners[event_name].empty():
 		_event_listeners.erase(event_name)
@@ -86,11 +86,27 @@ func callback(event):
 		return
 	
 	var listeners = _event_listeners[name]
+	print('listeners', listeners)
 	for listener in listeners.values():
+		print('l: ', listener)
+		print('h: ', listener.hash())
+		print('g: ', weakref(listener.node).get_ref())
 		# If the listener has been freed, remove it
-		if !weakref(listener.node).get_ref():
-			remove(name, weakref(listener.node), listener.method_name)
+		if !weakref(listener.node).get_ref() or \
+			!is_instance_valid(listener.node) or \
+			listener.node.get_instance_id() != listener.node_id:
+#			remove(name, weakref(listener.node), listener.method_name)
+			listeners.erase(listener.node_id)
+			print("weakref removed", listener)
 			continue
+		
+		# If the node id doesn't match the listener key, something has corrupted the
+		# listener data. This happens with deleted nodes, so we should remove the listener.
+		if not listener.node.has_method(listener.method_name):
+			print('bad method, removing ', listener)
+			remove(name, listener.node, listener.method_name)
+		else:
+			print('listener node has method, keep going')
 		
 		var node = listener.node
 		# The callback function will have to accept a single argument for data
