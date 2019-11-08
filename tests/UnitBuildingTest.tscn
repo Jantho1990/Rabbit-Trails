@@ -42,11 +42,6 @@ margin_bottom = 100.0
 text = "Build Grav Gizmo"
 unit_name = "GravGizmo"
 
-[node name="InterfaceControl" type="Control" parent="InterfaceLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-
 [node name="UnitBuilder" parent="." instance=ExtResource( 3 )]
 buildable_units_path = "res://entities/test_gizmos"
 buildable_unit_names = [ "GravGizmo" ]
