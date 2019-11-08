@@ -65,6 +65,13 @@ mouse_filter = 1
 text = "Move Unit"
 command_name = "move_unit"
 
+[node name="DeleteCommandButton" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 329.0
+margin_right = 415.0
+margin_bottom = 100.0
+text = "Delete Unit"
+command_name = "delete_unit"
+
 [node name="UnitBuilder" parent="." instance=ExtResource( 4 )]
 buildable_units_path = "res://entities/test_gizmos"
 buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]

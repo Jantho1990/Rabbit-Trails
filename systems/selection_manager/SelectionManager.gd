@@ -16,8 +16,8 @@ var previously_selected_entity = null
 var entity_recently_deselected = false
 
 # Listeners
-var select_listeners = []
-var deselect_listeners = []
+var select_listeners = {}
+var deselect_listeners = {}
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -35,23 +35,24 @@ func _input(event):
 	if event.pressed:
 		pass
 
-func register_listener(event_name, callbackFuncRef):
+func register_listener(event_name, node, method_name):
+	var listener = { 'node': node, 'method_name': method_name }
 	match event_name:
 		'select':
-			select_listeners.push_back(callbackFuncRef)
+			select_listeners[listener.hash()] = listener
 		'deselect':
-			deselect_listeners.push_back(callbackFuncRef)
+			deselect_listeners[listener.hash()] = listener
 
-func unregister_listener(event_name, callbackFuncRef):
+func unregister_listener(event_name, node, method_name):
+	var listener = { 'node': node, 'method_name': method_name }
 	match event_name:
 		'select':
-			var index = select_listeners.find(callbackFuncRef)
-			if index:
-				select_listeners.remove(index)
+			if select_listeners.has(listener.hash()):
+				print('unregistered select')
+				select_listeners.erase(listener.hash())
 		'deselect':
-			var index = deselect_listeners.find(callbackFuncRef)
-			if index:
-				deselect_listeners.remove(index)
+			if deselect_listeners.has(listener.hash()):
+				deselect_listeners.erase(listener.hash())
 
 func register_entity(entity):
 	var selection_area = entity.get_node("SelectionArea")
@@ -81,8 +82,9 @@ func select_entity(entity = null):
 		selection_area.mark_as_selected()
 		print("selected", selected_entity)
 	
-	for listener in select_listeners:
-		listener.call_func(selected_entity, previously_selected_entity)
+	for listener in select_listeners.values():
+		var callback = funcref(listener.node, listener.method_name)
+		callback.call_func(selected_entity, previously_selected_entity)
 
 func get_selection_area(entity):
 	return entity.get_node("SelectionArea")
@@ -95,8 +97,9 @@ func deselect_entity(entity = null):
 	selection_area.mark_as_deselected()
 	previously_selected_entity = selected_entity
 	entity_recently_deselected = true
-	for listener in deselect_listeners:
-		listener.call_func(previously_selected_entity)
+	for listener in deselect_listeners.values():
+		var callback = funcref(listener.node, listener.method_name)
+		callback.call_func(previously_selected_entity)
 
 # Determine if there is a selected unit.
 func has_selection():
