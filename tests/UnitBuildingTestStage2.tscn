@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tests/UnitBuildingTestStage2.gd" type="Script" id=1]
 [ext_resource path="res://ui/buttons/build_unit/BuildUnitButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/buttons/unit_command/UnitCommandButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=6]
 
 [node name="UnitBuildingTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -50,12 +51,19 @@ margin_bottom = 100.0
 text = "Build Lift Gizmo"
 unit_name = "LiftGizmo"
 
-[node name="UnitBuilder" parent="." instance=ExtResource( 3 )]
+[node name="MoveCommandButton" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 247.0
+margin_right = 325.0
+margin_bottom = 100.0
+text = "Move Unit"
+command_name = "move_unit"
+
+[node name="UnitBuilder" parent="." instance=ExtResource( 4 )]
 buildable_units_path = "res://entities/test_gizmos"
 buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
 
-[node name="GravGizmoContainer" parent="." instance=ExtResource( 4 )]
+[node name="GravGizmoContainer" parent="." instance=ExtResource( 5 )]
 container_id = "GravGizmo"
 
-[node name="LiftGizmoContainer" parent="." instance=ExtResource( 5 )]
+[node name="LiftGizmoContainer" parent="." instance=ExtResource( 6 )]
 container_id = "LiftGizmo"
