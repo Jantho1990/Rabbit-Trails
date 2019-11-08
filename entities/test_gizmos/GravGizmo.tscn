@@ -30,3 +30,4 @@ shape = SubResource( 2 )
 [node name="Draggable" parent="." instance=ExtResource( 3 )]
 
 [node name="Placeable" parent="." instance=ExtResource( 4 )]
+allowed_to_move = true

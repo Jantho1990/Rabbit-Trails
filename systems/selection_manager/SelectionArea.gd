@@ -5,6 +5,8 @@ signal selection_area_triggered
 var registered = false
 var selected = false
 
+var deselect_callbacks = []
+
 onready var parent = get_parent()
 
 func _ready():
