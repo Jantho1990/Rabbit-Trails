@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tests/UnitBuildingTestStage2.gd" type="Script" id=1]
+[ext_resource path="res://ui/buttons/build_unit/BuildUnitButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=5]
+
+[node name="UnitBuildingTest" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="CommandControl" type="Control" parent="InterfaceLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -100.0
+margin_right = 512.0
+
+[node name="ColorRect" type="ColorRect" parent="InterfaceLayer/CommandControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.705882, 0.54902, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="InterfaceLayer/CommandControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CommandCard" type="Control" parent="InterfaceLayer/CommandControl/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BuildGravGizmoButton" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard/HBoxContainer" instance=ExtResource( 2 )]
+margin_right = 124.0
+margin_bottom = 100.0
+text = "Build Grav Gizmo"
+unit_name = "GravGizmo"
+
+[node name="BuildLiftGizmoButton" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 128.0
+margin_right = 243.0
+margin_bottom = 100.0
+text = "Build Lift Gizmo"
+unit_name = "LiftGizmo"
+
+[node name="UnitBuilder" parent="." instance=ExtResource( 3 )]
+buildable_units_path = "res://entities/test_gizmos"
+buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
+
+[node name="GravGizmoContainer" parent="." instance=ExtResource( 4 )]
+container_id = "GravGizmo"
+
+[node name="LiftGizmoContainer" parent="." instance=ExtResource( 5 )]
+container_id = "LiftGizmo"
