@@ -17,4 +17,5 @@ func _ready():
 #	pass
 
 func on_Delete_unit():
-	parent.queue_free()
+	if Selection.selected_entity == parent or Selection.previously_selected_entity == parent:
+		parent.queue_free()
