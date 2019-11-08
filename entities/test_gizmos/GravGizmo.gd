@@ -4,6 +4,8 @@ extends Area2D
 # var a = 2
 # var b = "text"
 
+var frozen = false
+
 var bodies = []
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +27,9 @@ func on_Body_exited(body):
 	if bodies.has(body):
 		var i = bodies.find(body)
 		bodies.remove(i)
+
+func allow_drag():
+	return true
 
 func apply_gravity_to_bodies():
 	var bodies = get_overlapping_bodies()

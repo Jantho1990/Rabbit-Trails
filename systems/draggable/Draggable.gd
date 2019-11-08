@@ -17,11 +17,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if allowed_to_drag:
+	var parent_allowed_to_drag
+	if parent.has_method('allow_drag'):
+		parent_allowed_to_drag = parent.allow_drag()
+	else:
+		parent_allowed_to_drag = true
+	
+	if parent_allowed_to_drag and allowed_to_drag:
 		if not Selection.is_entity_selected(parent):
 			allowed_to_drag = false
 		else:
 			parent.position = get_viewport().get_mouse_position()
 	else:
-		if Selection.is_entity_selected(parent):
+		if parent_allowed_to_drag and Selection.is_entity_selected(parent):
 			allowed_to_drag = true

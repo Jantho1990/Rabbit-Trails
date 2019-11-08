@@ -20,6 +20,9 @@ func _draw():
 
 # Don't put selection logic here. The game system outside should be the determinant of when a unit should be selected.
 func _input_event(viewport, event, shape_idx):
+	if parent.has_method('allow_selection') and not parent.allow_selection():
+		return
+	
 	if not selected and \
 		event is InputEventMouseButton and \
 		event.pressed and \
