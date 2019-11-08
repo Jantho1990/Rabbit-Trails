@@ -37,6 +37,7 @@ func _on_Build_unit(data):
 		print('Building unit ', unit_name)
 		var buildable_unit = buildable_units[unit_name]
 		var unit = buildable_unit.instance()
+		Selection.select_entity(unit)
 		GlobalSignal.dispatch("add_" + unit_name, {
 			'entity': unit,
 			'instance': false,
