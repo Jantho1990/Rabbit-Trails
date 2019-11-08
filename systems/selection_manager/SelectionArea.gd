@@ -5,6 +5,9 @@ signal selection_area_triggered
 var registered = false
 var selected = false
 
+# Keep track of whether the mouse is over the selection area
+var mouse_over_selection_area = false
+
 var deselect_callbacks = []
 
 onready var parent = get_parent()

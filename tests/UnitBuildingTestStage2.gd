@@ -3,6 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var mouse_over_ui = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func _input(event):
 #		print("triggered")
 #		emit_signal("selection_area_triggered", parent)
 	
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and not mouse_over_ui:
 		if event.button_index == BUTTON_LEFT:
 			if not Selection.has_selection():
 #				emit_signal("selection_area_triggered", parent)
@@ -29,3 +30,11 @@ func _input(event):
 				print("barf")
 		elif event.button_index == BUTTON_RIGHT:
 			Selection.clear_selection()
+
+func _on_CommandControl_mouse_entered():
+	mouse_over_ui = true
+	print('mouse entered')
+
+
+func _on_CommandControl_mouse_exited():
+	mouse_over_ui = false

@@ -25,15 +25,18 @@ margin_right = 512.0
 [node name="ColorRect" type="ColorRect" parent="InterfaceLayer/CommandControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color( 0.427451, 0.705882, 0.54902, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="InterfaceLayer/CommandControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="CommandCard" type="Control" parent="InterfaceLayer/CommandControl/MarginContainer"]
 margin_right = 1024.0
 margin_bottom = 100.0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard"]
 anchor_right = 1.0
@@ -42,6 +45,7 @@ anchor_bottom = 1.0
 [node name="BuildGravGizmoButton" parent="InterfaceLayer/CommandControl/MarginContainer/CommandCard/HBoxContainer" instance=ExtResource( 2 )]
 margin_right = 124.0
 margin_bottom = 100.0
+mouse_filter = 1
 text = "Build Grav Gizmo"
 unit_name = "GravGizmo"
 
@@ -49,6 +53,7 @@ unit_name = "GravGizmo"
 margin_left = 128.0
 margin_right = 243.0
 margin_bottom = 100.0
+mouse_filter = 1
 text = "Build Lift Gizmo"
 unit_name = "LiftGizmo"
 
@@ -56,6 +61,7 @@ unit_name = "LiftGizmo"
 margin_left = 247.0
 margin_right = 325.0
 margin_bottom = 100.0
+mouse_filter = 1
 text = "Move Unit"
 command_name = "move_unit"
 
@@ -70,3 +76,5 @@ container_id = "GravGizmo"
 
 [node name="LiftGizmoContainer" parent="." instance=ExtResource( 7 )]
 container_id = "LiftGizmo"
+[connection signal="mouse_entered" from="InterfaceLayer/CommandControl" to="." method="_on_CommandControl_mouse_entered"]
+[connection signal="mouse_exited" from="InterfaceLayer/CommandControl" to="." method="_on_CommandControl_mouse_exited"]
