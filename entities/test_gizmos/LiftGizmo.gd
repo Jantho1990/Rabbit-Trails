@@ -17,7 +17,8 @@ func _physics_process(delta):
 func _draw():
 #	draw_circle(Vector2(0, 0), 10, Color(1, 0, 1))
 #	circle_outline(Vector2(0, 0), 50, Color(1, 1, 0))
-	draw_rect(Rect2(Vector2(1, 0), Vector2(50, 100)), Color(1, 0, 1), false)
+#	draw_rect(Rect2(Vector2(1, 0), Vector2(50, 100)), Color(1, 0, 1), false)
+	draw_rect(Rect2(Vector2(-25, -50), Vector2(50, 100)), Color(1, 0, 1), false)
 
 func on_Body_entered(body):
 	bodies.push_back(body)
