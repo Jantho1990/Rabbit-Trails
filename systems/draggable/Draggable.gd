@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if placeable:
 		allowed_to_move = placeable.allowed_to_move
 	else:
-		allowed_to_move == true
+		allowed_to_move = true
 	
 	if parent_allowed_to_drag and allowed_to_move and allowed_to_drag:
 		if not Selection.is_entity_selected(parent):
