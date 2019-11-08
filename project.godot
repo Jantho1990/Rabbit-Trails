@@ -10,6 +10,21 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "DoorContainer",
+"language": "GDScript",
+"path": "res://containers/DoorContainer/DoorContainer.gd"
+}, {
+"base": "Node",
+"class": "EnemyContainer",
+"language": "GDScript",
+"path": "res://containers/EnemyContainer/EnemyContainer.gd"
+}, {
+"base": "Node",
+"class": "GravGizmoContainer",
+"language": "GDScript",
+"path": "res://containers/GravGizmoContainer/GravGizmoContainer.gd"
+}, {
+"base": "Node",
 "class": "LifeEventsHandler",
 "language": "GDScript",
 "path": "res://systems/life_events/LifeEventsHandler.gd"
@@ -20,6 +35,9 @@ _global_script_classes=[ {
 "path": "res://entities/test_square/TestSquare.gd"
 } ]
 _global_script_class_icons={
+"DoorContainer": "",
+"EnemyContainer": "",
+"GravGizmoContainer": "",
 "LifeEventsHandler": "",
 "TestSquare": ""
 }

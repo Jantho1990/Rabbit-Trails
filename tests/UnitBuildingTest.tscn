@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tests/UnitBuildingTest.gd" type="Script" id=1]
 [ext_resource path="res://ui/buttons/build_unit/BuildUnitButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=4]
 
 [node name="UnitBuildingTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,3 +47,8 @@ text = "Build Grav Gizmo"
 unit_name = "GravGizmo"
 
 [node name="UnitBuilder" parent="." instance=ExtResource( 3 )]
+buildable_units_path = "res://entities/test_gizmos"
+buildable_unit_names = [ "GravGizmo" ]
+
+[node name="GravGizmoContainer" parent="." instance=ExtResource( 4 )]
+container_id = "GravGizmo"

@@ -82,6 +82,7 @@ func callback(event):
 	
 	if not _event_listeners.has(name):
 		print('Warning: event name not found: ', name)
+		breakpoint
 		return
 	
 	var listeners = _event_listeners[name]
