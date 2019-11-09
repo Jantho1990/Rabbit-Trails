@@ -18,9 +18,13 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	position = owner.position
+#	position = owner.position
+	
+	update()
 #	print("placement area position: ", position)
-	var motion = move_and_slide(Input.get_last_mouse_speed(), UP)
+#	print("mouse speed: ", Input.get_last_mouse_speed())
+#	var motion = move_and_slide(Input.get_last_mouse_speed(), UP)
+	var motion = move_and_slide(Vector2(0, 0), UP)	
 	var slide_count = get_slide_count()
 	var collision = false
 	for i in get_slide_count():
@@ -30,9 +34,11 @@ func _physics_process(delta):
 			break
 #			breakpoint
 	
+#	if test_move(transform, Input.get_last_mouse_speed()):
+#		collision = true
 	handle_placement_validation(collision)
+	position = owner.position
 #	debug_process_collision(collision)
-	update()
 
 func _draw():
 	var placement_color = Color(0, 1, 0, 0.5) if placement_valid else Color(1, 0, 0, 0.5)
@@ -62,8 +68,11 @@ func handle_placement_validation(collision):
 			validate_placement_wall(collision)
 
 func validate_placement_air(collision):
-	if not collision:
+	if typeof(collision) == TYPE_BOOL and not collision and \
+		not is_on_floor() and not is_on_wall() and not is_on_ceiling():
 		placement_valid = true
+		print("pos ", position)
+		print("owner pos ", owner.position)
 	else:
 		placement_valid = false
 
