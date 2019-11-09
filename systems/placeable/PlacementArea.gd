@@ -68,16 +68,18 @@ func handle_placement_validation(collision):
 			validate_placement_wall(collision)
 
 func validate_placement_air(collision):
-	if typeof(collision) == TYPE_BOOL and not collision and \
-		not is_on_floor() and not is_on_wall() and not is_on_ceiling():
+	if not collision:
 		placement_valid = true
-		print("pos ", position)
-		print("owner pos ", owner.position)
 	else:
 		placement_valid = false
 
 func validate_placement_ground(collision):
 	print("validating ground")
+	if is_on_floor() and \
+		not (is_on_wall() or is_on_ceiling()):
+		placement_valid = true
+	else:
+		placement_valid = false
 
 func validate_placement_wall(collision):
 	print("validating wall")
