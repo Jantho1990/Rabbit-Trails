@@ -61,7 +61,7 @@ math="*res://scripts/math.gd"
 helpers="*res://scripts/helpers.gd"
 Sound="*res://scripts/Sound.gd"
 Selection="*res://systems/selection_manager/SelectionManager.gd"
-GlobalSignal="*res://scripts/EventBus.gd"
+GlobalSignal="*res://scripts/GlobalSignal.gd"
 
 [display]
 

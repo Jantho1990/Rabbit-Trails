@@ -23,7 +23,7 @@ func _draw():
 	if selected:
 		circle_outline(Vector2(0, 0), 70, Color(255, 0, 0))
 
-# Don't put selection logic here. The game system outside should be the determinant of when a unit should be selected.
+# Runs when an entity collides with the Area2D.
 func _input_event(viewport, event, shape_idx):
 	if parent.has_method('allow_selection') and not parent.allow_selection():
 		return

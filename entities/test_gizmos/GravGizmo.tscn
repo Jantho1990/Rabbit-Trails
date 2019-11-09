@@ -42,3 +42,4 @@ allowed_to_move = true
 shape = SubResource( 3 )
 
 [node name="Deletable" parent="." instance=ExtResource( 5 )]
+[connection signal="input_event" from="Placeable/PlacementArea" to="Placeable" method="_on_PlacementArea_input_event"]

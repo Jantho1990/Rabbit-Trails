@@ -86,27 +86,27 @@ func callback(event):
 		return
 	
 	var listeners = _event_listeners[name]
-	print('listeners', listeners)
+#	print('listeners', listeners)
 	for listener in listeners.values():
-		print('l: ', listener)
-		print('h: ', listener.hash())
-		print('g: ', weakref(listener.node).get_ref())
+#		print('l: ', listener)
+#		print('h: ', listener.hash())
+#		print('g: ', weakref(listener.node).get_ref())
 		# If the listener has been freed, remove it
 		if !weakref(listener.node).get_ref() or \
 			!is_instance_valid(listener.node) or \
 			listener.node.get_instance_id() != listener.node_id:
 #			remove(name, weakref(listener.node), listener.method_name)
 			listeners.erase(listener.node_id)
-			print("weakref removed", listener)
+#			print("weakref removed", listener)
 			continue
 		
 		# If the node id doesn't match the listener key, something has corrupted the
 		# listener data. This happens with deleted nodes, so we should remove the listener.
-		if not listener.node.has_method(listener.method_name):
-			print('bad method, removing ', listener)
-			remove(name, listener.node, listener.method_name)
-		else:
-			print('listener node has method, keep going')
+#		if not listener.node.has_method(listener.method_name):
+#			print('bad method, removing ', listener)
+#			remove(name, listener.node, listener.method_name)
+#		else:
+#			print('listener node has method, keep going')
 		
 		var node = listener.node
 		# The callback function will have to accept a single argument for data

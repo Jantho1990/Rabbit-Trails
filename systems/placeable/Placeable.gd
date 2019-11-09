@@ -13,6 +13,7 @@ export(bool) var allowed_to_place = false
 export(bool) var allowed_to_move = false
 
 onready var parent = get_parent()
+onready var placement_area = get_node_or_null('PlacementArea')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,3 +41,7 @@ func _on_Selection(selected_unit, previously_selected_unit = null):
 
 func _on_Deselection(previously_selected_unit):
 	allowed_to_move = false
+
+
+func _on_PlacementArea_input_event(viewport, event, shape_idx):
+	print("collision with placement area", shape_idx)
