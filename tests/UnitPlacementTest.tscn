@@ -83,5 +83,8 @@ container_id = "GravGizmo"
 
 [node name="LiftGizmoContainer" parent="." instance=ExtResource( 7 )]
 container_id = "LiftGizmo"
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
 [connection signal="mouse_entered" from="InterfaceLayer/CommandControl" to="." method="_on_CommandControl_mouse_entered"]
 [connection signal="mouse_exited" from="InterfaceLayer/CommandControl" to="." method="_on_CommandControl_mouse_exited"]
