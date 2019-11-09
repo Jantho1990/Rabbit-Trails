@@ -56,4 +56,5 @@ func mark_as_selected():
 	selected = true
 
 func _on_Deselect_entity():
+	print("hit callback that shouldn't be")
 	mark_as_deselected()

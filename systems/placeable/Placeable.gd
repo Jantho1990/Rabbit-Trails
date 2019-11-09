@@ -24,7 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if placement_area:
+	if placement_area != null:
 		if placement_area.placement_valid:
 			allowed_to_place = true
 		else:
@@ -44,8 +44,12 @@ func _on_Selection(selected_unit, previously_selected_unit = null):
 	pass
 
 func _on_Deselection(previously_selected_unit):
-	if previously_selected_unit == self:
+	if previously_selected_unit == parent:
 		if not allowed_to_place:
+			print("not allowed to place")
 			return false
 	
 		allowed_to_move = false
+	else:
+		print("not me")
+		breakpoint

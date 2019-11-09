@@ -26,7 +26,7 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		collision = get_slide_collision(i)
 		if collision:
-			print("Collided with ", collision.collider.name, ', normal ', collision.normal)
+#			print("Collided with ", collision.collider.name, ', normal ', collision.normal)
 			break
 #			breakpoint
 	

@@ -61,7 +61,10 @@ func register_entity(entity):
 
 # Clears any selected entity so nothing is selected.
 func clear_selection():
-	deselect_entity(selected_entity)
+	if deselect_entity(selected_entity) == false:
+#		select_entity(selected_entity)
+		print("cancel deselection")
+		return
 	selected_entity = null
 	print("cleared!")
 
@@ -76,7 +79,6 @@ func select_entity(entity = null):
 	
 	# If this returns false, a callback cancelled the new selection.
 	if deselect_entity(selected_entity) == false:
-		print("deselect returned false")
 		return
 	
 	if not entity == null:
@@ -103,6 +105,8 @@ func deselect_entity(entity = null):
 	for listener in deselect_listeners.values():
 		var callback = funcref(listener.node, listener.method_name)
 		if callback.call_func(previously_selected_entity) == false:
+			selection_area.mark_as_selected()
+			entity_recently_deselected = false
 			return false
 
 # Determine if there is a selected unit.
