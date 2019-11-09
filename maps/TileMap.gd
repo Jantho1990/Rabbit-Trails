@@ -50,6 +50,11 @@ func calculate_dimensions():
 		}
     }
 
+# Get tile at specified position vector
+func tile_at_pos(pos):
+	var tile = world_to_map(pos)
+	return Vector2(tile.x, tile.y)
+
 # Get tile above the tile at specified position vector
 func tile_above_pos(pos):
 	var tile = world_to_map(pos)
@@ -59,6 +64,30 @@ func tile_above_pos(pos):
 func tile_below_pos(pos):
 	var tile = world_to_map(pos)
 	return Vector2(tile.x, tile.y + 1)
+
+# Get tile left of the tile at specified position vector
+func tile_left_pos(pos):
+	var tile = world_to_map(pos)
+	return Vector2(tile.x - 1, tile.y)
+
+# Get tile right of the tile at specified position vector
+func tile_right_pos(pos):
+	var tile = world_to_map(pos)
+	return Vector2(tile.x + 1, tile.y)
+
+# Get the tiles around specified position vector.
+func tiles_around_pos(pos):
+	var tile = world_to_map(pos)
+	return {
+		"above": Vector2(tile.x, tile.y - 1),
+		"below": Vector2(tile.x, tile.y + 1),
+		"left": Vector2(tile.x - 1, tile.y),
+		"right": Vector2(tile.x + 1, tile.y),
+		"aboveLeft": Vector2(tile.x - 1, tile.y - 1),
+		"aboveRight": Vector2(tile.x + 1, tile.y - 1),
+		"belowLeft": Vector2(tile.x - 1, tile.y + 1),
+		"belowRight": Vector2(tile.x + 1, tile.y + 1)
+	}
 
 # Get a random cell from the tilemap
 func random_cell(config = {}):
@@ -77,8 +106,6 @@ func random_cell(config = {}):
 	else:
 		_range = config.range
 		
-#	var x = math.rand(0, dimensions.width) + dimensions.x
-#	var y = math.rand(0, dimensions.height) + dimensions.y
 	var x = math.rand(_range.x.lower, _range.x.upper) + dimensions.x
 	var y = math.rand(_range.y.lower, _range.y.upper) + dimensions.y
 	return world_to_map(Vector2(x, y))

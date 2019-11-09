@@ -25,7 +25,7 @@ func _ready():
 	
 	# Randomly spawn the portal locations
 	var i = null
-	var total_maps = null
+#	var total_maps = null
 	
 	# Map is loaded, trigger any code that is waiting on this.
 	GlobalSignal.dispatch(name + "_loaded", {
