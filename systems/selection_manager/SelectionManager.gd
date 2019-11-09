@@ -74,7 +74,10 @@ func select_entity(entity = null):
 		(entity_recently_deselected and entity == previously_selected_entity):
 			return
 	
-	deselect_entity(selected_entity)
+	# If this returns false, a callback cancelled the new selection.
+	if deselect_entity(selected_entity) == false:
+		print("deselect returned false")
+		return
 	
 	if not entity == null:
 		selected_entity = entity
@@ -99,7 +102,8 @@ func deselect_entity(entity = null):
 	entity_recently_deselected = true
 	for listener in deselect_listeners.values():
 		var callback = funcref(listener.node, listener.method_name)
-		callback.call_func(previously_selected_entity)
+		if callback.call_func(previously_selected_entity) == false:
+			return false
 
 # Determine if there is a selected unit.
 func has_selection():

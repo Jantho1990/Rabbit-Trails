@@ -24,7 +24,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	pass
+	if placement_area:
+		if placement_area.placement_valid:
+			allowed_to_place = true
+		else:
+			allowed_to_place = false
 
 func _on_Exiting_tree():
 	Selection.unregister_listener('select', self, '_on_Selection')
@@ -40,20 +44,8 @@ func _on_Selection(selected_unit, previously_selected_unit = null):
 	pass
 
 func _on_Deselection(previously_selected_unit):
-	allowed_to_move = false
-
-
-func _on_PlacementArea_input_event(viewport, event, shape_idx):
-	print("collision with placement area", shape_idx)
-
-
-func _on_PlacementArea_area_entered(area):
-	print("placementarea area")
-
-
-func _on_PlacementArea_area_shape_entered(area_id, area, area_shape, self_shape):
-	print("placementarea area shape")
-
-
-func _on_PlacementArea_body_entered(body):
-	print("placementarea body")
+	if previously_selected_unit == self:
+		if not allowed_to_place:
+			return false
+	
+		allowed_to_move = false
