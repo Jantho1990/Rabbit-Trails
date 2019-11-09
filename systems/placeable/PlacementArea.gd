@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+enum placement_types { AIR, GROUND, WALL }
+export(placement_types) var placement_type
 
 const UP = Vector2(0, -1)
+
+var placement_valid = false
 
 onready var root = owner
 
@@ -23,11 +24,16 @@ func _physics_process(delta):
 	var slide_count = get_slide_count()
 	var collision = false
 	for i in get_slide_count():
-		var collider = get_slide_collision(i)
-		if collider:
-			collision = true
-			print("Collided with ", collider.collider.name)
+		collision = get_slide_collision(i)
+		if collision:
+			print("Collided with ", collision.collider.name, ', normal ', collision.normal)
+			handle_placement_validation(collision)
+			break
+#			breakpoint
 	
+#	debug_process_collision(collision)
+
+func debug_process_collision(collision):
 	if collision:
 #		print("collided!")
 		if is_on_floor():
@@ -40,3 +46,24 @@ func _physics_process(delta):
 			print("collision")
 	else:
 		print("nope")
+
+func handle_placement_validation(collision):
+	match placement_type:
+		placement_types.AIR:
+			validate_placement_air(collision)
+		placement_types.GROUND:
+			validate_placement_ground(collision)
+		placement_types.WALL:
+			validate_placement_wall(collision)
+
+func validate_placement_air(collision):
+	if not collision:
+		placement_valid = true
+	else:
+		placement_valid = false
+
+func validate_placement_ground(collision):
+	print("validating ground")
+
+func validate_placement_wall(collision):
+	print("validating wall")
