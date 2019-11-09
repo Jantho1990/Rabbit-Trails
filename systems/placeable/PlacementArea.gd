@@ -27,11 +27,16 @@ func _physics_process(delta):
 		collision = get_slide_collision(i)
 		if collision:
 			print("Collided with ", collision.collider.name, ', normal ', collision.normal)
-			handle_placement_validation(collision)
 			break
 #			breakpoint
 	
+	handle_placement_validation(collision)
 #	debug_process_collision(collision)
+	update()
+
+func _draw():
+	var placement_color = Color(0, 1, 0, 0.5) if placement_valid else Color(1, 0, 0, 0.5)
+	draw_circle(Vector2(0, 0), 50, placement_color)
 
 func debug_process_collision(collision):
 	if collision:
