@@ -50,6 +50,3 @@ func _on_Deselection(previously_selected_unit):
 			return false
 	
 		allowed_to_move = false
-	else:
-		print("not me")
-		breakpoint

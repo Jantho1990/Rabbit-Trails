@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 func _draw():
 	var placement_color = Color(0, 1, 0, 0.5) if placement_valid else Color(1, 0, 0, 0.5)
-	draw_circle(Vector2(0, 0), 50, placement_color)
+	draw_circle(Vector2(0, 0), 50 + 6, placement_color) # +6 = safe_margin
 
 func debug_process_collision(collision):
 	if collision:
