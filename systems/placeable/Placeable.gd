@@ -45,3 +45,15 @@ func _on_Deselection(previously_selected_unit):
 
 func _on_PlacementArea_input_event(viewport, event, shape_idx):
 	print("collision with placement area", shape_idx)
+
+
+func _on_PlacementArea_area_entered(area):
+	print("placementarea area")
+
+
+func _on_PlacementArea_area_shape_entered(area_id, area, area_shape, self_shape):
+	print("placementarea area shape")
+
+
+func _on_PlacementArea_body_entered(body):
+	print("placementarea body")
