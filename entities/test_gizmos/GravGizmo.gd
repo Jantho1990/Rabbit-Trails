@@ -18,7 +18,7 @@ func _physics_process(delta):
 
 func _draw():
 	draw_circle(Vector2(0, 0), 10, Color(0, 0, 1))
-	circle_outline(Vector2(0, 0), 50 + 6, Color(0, 1, 0)) # +6 = safe_margin
+	circle_outline(Vector2(0, 0), 50, Color(0, 1, 0)) # +6 = safe_margin
 
 func on_Body_entered(body):
 	bodies.push_back(body)

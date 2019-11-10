@@ -7,10 +7,20 @@ export(float) var grace_range = 5.00
 
 const UP = Vector2(0, -1)
 
-var placement_valid = false
+var placement_valid = true
+
+var collisions_updated = false
 
 func _physics_process(delta):
 	position = owner.position
+	collisions_updated = false
+	print(get_overlapping_areas())
+	for area in get_overlapping_areas():
+		if area is TilemapCollisionArea:
+			print('invalid')
+			breakpoint
+			placement_valid = false
+	collisions_updated = true
 	update()
 
 func _on_PlacementArea_area_entered(area):

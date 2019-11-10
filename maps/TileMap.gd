@@ -131,11 +131,11 @@ func generate_collision_areas():
 	for i in range(1, used_cells.size()):
 		var pos = used_cells[i]
 		var area2d = preload('res://maps/TilemapCollisionArea.tscn').instance()
-		var collision = CollisionShape2D.new()
-		var shape = RectangleShape2D.new()
-		shape.extents = Vector2(32, 32)
-		collision.shape = shape
-		area2d.add_child(collision)
+#		var collision = CollisionShape2D.new()
+#		var shape = RectangleShape2D.new()
+#		shape.extents = Vector2(32, 32)
+#		collision.shape = shape
+#		area2d.add_child(collision)
 		area2d.position = pos * cell_size
 		collision_area_container.add_child(area2d)
 	
