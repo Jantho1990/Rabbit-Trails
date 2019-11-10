@@ -147,6 +147,7 @@ func generate_collision_areas():
 #		collision.shape = shape
 #		area2d.add_child(collision)
 		area2d.position = (pos * cell_size) + cell_size / 2
+		area2d.tile_map = self
 		collision_area_container.add_child(area2d)
 	
 	add_child(collision_area_container)
