@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://entities/test_gizmos/LiftGizmo.gd" type="Script" id=1]
 [ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
-[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/placeable/OldPlacementArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -14,6 +14,9 @@ extents = Vector2( 25, 50 )
 extents = Vector2( 25, 50 )
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25, 50 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 25, 50 )
 
 [node name="LiftGizmo" type="Area2D"]
@@ -37,10 +40,16 @@ shape = SubResource( 2 )
 [node name="Placeable" parent="." instance=ExtResource( 4 )]
 allowed_to_move = true
 
-[node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
-placement_type = 1
+[node name="PlacementArea" type="Area2D" parent="Placeable"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
 shape = SubResource( 3 )
+
+[node name="OldPlacementArea" parent="Placeable" instance=ExtResource( 5 )]
+visible = false
+placement_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/OldPlacementArea"]
+shape = SubResource( 4 )
 
 [node name="Deletable" parent="." instance=ExtResource( 6 )]

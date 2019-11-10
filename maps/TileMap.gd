@@ -6,6 +6,9 @@ func _init():
 	pass
 	#collision_layer = 2 # 2 is the environment later, setting here because I don't want to update for every individual tilemap
 
+func _ready():
+	generate_collision_areas()
+
 # Thanks to https://godotengine.org/qa/7450/how-do-i-get-tilemaps-size-height-and-width-with-script
 func calculate_dimensions():
 	# Get list of all positions where there is a tile
@@ -112,3 +115,28 @@ func random_cell(config = {}):
 
 func random_cell_pos():
 	return map_to_world(random_cell())
+
+# Map a grid of Area2Ds and position them over the tilemap.
+# This is necessary for collision detection because Area2Ds
+# do not collide with TileMaps, so we need our own way to
+# detect when collision happens with the map.
+var collision_area_container
+func generate_collision_areas():
+	if collision_area_container:
+		return
+	
+	collision_area_container = Node2D.new()
+	var used_cells = get_used_cells()
+	
+	for i in range(1, used_cells.size()):
+		var pos = used_cells[i]
+		var area2d = preload('res://maps/TilemapCollisionArea.tscn').instance()
+		var collision = CollisionShape2D.new()
+		var shape = RectangleShape2D.new()
+		shape.extents = Vector2(32, 32)
+		collision.shape = shape
+		area2d.add_child(collision)
+		area2d.position = pos * cell_size
+		collision_area_container.add_child(area2d)
+	
+	add_child(collision_area_container)

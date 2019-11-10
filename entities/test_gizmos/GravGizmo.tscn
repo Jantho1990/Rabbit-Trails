@@ -39,7 +39,6 @@ allowed_to_place = true
 allowed_to_move = true
 
 [node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
-collision/safe_margin = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
 shape = SubResource( 3 )
