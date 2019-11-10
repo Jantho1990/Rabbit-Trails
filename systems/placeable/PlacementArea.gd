@@ -16,17 +16,18 @@ func _physics_process(delta):
 	collisions_updated = false
 	print(get_overlapping_areas())
 	for area in get_overlapping_areas():
-		if area is TilemapCollisionArea:
-			print('invalid')
-			breakpoint
-			placement_valid = false
+		handle_placement_validation(area)
+#		if area is TilemapCollisionArea:
+#			print('invalid')
+#			placement_valid = false
 	collisions_updated = true
 	update()
 
 func _on_PlacementArea_area_entered(area):
 	GlobalSignal.dispatch('debug_label', { 'text': area is TilemapCollisionArea })
-	if area is TilemapCollisionArea:
-		placement_valid = false
+	handle_placement_validation(area, 'enter')
+#	if area is TilemapCollisionArea:
+#		placement_valid = false
 
 func _draw():
 #	GlobalSignal.dispatch('debug_label', { 'text': String(position) })
@@ -34,5 +35,31 @@ func _draw():
 	draw_circle(Vector2(0, 0), 50, placement_color) # +6 = safe_margin
 
 func _on_PlacementArea_area_exited(area):
-	if area is TilemapCollisionArea:
-		placement_valid = true
+	handle_placement_validation(area, 'exit')
+#	if area is TilemapCollisionArea:
+#		placement_valid = true
+
+func handle_placement_validation(area, type = null):
+	match placement_type:
+		placement_types.AIR:
+			validate_placement_air(area, type)
+		placement_types.GROUND:
+			validate_placement_ground(area, type)
+		placement_types.WALL:
+			validate_placement_wall(area, type)
+
+func validate_placement_air(area, type):
+	match type:
+		'exit':
+			if area is TilemapCollisionArea:
+				placement_valid = true
+		_:
+			if area is TilemapCollisionArea:
+				print('invalid')
+				placement_valid = false
+
+func validate_placement_ground(area, type):
+	pass
+
+func validate_placement_wall(area, type):
+	pass

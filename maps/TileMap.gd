@@ -127,16 +127,26 @@ func generate_collision_areas():
 	
 	collision_area_container = Node2D.new()
 	var used_cells = get_used_cells()
+#	print(tile_set.tile_get_shape_count(0))
+#	for shape in tile_set.tile_get_shapes(0):
+#		print(shape)
+#	print(tile_set.tile_get_shapes(0), tile_set.get_tiles_ids())
 	
 	for i in range(1, used_cells.size()):
 		var pos = used_cells[i]
+		var cell = world_to_map(pos)
+		var above = tile_above_pos(pos)
+		var below = tile_below_pos(pos)
+#		if get_cell(above.x, above.y) == INVALID_CELL and \
+#			get_cell(cell.x, cell.y) == 0:
+#				continue
 		var area2d = preload('res://maps/TilemapCollisionArea.tscn').instance()
 #		var collision = CollisionShape2D.new()
 #		var shape = RectangleShape2D.new()
 #		shape.extents = Vector2(32, 32)
 #		collision.shape = shape
 #		area2d.add_child(collision)
-		area2d.position = pos * cell_size
+		area2d.position = (pos * cell_size) + cell_size / 2
 		collision_area_container.add_child(area2d)
 	
 	add_child(collision_area_container)
