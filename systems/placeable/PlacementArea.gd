@@ -83,9 +83,9 @@ func validate_placement_ground(area, type):
 					return
 				else:
 					GlobalSignal.dispatch('debug_label', {
-						'text': String(above) + ' ' + String(tile_map.get_cell(above.x, above.y))
+						'text': String(area.position) + ' ' + String(above) + ' ' + String(tile_map.get_cell(above.x, above.y))
 					})
-	placement_valid = false
+					placement_valid = false
 
 func validate_placement_wall(area, type):
 	pass
