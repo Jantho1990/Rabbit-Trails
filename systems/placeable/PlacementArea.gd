@@ -69,13 +69,6 @@ func validate_placement_ground(area, type):
 		'update':
 			if area is TilemapCollisionArea:
 				var tile_map = area.tile_map
-#				var shape = get_node('CollisionShape2D').shape
-#				var y
-#				if shape is CircleShape2D:
-#					y = shape.radius
-#				elif shape is RectangleShape2D:
-#					y = shape.extents.y
-#				var above = tile_map.tile_above_pos(Vector2(position.x, position.y + y))
 				area.tile_color = Color(1, 1, 1, 0.25)
 				var above = tile_map.tile_above_pos(area.position)
 				if tile_map.get_cell(above.x, above.y) == -1:
@@ -88,4 +81,30 @@ func validate_placement_ground(area, type):
 					placement_valid = false
 
 func validate_placement_wall(area, type):
-	pass
+	match type:
+		'enter':
+			continue
+		'update':
+			if area is TilemapCollisionArea:
+				var tile_map = area.tile_map
+				area.tile_color = Color(1, 1, 1, 0.25)
+				var shape = get_node('CollisionShape2D').shape
+				var y
+				if shape is CircleShape2D:
+					y = shape.radius
+				elif shape is RectangleShape2D:
+					y = shape.extents.y
+				var tile = tile_map.tile_at_pos(Vector2(position.x, position.y + y))
+#				var tile = tile_map.tile_at_pos(position)
+				var left = tile_map.tile_left_pos(area.position)
+				var right = tile_map.tile_right_pos(area.position)
+				if tile_map.get_cell(tile.x, tile.y) == -1 and \
+					(tile_map.get_cell(left.x, left.y) == 0 or \
+					tile_map.get_cell(right.x, right.y) == 0):
+					placement_valid = true
+					return
+				else:
+					placement_valid = false
+		'exit':
+			if area is TilemapCollisionArea:
+				placement_valid = false
