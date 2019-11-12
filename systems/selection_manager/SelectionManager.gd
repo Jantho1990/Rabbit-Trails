@@ -18,6 +18,7 @@ var entity_recently_deselected = false
 # Listeners
 var select_listeners = {}
 var deselect_listeners = {}
+var clear_listeners = {}
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -42,6 +43,8 @@ func register_listener(event_name, node, method_name):
 			select_listeners[listener.hash()] = listener
 		'deselect':
 			deselect_listeners[listener.hash()] = listener
+		'clear':
+			clear_listeners[listener.hash()] = listener
 
 func unregister_listener(event_name, node, method_name):
 	var listener = { 'node': node, 'method_name': method_name }
@@ -53,6 +56,9 @@ func unregister_listener(event_name, node, method_name):
 		'deselect':
 			if deselect_listeners.has(listener.hash()):
 				deselect_listeners.erase(listener.hash())
+		'clear':
+			if clear_listeners.has(listener.hash()):
+				clear_listeners.erase(listener.hash())
 
 func register_entity(entity):
 	var selection_area = entity.get_node("SelectionArea")
@@ -66,6 +72,9 @@ func clear_selection():
 		print("cancel deselection")
 		return
 	selected_entity = null
+	for listener in clear_listeners.values():
+		var callback = funcref(listener.node, listener.method_name)
+		callback.call_func(previously_selected_entity)
 	print("cleared!")
 
 # Select a entity
