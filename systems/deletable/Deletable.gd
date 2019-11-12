@@ -19,3 +19,4 @@ func _ready():
 func on_Delete_unit():
 	if Selection.selected_entity == parent: # or Selection.previously_selected_entity == parent:
 		parent.queue_free()
+		Selection.clear_selection()
