@@ -61,7 +61,6 @@ func validate_placement_air(area, type):
 				placement_valid = true
 		_:
 			if area is TilemapCollisionArea:
-				print('invalid')
 				placement_valid = false
 
 func validate_placement_ground(area, type):
