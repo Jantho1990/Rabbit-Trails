@@ -65,6 +65,8 @@ func validate_placement_air(area, type):
 
 func validate_placement_ground(area, type):
 	match type:
+		'enter':
+			continue
 		'update':
 			if area is TilemapCollisionArea:
 				var tile_map = area.tile_map
@@ -78,6 +80,9 @@ func validate_placement_ground(area, type):
 						'text': String(area.position) + ' ' + String(above) + ' ' + String(tile_map.get_cell(above.x, above.y))
 					})
 					placement_valid = false
+		'exit':
+			if area is TilemapCollisionArea:
+				placement_valid = false
 
 func validate_placement_wall(area, type):
 	match type:
