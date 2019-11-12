@@ -90,7 +90,7 @@ func select_entity(entity = null):
 	if deselect_entity(selected_entity) == false:
 		return
 	
-	if not entity == null:
+	if not entity == null or is_instance_valid(entity):
 		selected_entity = entity
 		var selection_area = get_selection_area(entity)
 		selection_area.mark_as_selected()
@@ -104,7 +104,7 @@ func get_selection_area(entity):
 	return entity.get_node("SelectionArea")
 
 func deselect_entity(entity = null):
-	if entity == null:
+	if entity == null or not is_instance_valid(entity):
 		return
 	
 	var selection_area = get_selection_area(entity)
