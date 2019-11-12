@@ -2,5 +2,5 @@
 
 [ext_resource path="res://systems/draggable/Draggable.gd" type="Script" id=1]
 
-[node name="Draggable" type="Node"]
+[node name="Draggable" type="Node2D"]
 script = ExtResource( 1 )

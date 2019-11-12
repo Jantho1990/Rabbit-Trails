@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 ###
 # Dependencies:
@@ -41,7 +41,7 @@ func _physics_process(delta):
 		if not Selection.is_entity_selected(parent):
 			allowed_to_drag = false
 		else:
-			parent.position = get_viewport().get_mouse_position()
+			parent.position = get_global_mouse_position()
 	else:
 		if parent_allowed_to_drag and Selection.is_entity_selected(parent):
 			allowed_to_drag = true
