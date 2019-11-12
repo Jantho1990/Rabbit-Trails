@@ -46,6 +46,7 @@ margin_bottom = 100.0
 hint_tooltip = "Delete this unit."
 text = "Delete"
 command_name = "delete_unit"
+command_card_key = "W"
 
 [node name="InputRow2" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 120.0

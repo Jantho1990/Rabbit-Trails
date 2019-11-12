@@ -13,12 +13,12 @@ func _ready():
 #	pass
 
 func show_build_card():
-	build_card.activate()
-	unit_card.deactivate()
+	build_card.activate_tree()
+	unit_card.deactivate_tree()
 
 func show_unit_card():
-	unit_card.activate()
-	build_card.deactivate()
+	unit_card.activate_tree()
+	build_card.deactivate_tree()
 
 func _on_Clear_selection(__throwaway__):
 	show_build_card()

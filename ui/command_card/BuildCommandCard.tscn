@@ -46,6 +46,7 @@ margin_bottom = 100.0
 hint_tooltip = "Build Grav Gizmo"
 text = "Grav"
 unit_name = "GravGizmo"
+command_card_key = "W"
 
 [node name="BuildLiftGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 240.0
@@ -54,6 +55,7 @@ margin_bottom = 100.0
 hint_tooltip = "Build Lift Gizmo"
 text = "Lift"
 unit_name = "LiftGizmo"
+command_card_key = "E"
 
 [node name="InputRow2" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 120.0
@@ -69,6 +71,7 @@ margin_bottom = 100.0
 hint_tooltip = "Build Boing Gizmo"
 text = "Boing"
 unit_name = "BoingGizmo"
+command_card_key = "A"
 
 [node name="BuildDeterrentGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
 margin_left = 120.0
@@ -77,6 +80,7 @@ margin_bottom = 100.0
 hint_tooltip = "Build Deterrent Gizmo"
 text = "Deterrent"
 unit_name = "DeterrentGizmo"
+command_card_key = "S"
 
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 240.0
