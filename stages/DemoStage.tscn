@@ -1,3 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://tilesets/dirt_jungle/dirt_jungle.tres" type="TileSet" id=1]
+[ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=3]
 
 [node name="DemoStage" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="GravGizmoContainer" parent="TileMap" instance=ExtResource( 2 )]
+container_id = "GravGizmo"
+
+[node name="LiftGizmoContainer" parent="TileMap" instance=ExtResource( 3 )]
+container_id = "LiftGizmo"
