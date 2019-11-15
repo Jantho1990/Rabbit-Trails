@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://containers/LiftGizmoContainer/LiftGizmoContainer.gd"
 }, {
+"base": "Node",
+"class": "PlatformGizmoContainer",
+"language": "GDScript",
+"path": "res://containers/PlatformGizmoContainer/PlatformGizmoContainer.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "TestSquare",
 "language": "GDScript",
@@ -50,6 +55,7 @@ _global_script_class_icons={
 "GravGizmoContainer": "",
 "LifeEventsHandler": "",
 "LiftGizmoContainer": "",
+"PlatformGizmoContainer": "",
 "TestSquare": "",
 "TilemapCollisionArea": ""
 }

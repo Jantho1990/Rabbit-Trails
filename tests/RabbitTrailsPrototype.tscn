@@ -24,28 +24,24 @@ current = true
 [node name="GravGizmo" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 128 )
 space_override = 3
-gravity = 40.0
 linear_damp = 1.0
 priority = 1.0
 
 [node name="GravGizmo2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 800, 64 )
 space_override = 3
-gravity = 40.0
 linear_damp = 1.0
 priority = 1.0
 
 [node name="GravGizmo3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1216, -32 )
 space_override = 3
-gravity = 40.0
 linear_damp = 1.0
 priority = 1.0
 
 [node name="GravGizmo4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1344, -128 )
 space_override = 3
-gravity = 40.0
 linear_damp = 1.0
 priority = 1.0
 

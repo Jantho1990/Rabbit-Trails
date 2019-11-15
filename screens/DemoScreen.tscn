@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://screens/DemoScreen.gd" type="Script" id=1]
+[ext_resource path="res://mouse/MouseCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/command_card/CommandCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/unit_builder/UnitBuilder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/unit_manager/UnitManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://stages/DemoStage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/test_rabbit/TestRabbit.tscn" type="PackedScene" id=7]
+
+[node name="DemoScreen" type="Node"]
+script = ExtResource( 1 )
+
+[node name="MouseCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 160 )
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="CommandCard" parent="InterfaceLayer" instance=ExtResource( 3 )]
+margin_left = -380.0
+margin_top = -380.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="UnitBuilder" parent="." instance=ExtResource( 4 )]
+buildable_units_path = "res://entities/test_gizmos"
+buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
+
+[node name="UnitManager" parent="." instance=ExtResource( 5 )]
+
+[node name="StageManager" type="Node" parent="."]
+
+[node name="DemoStage" parent="StageManager" instance=ExtResource( 6 )]
+
+[node name="TestRabbit" parent="StageManager/DemoStage" instance=ExtResource( 7 )]
+position = Vector2( 160, 426 )
+
+[node name="Camera2D" type="Camera2D" parent="StageManager/DemoStage/TestRabbit"]
+[connection signal="mouse_entered" from="InterfaceLayer/CommandCard" to="." method="_on_CommandCard_mouse_entered"]
+[connection signal="mouse_exited" from="InterfaceLayer/CommandCard" to="." method="_on_CommandCard_mouse_exited"]

@@ -18,7 +18,8 @@ radius = 50.0
 
 [node name="GravGizmo" type="Area2D"]
 gravity_vec = Vector2( 0, -1 )
-gravity = 20.0
+gravity = 40.0
+linear_damp = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
