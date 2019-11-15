@@ -40,6 +40,11 @@ var is_jumping = false
 var sight_points
 var sight_target
 
+# Hop Timer
+var in_air = false
+var allowed_to_hop = true
+var hop_timer = Timer.new()
+
 ###
 # ONREADY PROPERTIES
 ###
@@ -59,14 +64,20 @@ func _ready():
 		"right": funcref(self, "move_right"),
 		"up": funcref(self, "move_up")
 	})
+	hop_timer.connect('timeout', self, '_on_hop_timer_stop')
+	hop_timer.one_shot = true
+	add_child(hop_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	motion.y += GRAVITY
-	if is_on_floor():
-		print("ON FLOOR")
-		print("state is", state.current)
-		print(global.run_time)
+#	if not is_on_floor():
+#		$Sprite/AnimationPlayer.play('hop_takeoff')
+#	else:
+#		$Sprite/AnimationPlayer.play('hop_land')
+#		$Sprite/AnimationPlayer.animation_set_next('hop_land', 'idle')
+#		if allowed_to_hop:
+#			start_hop_timer()
 	
 	if state.current == "jump" and is_on_floor():
 		is_jumping = false
@@ -99,12 +110,14 @@ func move_idle():
 	pass
 
 func move_left():
+	print('left')
 	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 #	$Sprite.scale.x = 1
 	direction.x = -1
 #	playAnim('run', -1, 1.6)
 
 func move_right():
+	print('right')
 	motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 #	$Sprite.scale.x = -1
 	direction.x = 1
@@ -120,9 +133,13 @@ func move_up():
 ###
 
 func state_idle():
+	$Sprite/AnimationPlayer.play('idle')
 	motion.x = 0
-	if math.randOneIn(100):
-		state.swap("bound")
+	if not allowed_to_hop and hop_timer.time_left <= 0:
+		start_hop_timer()
+		
+#	if math.randOneIn(100):
+#		state.swap("bound")
 
 func state_jump():
 	jump()
@@ -130,6 +147,16 @@ func state_jump():
 
 func state_bound():
 	move()
+#	if not is_on_floor():
+#		$Sprite/AnimationPlayer.play('hop_takeoff')
+#	else:
+#		print('shark')
+#		in_air = false
+#		$Sprite/AnimationPlayer.play('hop_land')
+##		$Sprite/AnimationPlayer.animation_set_next('hop_land', 'idle')
+#		state.swap('idle')
+##		if allowed_to_hop:
+#		start_hop_timer()
 
 ###
 # OTHER METHODS
@@ -144,6 +171,8 @@ func look():
 	
 	if result:
 #		print("LOOKING AT ", result)
+		direction.x = -direction.x
+		$Sprite.flip_h = !$Sprite.flip_h
 		sight_target = result.collider
 		if result.collider.get_class() == "TileMap" and not is_jumping and is_on_floor():
 			if (position - result.position).x <= JUMP_THRESHOLD_RANGE and state.current != "jump":
@@ -169,8 +198,22 @@ func jump():
 
 # Initiate movement.
 func move():
-	if is_on_floor():
+#	if not allowed_to_hop and not in_air:
+#		print('denied')
+#		motion.x = 0
+#		return
+	if not $Sprite/AnimationPlayer.current_animation == 'hop_takeoff':
+		$Sprite/AnimationPlayer.play('hop_takeoff')
+		
+	if is_on_floor() and not in_air:
 		jump_bump()
+	elif is_on_floor():
+		print('shark')
+		allowed_to_hop = false
+		in_air = false
+		$Sprite/AnimationPlayer.play('hop_land')
+		state.swap('idle')
+	
 	match int(direction.x):
 		-1:
 			$MovementHandler.move("left")
@@ -183,3 +226,15 @@ func move():
 func jump_bump(): # Add a slight bump, used for phone movement.
 	if is_on_floor():
 		motion.y -= jump_bump_height
+		in_air = true
+		print('jump bump')
+
+func start_hop_timer():
+	print('START')
+#	allowed_to_hop = false
+	hop_timer.start(2)
+
+func _on_hop_timer_stop():
+	print('stop')
+	allowed_to_hop = true
+	state.swap('bound')
