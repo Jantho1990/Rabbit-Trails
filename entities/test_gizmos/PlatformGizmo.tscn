@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/test_gizmos/PlatformGizmo.gd" type="Script" id=1]
-[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=2]
-[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=3]
-[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50, 4 )
+extents = Vector2( 75, 12 )
 
 [node name="PlatformGizmo" type="StaticBody2D"]
 script = ExtResource( 1 )
@@ -16,15 +17,19 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 one_way_collision = true
 
-[node name="Draggable" parent="." instance=ExtResource( 2 )]
+[node name="SelectionArea" parent="." instance=ExtResource( 2 )]
 
-[node name="Placeable" parent="." instance=ExtResource( 3 )]
-allowed_to_place = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea"]
+shape = SubResource( 1 )
 
-[node name="PlacementArea" parent="Placeable" instance=ExtResource( 4 )]
+[node name="Draggable" parent="." instance=ExtResource( 3 )]
+
+[node name="Placeable" parent="." instance=ExtResource( 4 )]
+allowed_to_move = true
+
+[node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
 shape = SubResource( 1 )
-one_way_collision = true
 
-[node name="Deletable" parent="." instance=ExtResource( 5 )]
+[node name="Deletable" parent="." instance=ExtResource( 6 )]

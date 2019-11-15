@@ -24,7 +24,7 @@ margin_bottom = 0.0
 
 [node name="UnitBuilder" parent="." instance=ExtResource( 4 )]
 buildable_units_path = "res://entities/test_gizmos"
-buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
+buildable_unit_names = [ "GravGizmo", "LiftGizmo", "PlatformGizmo" ]
 
 [node name="UnitManager" parent="." instance=ExtResource( 5 )]
 

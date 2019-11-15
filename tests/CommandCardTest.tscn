@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tests/CommandCardTest.gd" type="Script" id=1]
 [ext_resource path="res://mouse/MouseCamera.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://maps/TileMap.gd" type="Script" id=8]
 [ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://containers/LiftGizmoContainer/LiftGizmoContainer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://containers/PlatformGizmoContainer/PlatformGizmoContainer.tscn" type="PackedScene" id=11]
 
 [node name="CommandCardTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,7 +31,7 @@ margin_top = -380.0
 
 [node name="UnitBuilder" parent="." instance=ExtResource( 5 )]
 buildable_units_path = "res://entities/test_gizmos"
-buildable_unit_names = [ "GravGizmo", "LiftGizmo" ]
+buildable_unit_names = [ "GravGizmo", "LiftGizmo", "PlatformGizmo" ]
 
 [node name="UnitManager" parent="." instance=ExtResource( 6 )]
 
@@ -51,5 +52,8 @@ container_id = "GravGizmo"
 
 [node name="LiftGizmoContainer" parent="Stage" instance=ExtResource( 10 )]
 container_id = "LiftGizmo"
+
+[node name="PlatformGizmoContainer" parent="Stage" instance=ExtResource( 11 )]
+container_id = "PlatformGizmo"
 [connection signal="mouse_entered" from="InterfaceLayer/CommandCard" to="." method="_on_CommandCard_mouse_entered"]
 [connection signal="mouse_exited" from="InterfaceLayer/CommandCard" to="." method="_on_CommandCard_mouse_exited"]
