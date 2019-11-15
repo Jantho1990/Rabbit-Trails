@@ -202,8 +202,10 @@ func move():
 #		print('denied')
 #		motion.x = 0
 #		return
-	if not $Sprite/AnimationPlayer.current_animation == 'hop_takeoff':
+	if not $Sprite/AnimationPlayer.current_animation == 'hop_takeoff' and not \
+		$Sprite/AnimationPlayer.current_animation == 'midair':
 		$Sprite/AnimationPlayer.play('hop_takeoff')
+		$Sprite/AnimationPlayer.animation_set_next('hop_takeoff', 'midair')
 		
 	if is_on_floor() and not in_air:
 		jump_bump()
