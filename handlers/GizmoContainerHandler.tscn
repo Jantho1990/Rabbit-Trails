@@ -8,9 +8,13 @@
 [node name="GizmoContainerHandler" type="Node"]
 
 [node name="PlatformGizmoContainer" parent="." instance=ExtResource( 1 )]
+container_id = "PlatformGizmo"
 
 [node name="GravGizmoContainer" parent="." instance=ExtResource( 2 )]
+container_id = "GravGizmo"
 
 [node name="LiftGizmoContainer" parent="." instance=ExtResource( 3 )]
+container_id = "LiftGizmo"
 
 [node name="JumpPadGizmoContainer" parent="." instance=ExtResource( 4 )]
+container_id = "JumpGizmo"
