@@ -132,7 +132,7 @@ func generate_collision_areas():
 #		print(shape)
 #	print(tile_set.tile_get_shapes(0), tile_set.get_tiles_ids())
 	
-	for i in range(0, used_cells.size() - 1):
+	for i in range(0, used_cells.size()):
 		var cell = used_cells[i]
 #		var cell = world_to_map(pos)
 		var above = Vector2(cell.x, cell.y - 1)
