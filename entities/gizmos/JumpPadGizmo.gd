@@ -19,7 +19,7 @@ func _physics_process(delta):
 func _draw():
 	var ext = $CollisionArea/CollisionShape2D.shape.extents
 	var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
-	draw_rect(rec, Color(0.5, 1, 0.5))
+	draw_rect(rec, Color(0.5, 0.5, 1))
 
 func _on_Body_entered(body):
 	print('boom')
