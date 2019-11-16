@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://entities/gizmos/ThrustGizmo.gd" type="Script" id=1]
+[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0
+
+[node name="ThrustGizmo" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource( 1 )
+
+[node name="SelectionArea" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea"]
+shape = SubResource( 2 )
+
+[node name="Draggable" parent="." instance=ExtResource( 3 )]
+
+[node name="Placeable" parent="." instance=ExtResource( 4 )]
+allowed_to_place = true
+allowed_to_move = true
+
+[node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
+shape = SubResource( 3 )
+
+[node name="Deletable" parent="." instance=ExtResource( 6 )]

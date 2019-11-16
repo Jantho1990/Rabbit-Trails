@@ -82,6 +82,15 @@ text = "Deterrent"
 unit_name = "DeterrentGizmo"
 command_card_key = "S"
 
+[node name="BuildThrustGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
+margin_left = 240.0
+margin_right = 340.0
+margin_bottom = 100.0
+hint_tooltip = "Build Deterrent Gizmo"
+text = "Thrust"
+unit_name = "ThrustGizmo"
+command_card_key = "D"
+
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 240.0
 margin_right = 340.0

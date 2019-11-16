@@ -7,6 +7,6 @@
 
 [node name="UnitBuilder" parent="." instance=ExtResource( 1 )]
 buildable_units_path = "res://entities/gizmos"
-buildable_unit_names = [ "PlatformGizmo", "GravGizmo", "LiftGizmo", "JumpPadGizmo" ]
+buildable_unit_names = [ "PlatformGizmo", "GravGizmo", "LiftGizmo", "JumpPadGizmo", "ThrustGizmo" ]
 
 [node name="UnitManager" parent="." instance=ExtResource( 2 )]
