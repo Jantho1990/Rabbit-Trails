@@ -69,8 +69,8 @@ custom_constants/separation = 20
 margin_right = 100.0
 margin_bottom = 100.0
 hint_tooltip = "Build Boing Gizmo"
-text = "Boing"
-unit_name = "BoingGizmo"
+text = "Jump Pad"
+unit_name = "JumpPadGizmo"
 command_card_key = "A"
 
 [node name="BuildDeterrentGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
