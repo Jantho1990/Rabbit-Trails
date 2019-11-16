@@ -17,8 +17,11 @@ var collisions_updated = false
 
 var snap_location = position
 
+onready var parent = get_parent().get_parent()
+
 func _physics_process(delta):
 	position = owner.position
+#	position = parent.position
 	collisions_updated = false
 #	print(get_overlapping_areas())
 	for area in get_overlapping_areas():
@@ -48,7 +51,12 @@ func _draw():
 		draw_circle(Vector2(0, 0), 50, placement_color) # +6 = safe_margin
 	elif collision_shape is RectangleShape2D:
 		var ext = owner.get_node(NodePath('CollisionArea/CollisionShape2D')).shape.extents
-		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
+		var draw_offset 
+		if placement_valid:
+			draw_offset = position - snap_location
+		else:
+			draw_offset = Vector2(0, 0)
+		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2) - draw_offset, ext)
 		draw_rect(rec, placement_color, true)
 
 func _on_PlacementArea_area_exited(area):
