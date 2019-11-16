@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://containers/GravGizmoContainer/GravGizmoContainer.gd"
 }, {
 "base": "Node",
+"class": "JumpPadGizmoContainer",
+"language": "GDScript",
+"path": "res://containers/JumpPadGizmoContainer/JumpPadGizmoContainer.gd"
+}, {
+"base": "Node",
 "class": "LifeEventsHandler",
 "language": "GDScript",
 "path": "res://systems/life_events/LifeEventsHandler.gd"
@@ -65,6 +70,7 @@ _global_script_class_icons={
 "EnemyGenerator": "",
 "EntityGenerator": "",
 "GravGizmoContainer": "",
+"JumpPadGizmoContainer": "",
 "LifeEventsHandler": "",
 "LiftGizmoContainer": "",
 "PlatformGizmoContainer": "",
