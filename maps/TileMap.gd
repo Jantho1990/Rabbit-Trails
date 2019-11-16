@@ -1,5 +1,7 @@
 extends TileMap
 
+export(bool) var show_collision_areas = false
+
 onready var dimensions = calculate_dimensions()
 
 func _init():
