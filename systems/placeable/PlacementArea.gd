@@ -74,12 +74,17 @@ func validate_placement_ground(area, type):
 				var tile_map = area.tile_map
 				area.tile_color = Color(1, 1, 1, 0.25)
 				var above = tile_map.tile_above_pos(area.position)
-				if tile_map.get_cell(above.x, above.y) == -1:
-					placement_valid = true
-					return
+				var above2 = Vector2(above.x, above.y - 1)
+				if tile_map.get_cell(above2.x, above2.y) == -1 and \
+					tile_map.get_cell(above.x, above.y) == 0:
+						placement_valid = true
+						return
 				else:
 					GlobalSignal.dispatch('debug_label', {
-						'text': String(area.position) + ' ' + String(above) + ' ' + String(tile_map.get_cell(above.x, above.y))
+						'text': String(area.position) + ' ' + \
+							String(above) + ' ' + \
+							String(tile_map.get_cell(above.x, above.y)) + ' ' + \
+							String(tile_map.get_cell(above2.x, above2.y))
 					})
 					placement_valid = false
 		'exit':
