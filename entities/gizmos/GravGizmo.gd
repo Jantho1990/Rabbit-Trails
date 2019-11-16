@@ -1,4 +1,4 @@
-extends Area2D
+extends Gizmo
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -7,6 +7,12 @@ extends Area2D
 var frozen = false
 
 var bodies = []
+
+export(Vector2) var gravity_vec
+export(float) var gravity
+export(float) var linear_damp
+
+onready var CollisionArea = $CollisionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +38,7 @@ func allow_drag():
 	return true
 
 func apply_gravity_to_bodies():
-	var bodies = get_overlapping_bodies()
+	var bodies = CollisionArea.get_overlapping_bodies()
 	if bodies.size() > 0:
 		for body in bodies:
 			if "motion" in body:
