@@ -1,4 +1,6 @@
-extends Gizmo
+extends Node2D
+
+class_name Gizmo
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -11,11 +13,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func _physics_process(delta):
-	update()
-
-func _draw():
-	var ext = $CollisionArea/CollisionShape2D.shape.extents
-	var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
-	draw_rect(rec, Color(1, 1, 1))

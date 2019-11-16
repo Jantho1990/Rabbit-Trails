@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tests/RabbitTrailsPrototype.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/dirt_jungle/dirt_jungle.tres" type="TileSet" id=2]
 [ext_resource path="res://entities/test_rabbit/TestRabbit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/test_gizmos/GravGizmo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/test_gizmos/LiftGizmo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/gizmos/PlatformGizmo.tscn" type="PackedScene" id=6]
 
 [node name="RabbitTrailsPrototype" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,29 +24,18 @@ current = true
 
 [node name="GravGizmo" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 128 )
-space_override = 3
-linear_damp = 1.0
-priority = 1.0
 
 [node name="GravGizmo2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 800, 64 )
-space_override = 3
-linear_damp = 1.0
-priority = 1.0
 
 [node name="GravGizmo3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1216, -32 )
-space_override = 3
-linear_damp = 1.0
-priority = 1.0
 
 [node name="GravGizmo4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1344, -128 )
-space_override = 3
-linear_damp = 1.0
-priority = 1.0
 
 [node name="LiftGizmo" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2769.7, 494.3 )
-gravity = 200.0
-linear_damp = 1.0
+
+[node name="PlatformGizmo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2450.99, 493.596 )

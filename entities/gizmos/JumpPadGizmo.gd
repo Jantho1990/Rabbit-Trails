@@ -1,4 +1,4 @@
-extends Area2D
+extends Gizmo
 
 # Declare member variables here. Examples:
 # var a = 2
