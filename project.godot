@@ -107,6 +107,13 @@ command_card_key={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="map"
+2d_physics/layer_2="rabbit"
+2d_physics/layer_3="gizmos"
+2d_physics/layer_4="gizmo_placement"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
