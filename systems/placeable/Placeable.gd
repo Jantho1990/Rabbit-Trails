@@ -58,5 +58,4 @@ func _on_Deselection(previously_selected_unit):
 		allowed_to_move = false
 
 func _on_Snap_placement(location):
-	print('aw snap')
 	parent.position = location
