@@ -17,4 +17,4 @@ container_id = "GravGizmo"
 container_id = "LiftGizmo"
 
 [node name="JumpPadGizmoContainer" parent="." instance=ExtResource( 4 )]
-container_id = "JumpGizmo"
+container_id = "JumpPadGizmo"

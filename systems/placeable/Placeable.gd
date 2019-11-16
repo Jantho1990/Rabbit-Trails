@@ -17,6 +17,7 @@ onready var placement_area = get_node_or_null('PlacementArea')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	placement_area.connect('snap_placement', self, '_on_Snap_placement')
 	Selection.register_listener('select', self, '_on_Selection')
 	Selection.register_listener('deselect', self, '_on_Deselection')
 	connect('tree_exiting', self, '_on_Exiting_tree')
@@ -55,3 +56,7 @@ func _on_Deselection(previously_selected_unit):
 			return false
 		
 		allowed_to_move = false
+
+func _on_Snap_placement(location):
+	print('aw snap')
+	parent.position = location

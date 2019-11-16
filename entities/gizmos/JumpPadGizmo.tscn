@@ -36,6 +36,7 @@ allowed_to_move = true
 
 [node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
 placement_type = 1
+snap_placement = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
 shape = SubResource( 3 )

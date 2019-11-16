@@ -1,15 +1,21 @@
 extends Area2D
 
+signal snap_placement
+
 enum placement_types { AIR, GROUND, WALL }
 export(placement_types) var placement_type
 
 export(float) var grace_range = 5.00
+
+export(bool) var snap_placement = false
 
 const UP = Vector2(0, -1)
 
 var placement_valid = true
 
 var collisions_updated = false
+
+var snap_location = position
 
 func _physics_process(delta):
 	position = owner.position
@@ -21,6 +27,11 @@ func _physics_process(delta):
 #			print('invalid')
 #			placement_valid = false
 	collisions_updated = true
+	if placement_valid and snap_placement:
+		emit_signal('snap_placement', snap_location)
+		GlobalSignal.dispatch('debug_label', { 'text': 'valid snap' })
+	else:
+		GlobalSignal.dispatch('debug_label', { 'text': 'invalid snap' })
 	update()
 
 func _on_PlacementArea_area_entered(area):
@@ -78,6 +89,8 @@ func validate_placement_ground(area, type):
 				if tile_map.get_cell(above2.x, above2.y) == -1 and \
 					tile_map.get_cell(above.x, above.y) == 0:
 						placement_valid = true
+						if snap_placement:
+							snap_location = Vector2(position.x, tile_map.map_to_world(above).y + tile_map.cell_size.y - 1)
 						return
 				else:
 					GlobalSignal.dispatch('debug_label', {

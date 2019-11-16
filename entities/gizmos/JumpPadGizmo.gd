@@ -27,8 +27,9 @@ func apply_impulse_to_bodies():
 	if bodies.size() > 0:
 		for body in bodies:
 			if "motion" in body:
-				print("grav before", body.motion)
+				continue
+#				print("grav before", body.motion)
 #				body.motion.y = gravity_vec.y * gravity * linear_damp
 #				if abs(body.motion.y) > gravity:
 #					body.motion = gravity_vec * gravity
-				print("grav after", body.motion)
+#				print("grav after", body.motion)
