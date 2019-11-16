@@ -6,7 +6,7 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
-const MAX_SPEED = 200
+const MAX_SPEED = 400
 const JUMP_HEIGHT = -550
 const JUMP_FORGIVENESS = 0.08
 const SIGHT_RANGE = 100
@@ -28,6 +28,9 @@ export(float) var jump_bump_height = 400.00
 ###
 # PROPERTIES
 ###
+
+# Allows this to be created by generators.
+var generator
 
 # The direction
 var direction = Vector2(1, 0)
@@ -110,14 +113,12 @@ func move_idle():
 	pass
 
 func move_left():
-	print('left')
 	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 #	$Sprite.scale.x = 1
 	direction.x = -1
 #	playAnim('run', -1, 1.6)
 
 func move_right():
-	print('right')
 	motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 #	$Sprite.scale.x = -1
 	direction.x = 1
@@ -210,7 +211,6 @@ func move():
 	if is_on_floor() and not in_air:
 		jump_bump()
 	elif is_on_floor():
-		print('shark')
 		allowed_to_hop = false
 		in_air = false
 		$Sprite/AnimationPlayer.play('hop_land')
@@ -229,14 +229,11 @@ func jump_bump(): # Add a slight bump, used for phone movement.
 	if is_on_floor():
 		motion.y -= jump_bump_height
 		in_air = true
-		print('jump bump')
 
 func start_hop_timer():
-	print('START')
 #	allowed_to_hop = false
-	hop_timer.start(2)
+	hop_timer.start(0.75)
 
 func _on_hop_timer_stop():
-	print('stop')
 	allowed_to_hop = true
 	state.swap('bound')
