@@ -27,6 +27,11 @@ func _physics_process(delta):
 func _draw():
 	draw_circle(Vector2(0, 0), 20, Color(0, 1, 1))
 	circle_outline(Vector2(0, 0), 50, Color(1, 1, 0.5)) # +6 = safe_margin
+	_draw_direction()
+
+func _draw_direction():
+	draw_line(Vector2(0, 0), impulse_direction * 40, Color(1, 0, 0), 2)
+	draw_colored_polygon(PoolVector2Array([Vector2(40, -5), Vector2(40, 5), Vector2(45, 0)]), Color(1, 0, 0))
 
 func _on_Body_entered(body):
 #	bodies.push_back(body)
