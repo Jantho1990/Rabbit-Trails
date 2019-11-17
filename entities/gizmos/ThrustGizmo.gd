@@ -10,9 +10,9 @@ var bodies = []
 
 enum DIRECTIONS {
 	RIGHT = 0,
-	LEFT = 1,
-	UP = 2,
-	DOWN = 3
+	DOWN = 1,
+	LEFT = 2,
+	UP = 3
 }
 export(DIRECTIONS) var direction = DIRECTIONS.RIGHT
 export(float) var impulse_force = 800.00
@@ -24,17 +24,11 @@ onready var CollisionArea = $CollisionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalSignal.listen('rotate_unit_left', self, '_on_Rotate_unit_left')
+	GlobalSignal.listen('rotate_unit_right', self, '_on_Rotate_unit_right')
 	CollisionArea.connect("body_entered", self, "_on_Body_entered")
 	CollisionArea.connect("body_exited", self, "_on_Body_exited")
-	match direction:
-		DIRECTIONS.RIGHT:
-			impulse_direction = Vector2(1, 0)
-		DIRECTIONS.LEFT:
-			impulse_direction = Vector2(-1, 0)
-		DIRECTIONS.DOWN:
-			impulse_direction = Vector2(0, 1)
-		DIRECTIONS.UP:
-			impulse_direction = Vector2(0, -1)
+	set_direction()
 
 func _physics_process(delta):
 #	apply_gravity_to_bodies()
@@ -84,6 +78,22 @@ func _on_Body_exited(body):
 		var i = bodies.find(body)
 		bodies.remove(i)
 
+func _on_Rotate_unit_left():
+	if Selection.selected_entity == self:
+		if direction > 0:
+			direction -= 1
+		else:
+			direction = 3
+		set_direction()
+
+func _on_Rotate_unit_right():
+	if Selection.selected_entity == self:
+		if direction < 3:
+			direction += 1
+		else:
+			direction = 0
+		set_direction()
+
 func _on_Delay_timer_stop(body, delay_timer):
 	print('FIRE', body, delay_timer)
 	body.motion += impulse_force * impulse_direction
@@ -114,3 +124,14 @@ func circle_outline(center, radius, color):
 	
 	for index_point in range(points):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, 1)
+
+func set_direction():
+	match direction:
+		DIRECTIONS.RIGHT:
+			impulse_direction = Vector2(1, 0)
+		DIRECTIONS.LEFT:
+			impulse_direction = Vector2(-1, 0)
+		DIRECTIONS.DOWN:
+			impulse_direction = Vector2(0, 1)
+		DIRECTIONS.UP:
+			impulse_direction = Vector2(0, -1)
