@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/command_card/UnitCommandCard.gd" type="Script" id=1]
 [ext_resource path="res://ui/buttons/unit_command/UnitCommandButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/buttons/unit_command/RotateUnitCommandButton.tscn" type="PackedScene" id=3]
 
 [node name="UnitCommandCard" type="Control"]
 anchor_right = 1.0
@@ -21,12 +22,12 @@ custom_constants/margin_bottom = 20
 [node name="InputRowContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 240.0
+margin_right = 360.0
 margin_bottom = 360.0
 custom_constants/separation = 20
 
 [node name="InputRow1" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
-margin_right = 220.0
+margin_right = 340.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
@@ -39,7 +40,7 @@ hint_tooltip = "Move this unit."
 text = "Move"
 command_name = "move_unit"
 
-[node name="DeleteCommandButton2" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
+[node name="DeleteCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 120.0
 margin_right = 220.0
 margin_bottom = 100.0
@@ -50,15 +51,30 @@ command_card_key = "W"
 
 [node name="InputRow2" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 120.0
-margin_right = 220.0
+margin_right = 340.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 custom_constants/separation = 20
 
+[node name="LeftRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 3 )]
+margin_right = 100.0
+margin_bottom = 100.0
+text = "Rotate Left"
+command_name = "rotate_left"
+command_card_key = "A"
+
+[node name="RightRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 3 )]
+margin_left = 120.0
+margin_right = 220.0
+margin_bottom = 100.0
+text = "Rotate Right"
+command_name = "rotate_right"
+command_card_key = "S"
+
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 240.0
-margin_right = 220.0
+margin_right = 340.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3

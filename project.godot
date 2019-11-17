@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "TilemapCollisionArea",
 "language": "GDScript",
 "path": "res://maps/TilemapCollisionArea.gd"
+}, {
+"base": "Button",
+"class": "UnitCommandButton",
+"language": "GDScript",
+"path": "res://ui/buttons/unit_command/UnitCommandButton.gd"
 } ]
 _global_script_class_icons={
 "DoorContainer": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "PlatformGizmoContainer": "",
 "TestSquare": "",
 "ThrustGizmoContainer": "",
-"TilemapCollisionArea": ""
+"TilemapCollisionArea": "",
+"UnitCommandButton": ""
 }
 
 [application]

@@ -1,5 +1,7 @@
 extends Button
 
+class_name UnitCommandButton
+
 export(String) var command_name
 export(String, '', 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C') var command_card_key
 
@@ -26,3 +28,19 @@ func _input(event):
 
 func _on_UnitCommandButton_pressed():
 	GlobalSignal.dispatch('unit_command', { 'command_name': command_name })
+
+func deactivate_button():
+	hide()
+	set_process(false)
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+	set_process_input(false)
+	print(name, ' deactivated')
+
+func activate_button():
+	show()
+	set_process(true)
+	set_physics_process(true)
+	set_process_unhandled_input(true)
+	set_process_input(true)
+	print(name, ' activated')
