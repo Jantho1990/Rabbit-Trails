@@ -28,13 +28,13 @@ func _ready():
 	CollisionArea.connect("body_exited", self, "_on_Body_exited")
 	match direction:
 		DIRECTIONS.RIGHT:
-			Vector2(1, 0)
+			impulse_direction = Vector2(1, 0)
 		DIRECTIONS.LEFT:
-			Vector2(-1, 0)
+			impulse_direction = Vector2(-1, 0)
 		DIRECTIONS.DOWN:
-			Vector2(0, -1)
+			impulse_direction = Vector2(0, 1)
 		DIRECTIONS.UP:
-			Vector2(0, 1)
+			impulse_direction = Vector2(0, -1)
 
 func _physics_process(delta):
 #	apply_gravity_to_bodies()
@@ -47,7 +47,22 @@ func _draw():
 
 func _draw_direction():
 	draw_line(Vector2(0, 0), impulse_direction * 40, Color(1, 0, 0), 2)
-	draw_colored_polygon(PoolVector2Array([Vector2(40, -5), Vector2(40, 5), Vector2(45, 0)]), Color(1, 0, 0))
+	var arrow_rotation
+	match direction:
+		DIRECTIONS.RIGHT:
+			arrow_rotation = deg2rad(0)
+		DIRECTIONS.LEFT:
+			arrow_rotation = deg2rad(180)
+		DIRECTIONS.DOWN:
+			arrow_rotation = deg2rad(90)
+		DIRECTIONS.UP:
+			arrow_rotation = deg2rad(270)
+	var arrow_points = [
+		Vector2(40, -5).rotated(arrow_rotation),
+		Vector2(40, 5).rotated(arrow_rotation),
+		Vector2(45, 0).rotated(arrow_rotation)
+	]
+	draw_colored_polygon(PoolVector2Array(arrow_points), Color(1, 0, 0))
 
 func _on_Body_entered(body):
 #	bodies.push_back(body)
