@@ -32,9 +32,7 @@ func _physics_process(delta):
 	collisions_updated = true
 	if placement_valid and snap_placement:
 		emit_signal('snap_placement', snap_location)
-		GlobalSignal.dispatch('debug_label', { 'text': 'valid snap' })
-	else:
-		GlobalSignal.dispatch('debug_label', { 'text': 'invalid snap' })
+#		GlobalSignal.dispatch('debug_label', { 'text': 'valid snap' })
 	update()
 
 func _on_PlacementArea_area_entered(area):
@@ -101,12 +99,12 @@ func validate_placement_ground(area, type):
 							snap_location = Vector2(position.x, tile_map.map_to_world(above).y + tile_map.cell_size.y - 1)
 						return
 				else:
-					GlobalSignal.dispatch('debug_label', {
-						'text': String(area.position) + ' ' + \
-							String(above) + ' ' + \
-							String(tile_map.get_cell(above.x, above.y)) + ' ' + \
-							String(tile_map.get_cell(above2.x, above2.y))
-					})
+#					GlobalSignal.dispatch('debug_label', {
+#						'text': String(area.position) + ' ' + \
+#							String(above) + ' ' + \
+#							String(tile_map.get_cell(above.x, above.y)) + ' ' + \
+#							String(tile_map.get_cell(above2.x, above2.y))
+#					})
 					placement_valid = false
 		'exit':
 			if area is TilemapCollisionArea:

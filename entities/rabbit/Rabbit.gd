@@ -99,6 +99,7 @@ func _physics_process(delta):
 			print("No state defined.", state.current)
 			pass
 	
+#	GlobalSignal.dispatch('debug_label', { 'text': 'Impulse: ' + String(impulse) })	
 	motion = move_and_slide(motion, UP)
 #	print('bunny', motion)
 
@@ -135,7 +136,9 @@ func move_up():
 
 func state_idle():
 	$Sprite/AnimationPlayer.play('idle')
-	motion.x = 0
+	if is_on_floor():
+		# Apply friction
+		motion.x = lerp(motion.x, 0, 0.8)
 	if not allowed_to_hop and hop_timer.time_left <= 0:
 		start_hop_timer()
 		

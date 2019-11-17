@@ -38,6 +38,7 @@ func apply_impulse_to_bodies():
 			if "motion" in body:
 #				print("grav before", body.motion)
 				body.motion.y = -impulse_force
+				body.motion.x = 0
 #				if abs(body.motion.y) > gravity:
 #					body.motion = gravity_vec * gravity
 #				print("grav after", body.motion)
