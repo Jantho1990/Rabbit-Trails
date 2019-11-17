@@ -8,8 +8,15 @@ var frozen = false
 
 var bodies = []
 
+enum DIRECTIONS {
+	RIGHT = 0,
+	LEFT = 1,
+	UP = 2,
+	DOWN = 3
+}
+export(DIRECTIONS) var direction = DIRECTIONS.RIGHT
 export(float) var impulse_force = 800.00
-export(Vector2) var impulse_direction = Vector2(1, 0)
+var impulse_direction
 
 #var delay_timer = Timer.new()
 
@@ -19,6 +26,15 @@ onready var CollisionArea = $CollisionArea
 func _ready():
 	CollisionArea.connect("body_entered", self, "_on_Body_entered")
 	CollisionArea.connect("body_exited", self, "_on_Body_exited")
+	match direction:
+		DIRECTIONS.RIGHT:
+			Vector2(1, 0)
+		DIRECTIONS.LEFT:
+			Vector2(-1, 0)
+		DIRECTIONS.DOWN:
+			Vector2(0, -1)
+		DIRECTIONS.UP:
+			Vector2(0, 1)
 
 func _physics_process(delta):
 #	apply_gravity_to_bodies()
