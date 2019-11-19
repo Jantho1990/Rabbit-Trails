@@ -73,13 +73,13 @@ text = "Jump Pad"
 unit_name = "JumpPadGizmo"
 command_card_key = "A"
 
-[node name="BuildDeterrentGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
+[node name="BuildScarecrowGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
 margin_left = 120.0
 margin_right = 220.0
 margin_bottom = 100.0
 hint_tooltip = "Build Deterrent Gizmo"
-text = "Deterrent"
-unit_name = "DeterrentGizmo"
+text = "Scarecrow"
+unit_name = "ScarecrowGizmo"
 command_card_key = "S"
 
 [node name="BuildThrustGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
