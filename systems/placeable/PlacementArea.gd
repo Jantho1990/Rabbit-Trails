@@ -50,7 +50,7 @@ func _draw():
 	elif collision_shape is RectangleShape2D:
 		var ext = owner.get_node(NodePath('CollisionArea/CollisionShape2D')).shape.extents
 		var draw_offset 
-		if placement_valid:
+		if placement_valid and snap_placement:
 			draw_offset = position - snap_location
 		else:
 			draw_offset = Vector2(0, 0)
