@@ -18,6 +18,7 @@ var collisions_updated = false
 var snap_location = position
 
 onready var parent = get_parent().get_parent()
+onready var placeable = get_parent()
 
 func _physics_process(delta):
 	position = owner.position
@@ -30,7 +31,7 @@ func _physics_process(delta):
 #			print('invalid')
 #			placement_valid = false
 	collisions_updated = true
-	if placement_valid and snap_placement:
+	if placement_valid and snap_placement and placeable.allowed_to_move:
 		emit_signal('snap_placement', snap_location)
 #		GlobalSignal.dispatch('debug_label', { 'text': 'valid snap' })
 	update()
@@ -51,7 +52,7 @@ func _draw():
 		var ext = owner.get_node(NodePath('CollisionArea/CollisionShape2D')).shape.extents
 		var draw_offset 
 		if placement_valid and snap_placement:
-			draw_offset = position - snap_location
+			draw_offset = position - snap_location + Vector2(0, collision_shape.extents.y / 2)
 		else:
 			draw_offset = Vector2(0, 0)
 		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2) - draw_offset, ext)

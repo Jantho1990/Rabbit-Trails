@@ -49,6 +49,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
+show_collision_areas = true
 
 [node name="TileMap" type="TileMap" parent="Map"]
 visible = false

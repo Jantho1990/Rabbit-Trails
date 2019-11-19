@@ -58,4 +58,6 @@ func _on_Deselection(previously_selected_unit):
 		allowed_to_move = false
 
 func _on_Snap_placement(location):
-	parent.position = location
+	var collision_shape = placement_area.get_node('CollisionShape2D').shape
+	var offset = Vector2(0, collision_shape.extents.y / 2)
+	parent.position = location - (offset)
