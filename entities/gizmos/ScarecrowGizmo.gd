@@ -1,5 +1,7 @@
 extends Gizmo
 
+class_name ScarecrowGizmo
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

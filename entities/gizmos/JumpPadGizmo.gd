@@ -1,5 +1,7 @@
 extends Gizmo
 
+class_name JumpPadGizmo
+
 export(float) var impulse_force = 800.00
 
 var bodies = []

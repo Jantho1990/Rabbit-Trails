@@ -174,17 +174,26 @@ func look():
 	var result = space_state.intersect_ray(position, sight_points.ahead, [self], collision_mask)
 	
 	if result:
+		if result.collider.name == 'CollisionArea': # This is a gizmo
+			var collider_parent = result.collider.get_parent()
+			if collider_parent is ScarecrowGizmo:
+				turn_around()
+		elif result.collider is TileMap:
+			turn_around()
 #		print("LOOKING AT ", result)
-		direction.x = -direction.x
-		$Sprite.flip_h = !$Sprite.flip_h
-		sight_target = result.collider
-		if result.collider.get_class() == "TileMap" and not is_jumping and is_on_floor():
-			if (position - result.position).x <= JUMP_THRESHOLD_RANGE and state.current != "jump":
-				state.push("jump")
-		elif result.collider.name == "Player" and state.current != "attack":
-			state.add("bound")
+		
+#		sight_target = result.collider
+#		if result.collider.get_class() == "TileMap" and not is_jumping and is_on_floor():
+#			if (position - result.position).x <= JUMP_THRESHOLD_RANGE and state.current != "jump":
+#				state.push("jump")
+#		elif result.collider.name == "Player" and state.current != "attack":
+#			state.add("bound")
 #	elif state.current == "bound":
 #		state.pop()
+
+func turn_around():
+	direction.x = -direction.x
+	$Sprite.flip_h = !$Sprite.flip_h
 
 # The point at farthest looking range.
 func get_sight_points():
