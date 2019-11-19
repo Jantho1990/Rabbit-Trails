@@ -43,6 +43,8 @@ func _on_PlacementArea_area_entered(area):
 #		placement_valid = false
 
 func _draw():
+	if not placeable.allowed_to_move:
+		return	
 #	GlobalSignal.dispatch('debug_label', { 'text': String(position) })
 	var collision_shape = get_node('CollisionShape2D').shape
 	var placement_color = Color(0, 1, 0, 0.5) if placement_valid else Color(1, 0, 0, 0.5)
