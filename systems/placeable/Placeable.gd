@@ -51,7 +51,7 @@ func _on_Deselection(previously_selected_unit):
 	print('This is ', parent.name, ', and it is ', allowed_to_move, ' that I am allowed to move')
 	if previously_selected_unit == parent:
 		print(parent.name, " is the previously selected unit")
-		if not allowed_to_place:
+		if allowed_to_move and not allowed_to_place:
 			print("not allowed to place")
 			return false
 		
