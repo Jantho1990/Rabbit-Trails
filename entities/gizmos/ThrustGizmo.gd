@@ -22,7 +22,7 @@ var impulse_direction
 
 #var delay_timer = Timer.new()
 
-onready var CollisionArea = $CollisionArea
+#onready var CollisionArea = $CollisionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

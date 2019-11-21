@@ -6,7 +6,7 @@ export(float) var impulse_force = 800.00
 
 var bodies = []
 
-onready var CollisionArea = $CollisionArea
+#onready var CollisionArea = $CollisionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

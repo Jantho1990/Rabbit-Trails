@@ -12,7 +12,7 @@ export(Vector2) var gravity_vec
 export(float) var gravity
 export(float) var linear_damp
 
-onready var CollisionArea = $CollisionArea
+#onready var CollisionArea = $CollisionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

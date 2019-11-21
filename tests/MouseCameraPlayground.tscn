@@ -32,7 +32,6 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Map" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="Map"]
