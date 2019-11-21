@@ -10,6 +10,14 @@ func _init():
 
 func _ready():
 	generate_collision_areas()
+	GlobalSignal.dispatch('resize_camera_bounds', {
+		'bounds': {
+			'top': dimensions.y,
+			'bottom': dimensions.y + dimensions.height,
+			'left': dimensions.x,
+			'right': dimensions.x + dimensions.width
+		}
+	})
 
 # Thanks to https://godotengine.org/qa/7450/how-do-i-get-tilemaps-size-height-and-width-with-script
 func calculate_dimensions():
