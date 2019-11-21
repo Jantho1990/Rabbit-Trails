@@ -1,6 +1,29 @@
 extends TileMap
 
+enum TILESET_TYPES {
+	CAVE,
+	MOUNTAIN
+}
+export(TILESET_TYPES) var tileset_type = TILESET_TYPES.CAVE
 export(bool) var show_collision_areas = false
+
+# Are for the Rabbit Trails tilesets marking atlas tile coordinates which have collisions
+var CAVE_TILE_COLLISIONS = [
+	Vector2(2, 1),
+	Vector2(3, 1),
+	Vector2(4, 1),
+	Vector2(7, 1),
+	Vector2(2, 2),
+	Vector2(3, 2),
+	Vector2(4, 2),
+	Vector2(2, 3),
+	Vector2(3, 3),
+	Vector2(4, 3),
+	Vector2(7, 3)
+]
+
+# For now all Rabbit Trails tilesets are the same, so we can get away with this.
+var MOUNTAIN_TILE_COLLISIONS = CAVE_TILE_COLLISIONS
 
 onready var dimensions = calculate_dimensions()
 
@@ -144,20 +167,101 @@ func generate_collision_areas():
 	
 	for i in range(0, used_cells.size()):
 		var cell = used_cells[i]
-#		var cell = world_to_map(pos)
-		var above = Vector2(cell.x, cell.y - 1)
-		var below = Vector2(cell.x, cell.y + 1)
-		if get_cell(above.x, above.y) == INVALID_CELL and \
-			get_cell(cell.x, cell.y) == 0:
-				continue
-		var area2d = preload('res://maps/TilemapCollisionArea.tscn').instance()
-#		var collision = CollisionShape2D.new()
-#		var shape = RectangleShape2D.new()
-#		shape.extents = Vector2(32, 32)
-#		collision.shape = shape
-#		area2d.add_child(collision)
-		area2d.position = (cell * cell_size) + cell_size / 2
-		area2d.tile_map = self
-		collision_area_container.add_child(area2d)
+		if valid_collision_area_location(cell):
+			var area2d = preload('res://maps/TilemapCollisionArea.tscn').instance()
+			area2d.position = (cell * cell_size) + cell_size / 2
+			area2d.tile_map = self
+			collision_area_container.add_child(area2d)
+			# Debug code
+			area2d.get_node('Debug').text = String(get_cell_autotile_coord(cell.x, cell.y))
+#			var va = valid_collision_area_above(cell)
+#			var vb = valid_collision_area_below(cell)
+#			var vl = valid_collision_area_left(cell)
+#			var vr = valid_collision_area_right(cell)
+#			area2d.get_node('Debug').text = String(int(va)) + String(int(vb)) + String(int(vl)) + String(int(vr))
 	
 	add_child(collision_area_container)
+
+func valid_collision_area_location(cell):
+	var atlas_tile = get_cell_autotile_coord(cell.x, cell.y)
+	var atlas_tile_collisions
+	match tileset_type:
+		TILESET_TYPES.CAVE:
+			atlas_tile_collisions = CAVE_TILE_COLLISIONS
+		TILESET_TYPES.MOUNTAIN:
+			atlas_tile_collisions = MOUNTAIN_TILE_COLLISIONS
+	if atlas_tile_collisions.has(atlas_tile):
+		return true
+	return false
+
+# Former algorithmic-based version, keeping in case new one doesn't work.
+func old_valid_collision_area_location(cell):
+	if is_a_corner_tile(cell):
+		return true
+	
+	if valid_collision_area_above(cell) and \
+		valid_collision_area_below(cell) and \
+		valid_collision_area_left(cell) and \
+		valid_collision_area_right(cell) and \
+		valid_collision_area_diagonal(cell):
+			return true
+	return false
+
+func valid_collision_area_above(cell):
+	var above = Vector2(cell.x, cell.y - 1)
+	if get_cell(above.x, above.y) == INVALID_CELL and \
+		get_cell(cell.x, cell.y) == 0:
+			return false
+	return true
+
+func valid_collision_area_below(cell):
+	var below = Vector2(cell.x, cell.y + 1)
+	if get_cell(below.x, below.y) == INVALID_CELL and \
+		get_cell(cell.x, cell.y) == 0:
+			return false
+	return true
+	
+func valid_collision_area_left(cell):
+	var left = Vector2(cell.x - 1, cell.y)
+	if get_cell(left.x, left.y) == INVALID_CELL and \
+		get_cell(cell.x, cell.y) == 0:
+			return false
+	return true
+
+func valid_collision_area_right(cell):
+	var right = Vector2(cell.x + 1, cell.y)
+	if get_cell(right.x, right.y) == INVALID_CELL and \
+		get_cell(cell.x, cell.y) == 0:
+			return false
+	return true
+
+func valid_collision_area_diagonal(cell):
+	var daboveleft = Vector2(cell.x - 1, cell.y - 1)
+	var daboveright = Vector2(cell.x + 1, cell.y - 1)
+	var dbelowleft = Vector2(cell.x - 1, cell.y + 1)
+	var dbelowright = Vector2(cell.x + 1, cell.y + 1)
+	if get_cell(cell.x, cell.y) == 0 and \
+		(get_cell(daboveleft.x, daboveleft.y) == INVALID_CELL or \
+		get_cell(daboveright.x, daboveright.y) == INVALID_CELL or \
+		get_cell(dbelowleft.x, dbelowleft.y) == INVALID_CELL or \
+		get_cell(dbelowright.x, dbelowright.y) == INVALID_CELL):
+			return false
+	return true
+
+func is_a_corner_tile(cell):
+	var above = get_cell(cell.x, cell.y - 1) != INVALID_CELL
+	var below = get_cell(cell.x, cell.y + 1) != INVALID_CELL
+	var left = get_cell(cell.x - 1, cell.y) != INVALID_CELL
+	var right = get_cell(cell.x + 1, cell.y) != INVALID_CELL
+	var daboveleft = get_cell(cell.x - 1, cell.y - 1) != INVALID_CELL
+	var dbelowleft = get_cell(cell.x - 1, cell.y + 1) != INVALID_CELL
+	var daboveright = get_cell(cell.x + 1, cell.y - 1) != INVALID_CELL
+	var dbelowright = get_cell(cell.x + 1, cell.y + 1) != INVALID_CELL
+	
+	if get_cell(cell.x, cell.y) == 0 and \
+		((above and daboveright and left and not daboveleft) or \
+		(above and daboveleft and right and not daboveright) or \
+		(below and dbelowright and left and not dbelowleft) or \
+		(below and dbelowleft and right and not dbelowright)):
+			return true
+	return false
