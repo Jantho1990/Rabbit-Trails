@@ -7,29 +7,20 @@ enum TILESET_TYPES {
 export(TILESET_TYPES) var tileset_type = TILESET_TYPES.CAVE
 export(bool) var show_collision_areas = false
 
-# Are for the Rabbit Trails tilesets marking atlas tile coordinates which have collisions
-var CAVE_TILE_COLLISIONS = [
-	Vector2(2, 1),
-	Vector2(3, 1),
-	Vector2(4, 1),
-	Vector2(7, 1),
-	Vector2(2, 2),
-	Vector2(3, 2),
-	Vector2(4, 2),
-	Vector2(2, 3),
-	Vector2(3, 3),
-	Vector2(4, 3),
-	Vector2(7, 3)
-]
-
-# For now all Rabbit Trails tilesets are the same, so we can get away with this.
-var MOUNTAIN_TILE_COLLISIONS = CAVE_TILE_COLLISIONS
-
 onready var dimensions = calculate_dimensions()
+onready var atlas_tile_collisions = get_atlas_tile_collisions()
 
 func _init():
 	pass
 	#collision_layer = 2 # 2 is the environment later, setting here because I don't want to update for every individual tilemap
+
+func get_atlas_tile_collisions():
+	var ret = []
+	var tile_shapes = tile_set.tile_get_shapes(0)
+	for shape in tile_shapes:
+		var atlas_tile = shape.autotile_coord
+		ret.push_back(atlas_tile)
+	return ret 
 
 func _ready():
 	generate_collision_areas()
@@ -159,12 +150,8 @@ func generate_collision_areas():
 		return
 	
 	collision_area_container = Node2D.new()
-	var used_cells = get_used_cells()
-#	print(tile_set.tile_get_shape_count(0))
-#	for shape in tile_set.tile_get_shapes(0):
-#		print(shape)
-#	print(tile_set.tile_get_shapes(0), tile_set.get_tiles_ids())
 	
+	var used_cells = get_used_cells()
 	for i in range(0, used_cells.size()):
 		var cell = used_cells[i]
 		if valid_collision_area_location(cell):
@@ -172,24 +159,11 @@ func generate_collision_areas():
 			area2d.position = (cell * cell_size) + cell_size / 2
 			area2d.tile_map = self
 			collision_area_container.add_child(area2d)
-			# Debug code
-			area2d.get_node('Debug').text = String(get_cell_autotile_coord(cell.x, cell.y))
-#			var va = valid_collision_area_above(cell)
-#			var vb = valid_collision_area_below(cell)
-#			var vl = valid_collision_area_left(cell)
-#			var vr = valid_collision_area_right(cell)
-#			area2d.get_node('Debug').text = String(int(va)) + String(int(vb)) + String(int(vl)) + String(int(vr))
 	
 	add_child(collision_area_container)
 
 func valid_collision_area_location(cell):
 	var atlas_tile = get_cell_autotile_coord(cell.x, cell.y)
-	var atlas_tile_collisions
-	match tileset_type:
-		TILESET_TYPES.CAVE:
-			atlas_tile_collisions = CAVE_TILE_COLLISIONS
-		TILESET_TYPES.MOUNTAIN:
-			atlas_tile_collisions = MOUNTAIN_TILE_COLLISIONS
 	if atlas_tile_collisions.has(atlas_tile):
 		return true
 	return false
