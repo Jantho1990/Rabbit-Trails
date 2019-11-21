@@ -99,7 +99,7 @@ func _on_Rotate_unit_right():
 
 func _on_Delay_timer_stop(body, delay_timer):
 	print('FIRE', body, delay_timer)
-	body.motion += impulse_force * impulse_direction
+	body.motion = impulse_force * impulse_direction
 	remove_child(delay_timer)
 
 func allow_drag():
