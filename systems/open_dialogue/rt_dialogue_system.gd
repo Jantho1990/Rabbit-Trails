@@ -15,6 +15,7 @@ var dialogues_folder = 'res://dialogues' # Folder where the JSON files will be s
 var choice_scene = load('res://systems/open_dialogue/Choice.tscn') # Base scene for que choices
 ## Required nodes ##
 onready var frame : Node = $Frame # The container node for the dialogues.
+onready var portrait_box : Node = $Frame/PortraitBox # The container node for the avatar portrait.
 onready var label : Node = $Frame/RichTextLabel # The label where the text will be displayed.
 onready var choices : Node = $Frame/Choices # The container node for the choices.
 onready var timer : Node = $Timer # Timer node.
@@ -52,6 +53,8 @@ var enable_continue_indicator : bool = true # Enable or disable the 'continue_in
 var sprite_offset : Vector2 = Vector2(30, 0) # Used for polishing avatars' position. Can use negative values.
 var name_offset : Vector2 = Vector2(-10, -15) # Offsets the name labels relative to the frame borders.
 var show_names : bool = true # Turn on and off the character name labels
+var portrait_box_height : int = 200 # Portrait box height (in pixels)
+var portrait_box_width : int = 200 # Portrait box width (in pixels)
 # END OF SETUP #
 
 
@@ -156,8 +159,12 @@ func set_frame(): # Mostly aligment operations.
 	continue_indicator.rect_position = Vector2(-(continue_indicator.get_rect().size.x / 2) - label_margin,
 			frame_height - continue_indicator.get_rect().size.y - label_margin)
 	
-	frame.rect_size = Vector2(frame_width, frame_height)
-	frame.rect_position = Vector2(-frame_width/2, 0)
+#	frame.rect_size = Vector2(frame_width, frame_height)
+#	frame.rect_position = Vector2(frame_width/2, 0)
+	
+#	portrait_box.rect_size = Vector2(portrait_box_width, portrait_box_height)
+#	portrait_box.rect_position = Vector2(-portrait_box_width, -(portrait_box_height / 4))
+#	breakpoint
 	
 	label.rect_size = Vector2(frame_width - (label_margin * 2), frame_height - (label_margin * 2) )
 	label.rect_position = Vector2(label_margin, label_margin)
@@ -165,6 +172,7 @@ func set_frame(): # Mostly aligment operations.
 	frame.hide() # Hide the dialogue frame
 	continue_indicator.hide()
 	
+	sprite_left.scale = Vector2(0.5, 0.5)
 	sprite_left.modulate = white_transparent
 	sprite_right.modulate = white_transparent
 	

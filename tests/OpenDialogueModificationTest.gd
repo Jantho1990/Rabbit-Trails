@@ -1,6 +1,6 @@
 extends Node
 
-onready var dialogue = $InterfaceLayer/UI/HBoxContainer/RTDialogue
+onready var dialogue = $InterfaceLayer/UI/DialogueCard/RTDialogue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
