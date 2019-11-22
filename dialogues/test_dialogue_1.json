@@ -1,0 +1,22 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Super Tester",
+        "position": "left",
+        "content": "Hello, friend.",
+        "next": "test1"
+    },
+    "test1": {
+        "type": "text",
+        "name": "Super Tester",
+        "position": "left",
+        "content": "You are testing Godot Open Dialogue.",
+        "next": "test2"
+    },
+    "test2": {
+        "type": "text",
+        "name": "Super Tester",
+        "position": "left",
+        "content": "I really hope it works, this is a cool addon to Godot."
+    }
+}

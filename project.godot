@@ -158,6 +158,7 @@ helpers="*res://scripts/helpers.gd"
 Sound="*res://scripts/Sound.gd"
 Selection="*res://systems/selection_manager/SelectionManager.gd"
 GlobalSignal="*res://scripts/GlobalSignal.gd"
+PROGRESS="*res://systems/open_dialogue/progress.gd"
 
 [display]
 
