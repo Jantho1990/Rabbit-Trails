@@ -2,21 +2,27 @@
     "first": {
         "type": "text",
         "name": "Super Tester",
+        "avatar": "priestfemaleport-sm.png",
         "position": "left",
         "content": "Hello, friend.",
-        "next": "test1"
+        "next": "test1",
+        "animation_in": "on"
     },
     "test1": {
         "type": "text",
         "name": "Super Tester",
+        "avatar": "priestfemaleport-sm.png",
         "position": "left",
         "content": "You are testing Godot Open Dialogue.",
-        "next": "test2"
+        "next": "test2",
+        "animation_in": "on"
     },
     "test2": {
         "type": "text",
         "name": "Super Tester",
+        "avatar": "priestfemaleport-sm.png",
         "position": "left",
-        "content": "I really hope it works, this is a cool addon to Godot."
+        "content": "I really hope it works, this is a cool addon to Godot.",
+        "animation_in": "on"
     }
 }

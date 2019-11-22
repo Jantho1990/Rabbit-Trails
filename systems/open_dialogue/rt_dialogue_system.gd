@@ -44,8 +44,8 @@ var choice_node_alignment : String = 'right' # Alignment of the 'Choice' node. C
 var previous_command : String = 'ui_up' # Input commmand for the navigating through question choices 
 var next_command : String = 'ui_down' # Input commmand for the navigating through question choices
 var frame_height : int = 150 # Dialog frame height (in pixels)
-var frame_width : int = 900 # Dialog frame width (in pixels)
-var frame_position : String = 'bottom' # Use to 'top' or 'bottom' to change the dialogue frame vertical alignment 
+var frame_width : int = 500 # Dialog frame width (in pixels)
+var frame_position : String = 'notused' # Use to 'top' or 'bottom' to change the dialogue frame vertical alignment 
 var frame_margin_vertical : int = 10 # Vertical space (in pixels) between the dialogue box and the window border
 var label_margin : int = 20 # Space (in pixels) between the dialogue frame border and the text
 var enable_continue_indicator : bool = true # Enable or disable the 'continue_indicator' animation when the text is completely displayed. If typewritter effect is disabled it will always be visible on every dialogue block.
@@ -459,8 +459,9 @@ func check_animation(block):
 
 
 func reset_sprites():
-	sprite_left.position = Vector2(-(frame_width - (sprite_left.get_rect().size.x / 2) - sprite_offset.x) / 2, -(frame_height + (sprite_left.get_rect().size.y / 2) - sprite_offset.y) / 2)
+#	sprite_left.position = Vector2(-(frame_width - (sprite_left.get_rect().size.x / 2) - sprite_offset.x) / 2, -(frame_height + (sprite_left.get_rect().size.y / 2) - sprite_offset.y) / 2)
 	sprite_right.position = Vector2((frame_width - (sprite_right.get_rect().size.x / 2) - sprite_offset.x) / 2, -(frame_height + (sprite_left.get_rect().size.y / 2) - sprite_offset.y) / 2)
+	sprite_left.position = Vector2(0, 0)
 
 
 func animate_sprite(direction, image, animation):
@@ -606,6 +607,7 @@ func animate_sprite(direction, image, animation):
 		
 		'on':
 			print('HIT THIS')
+			load_image(sprite, image)
 			tween.interpolate_property(sprite, 'modulate',
 					light_gray_opaque, white_opaque, ease_in_speed,
 					Tween.TRANS_QUAD, Tween.EASE_IN)

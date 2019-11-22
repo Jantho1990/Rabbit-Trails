@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://systems/open_dialogue/dialogue_system.gd" type="Script" id=1]
+[ext_resource path="res://systems/open_dialogue/rt_dialogue_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/open_dialogue/img/characters/jimmy/01.png" type="Texture" id=2]
 [ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_bold_italic_16.tres" type="DynamicFont" id=3]
 [ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_italic_16.tres" type="DynamicFont" id=4]
