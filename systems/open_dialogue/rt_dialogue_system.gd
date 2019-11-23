@@ -169,7 +169,7 @@ func set_frame(): # Mostly aligment operations.
 	label.rect_size = Vector2(frame_width - (label_margin * 2), frame_height - (label_margin * 2) )
 	label.rect_position = Vector2(label_margin, label_margin)
 	
-	frame.hide() # Hide the dialogue frame
+#	frame.hide() # Hide the dialogue frame
 	continue_indicator.hide()
 	
 	sprite_left.scale = Vector2(0.5, 0.5)
@@ -177,7 +177,7 @@ func set_frame(): # Mostly aligment operations.
 	sprite_right.modulate = white_transparent
 	
 	
-	name_left.hide()
+#	name_left.hide()
 #	name_left.position = 'left'
 	name_left.rect_position.y = name_offset.y
 	
