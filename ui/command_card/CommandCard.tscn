@@ -26,7 +26,7 @@ mouse_filter = 1
 margin_right = 250.0
 margin_bottom = 250.0
 mouse_filter = 1
-color = Color( 0.341176, 0.341176, 0.341176, 1 )
+color = Color( 0.352941, 0.352941, 0.352941, 1 )
 
 [node name="BuildCommandCard" parent="MarginContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0

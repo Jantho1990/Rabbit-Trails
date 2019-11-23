@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://systems/open_dialogue/rt_dialogue_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/open_dialogue/img/characters/jimmy/01.png" type="Texture" id=2]
-[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_bold_italic_16.tres" type="DynamicFont" id=3]
-[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_italic_16.tres" type="DynamicFont" id=4]
-[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_bold_16.tres" type="DynamicFont" id=5]
-[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_regular_16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/characters/CharacterManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_bold_italic_16.tres" type="DynamicFont" id=4]
+[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_italic_16.tres" type="DynamicFont" id=5]
+[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_bold_16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://systems/open_dialogue/fonts/adobe_source_san_pro_ttf/godot_font_format/source_sans_pro_regular_16.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Animation" id=1]
 loop = true
@@ -50,9 +51,11 @@ anims/Continue_Indicator = SubResource( 1 )
 one_shot = true
 
 [node name="SpriteLeft" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 
 [node name="SpriteRight" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 flip_h = true
 
@@ -61,6 +64,16 @@ margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 color = Color( 0.898039, 0.0941176, 0.0941176, 1 )
+
+[node name="CharacterManager" parent="PortraitBox" instance=ExtResource( 3 )]
+characters = [ "res://ui/characters/simple/TestCharacter.tscn" ]
+
+[node name="SpriteLeft2" type="Sprite" parent="PortraitBox"]
+visible = false
+scale = Vector2( 0.666077, 0.666077 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 50, 0 )
 
 [node name="Frame" type="ColorRect" parent="."]
 margin_left = 200.0
@@ -79,10 +92,10 @@ margin_left = -150.0
 margin_top = -50.0
 margin_right = 150.0
 margin_bottom = 50.0
-custom_fonts/bold_italics_font = ExtResource( 3 )
-custom_fonts/italics_font = ExtResource( 4 )
-custom_fonts/bold_font = ExtResource( 5 )
-custom_fonts/normal_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 4 )
+custom_fonts/italics_font = ExtResource( 5 )
+custom_fonts/bold_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 bbcode_text = "Empty text"
 text = "Empty text"
@@ -99,7 +112,7 @@ grow_horizontal = 0
 size_flags_horizontal = 9
 size_flags_vertical = 8
 custom_styles/normal = SubResource( 2 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 text = "Name 2"
 align = 2
 valign = 1
@@ -110,7 +123,7 @@ margin_bottom = 25.0
 size_flags_horizontal = 15
 size_flags_vertical = 15
 custom_styles/normal = SubResource( 2 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 text = "Name 1"
 valign = 1
 
