@@ -67,6 +67,7 @@ color = Color( 0.898039, 0.0941176, 0.0941176, 1 )
 
 [node name="CharacterManager" parent="PortraitBox" instance=ExtResource( 3 )]
 characters = [ "res://ui/characters/simple/TestCharacter.tscn" ]
+backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn" ]
 
 [node name="SpriteLeft2" type="Sprite" parent="PortraitBox"]
 visible = false
