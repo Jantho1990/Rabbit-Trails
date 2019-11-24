@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/command_card/UnitCommandCard.gd" type="Script" id=1]
 [ext_resource path="res://ui/buttons/unit_command/UnitCommandButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/buttons/unit_command/RotateUnitCommandButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/icons/delete icon.png" type="Texture" id=3]
+[ext_resource path="res://ui/buttons/unit_command/RotateUnitCommandButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/icons/rotate counterclockwise icon.png" type="Texture" id=5]
 
 [node name="UnitCommandCard" type="Control"]
 anchor_right = 1.0
@@ -22,12 +24,12 @@ custom_constants/margin_bottom = 10
 [node name="InputRowContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 180.0
-margin_bottom = 260.0
+margin_right = 160.0
+margin_bottom = 240.0
 custom_constants/separation = 10
 
 [node name="InputRow1" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
-margin_right = 170.0
+margin_right = 150.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 size_flags_horizontal = 3
@@ -35,40 +37,38 @@ custom_constants/separation = 10
 
 [node name="MoveCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 hint_tooltip = "Move this unit."
-text = "Move"
 command_name = "move_unit"
 
 [node name="DeleteCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 80.0
 margin_right = 150.0
 hint_tooltip = "Delete this unit."
-text = "Delete"
+texture_normal = ExtResource( 3 )
 command_name = "delete_unit"
 command_card_key = "W"
 
 [node name="InputRow2" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 80.0
-margin_right = 170.0
+margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 0, 70 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
-[node name="LeftRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 3 )]
-text = "Rotate Left"
+[node name="LeftRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 4 )]
+texture_normal = ExtResource( 5 )
 command_name = "rotate_unit_left"
 command_card_key = "A"
 
-[node name="RightRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 3 )]
+[node name="RightRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 4 )]
 margin_left = 80.0
 margin_right = 150.0
-text = "Rotate Right"
 command_name = "rotate_unit_right"
 command_card_key = "S"
 
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 160.0
-margin_right = 170.0
+margin_right = 150.0
 margin_bottom = 230.0
 rect_min_size = Vector2( 0, 70 )
 size_flags_horizontal = 3

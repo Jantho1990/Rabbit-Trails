@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://stages/tutorial_stage/TutorialStage.gd"
 }, {
-"base": "Button",
+"base": "TextureButton",
 "class": "UnitCommandButton",
 "language": "GDScript",
 "path": "res://ui/buttons/unit_command/UnitCommandButton.gd"
