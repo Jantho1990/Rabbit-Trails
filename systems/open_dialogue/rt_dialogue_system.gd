@@ -835,6 +835,7 @@ func handle_character_transition(step):
 func _on_Transition_timer_timeout():
 	print('transition timer timeout')
 	transition_timer.stop()
+	character_manager.emit_signal('hide_transition')
 	if typeof(current) != TYPE_STRING: # If it is not a string, then this is not the first step.
 		next()
 	else: # Means it is an empty string, so it's the first step.

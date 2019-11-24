@@ -3,6 +3,7 @@ extends Control
 signal change_character
 signal hide_character
 signal show_transition
+signal hide_transition
 
 export(Array, String, FILE, '*.tscn') var characters
 export(Array, String, FILE, '*.tscn') var backgrounds
@@ -16,6 +17,11 @@ var current_background
 export(String) var default_background = 'SolidBackground'
 export(String) var transition_background = 'Static'
 
+var show_transition = false
+var transition
+
+onready var transition_tween = $TransitionTween
+
 func _private_set(__throwaway__):
 	print('Private variable.')
 
@@ -23,6 +29,8 @@ func _ready():
 	connect('change_character', self, '_on_Change_character')
 	connect('hide_character', self, '_on_Hide_character')
 	connect('show_transition', self, '_on_Show_transition')
+	connect('hide_transition', self, '_on_Hide_transition')
+	transition_tween.connect('tween_all_completed', self, '_on_TransitionTween_completed')
 	if characters.size() > 0:
 		for character in characters:
 			var loaded_character = load(character).instance()
@@ -31,6 +39,13 @@ func _ready():
 		for background in backgrounds:
 			var loaded_background = load(background).instance()
 			_loaded_backgrounds[loaded_background.background_name] = loaded_background
+	
+	display_background(default_background)
+	
+	transition = _loaded_backgrounds[transition_background]
+	transition.modulate = Color(1, 1, 1, 0)
+	transition.position = Vector2(rect_size.x / 2, rect_size.y / 2)
+	transition.z_index = 100
 	
 	#Test
 #	_on_Change_character({
@@ -54,6 +69,10 @@ func _on_Hide_character():
 
 func _on_Show_transition():
 	show_transition()
+
+func _on_Hide_transition():
+	print('HIDE')
+	hide_transition()
 
 func get_loaded_characters():
 	return _loaded_characters
@@ -91,8 +110,26 @@ func display_background(background_name):
 		add_child(current_background)
 		current_background.position = Vector2(rect_size.x / 2, rect_size.y / 2)
 
-func show_transition():
+func show_transition(time = 0.2):
 	hide_character()
-	display_background(transition_background)
-	if current_background.has_node('AnimationPlayer'):
-		current_background.play()
+#	display_background(transition_background)
+	show_transition = true
+	add_child(transition)
+	if transition.has_node('AnimationPlayer'):
+		transition.play()
+	transition_tween.interpolate_property(transition, 'modulate', Color(1, 1, 1, 0), Color(1, 1, 1, 1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	transition_tween.start()
+#	breakpoint
+
+func hide_transition(time = 0.2):
+	if transition_tween.is_active():
+		transition_tween.remove_all()
+	show_transition = false
+	transition_tween.interpolate_property(transition, 'modulate', Color(1, 1, 1, 1), Color(1, 1, 1, 0), time , Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	transition_tween.start()
+
+func _on_TransitionTween_completed():
+	if not show_transition:
+		remove_child(transition)
+	elif show_transition:
+		transition_tween.remove_all()

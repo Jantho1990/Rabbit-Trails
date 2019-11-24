@@ -8,7 +8,7 @@
         "content": "Hello, friend.",
         "next": "test1",
         "transition": true,
-        "transition_time": 1.0
+        "transition_time": 3.0
     },
     "test1": {
         "type": "text",
