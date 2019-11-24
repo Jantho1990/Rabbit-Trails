@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beige bunny.png-c388c7cfebf71b88a0a54b7431a00db1.stex"
+path="res://.import/beige bunny.png-be0eb829635c61da0a42195a776afbad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/rabbit/images/beige bunny.png"
-dest_files=[ "res://.import/beige bunny.png-c388c7cfebf71b88a0a54b7431a00db1.stex" ]
+source_file="res://beige bunny.png"
+dest_files=[ "res://.import/beige bunny.png-be0eb829635c61da0a42195a776afbad.stex" ]
 
 [params]
 

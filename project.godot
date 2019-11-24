@@ -165,7 +165,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Rabbit Trails"
-config/icon="res://icon.png"
+run/main_scene="res://screens/MainMenuScreen.tscn"
+config/icon="res://beige bunny.png"
 
 [autoload]
 
