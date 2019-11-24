@@ -171,7 +171,7 @@ config/icon="res://beige bunny.png"
 [autoload]
 
 global="*res://scripts/global.gd"
-UserStore="*res://scripts/UserStore.gd"
+UserData="*res://scripts/UserStore.gd"
 GlobalStore="*res://scripts/DataStore.gd"
 math="*res://scripts/math.gd"
 helpers="*res://scripts/helpers.gd"
