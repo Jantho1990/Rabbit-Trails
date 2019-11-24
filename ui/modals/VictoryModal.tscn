@@ -1,0 +1,40 @@
+[gd_scene format=2]
+
+[node name="VictoryModal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 111.0
+margin_bottom = 86.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_right = 111.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 111.0
+margin_bottom = 14.0
+text = "Oh cool, you win."
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 111.0
+margin_bottom = 38.0
+text = "Continue"
+
+[node name="ReplayButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 111.0
+margin_bottom = 62.0
+text = "Play Again"
+
+[node name="MenuButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 111.0
+margin_bottom = 86.0
+text = "Exit to Menu"
