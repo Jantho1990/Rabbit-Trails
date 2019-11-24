@@ -13,7 +13,7 @@
 [node name="InterfaceLayer" parent="." instance=ExtResource( 2 )]
 
 [node name="StageManager" parent="." instance=ExtResource( 3 )]
-stages = [ "res://stages/DemoStage.tscn" ]
+stages = [ "res://stages/DemoStage.tscn", "res://stages/tutorial_stage/TutorialStage.tscn" ]
 
 [node name="GizmoContainerHandler" parent="." instance=ExtResource( 4 )]
 
