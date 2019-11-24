@@ -111,7 +111,6 @@ func display_background(background_name):
 		current_background.position = Vector2(rect_size.x / 2, rect_size.y / 2)
 
 func show_transition(time = 0.2):
-	hide_character()
 #	display_background(transition_background)
 	show_transition = true
 	add_child(transition)
@@ -133,3 +132,4 @@ func _on_TransitionTween_completed():
 		remove_child(transition)
 	elif show_transition:
 		transition_tween.remove_all()
+		hide_character()
