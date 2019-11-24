@@ -28,7 +28,7 @@ onready var sprite_right : Node = $SpriteRight
 onready var name_left : Node = $Frame/NameLeft
 onready var name_right : Node = $Frame/NameRight
 ## Typewriter effect ##
-var wait_time : float = 0.02 # Time interval (in seconds) for the typewriter effect. Set to 0 to disable it. 
+var wait_time : float = 0.05 # Time interval (in seconds) for the typewriter effect. Set to 0 to disable it. 
 var pause_time : float = 2.0 # Duration of each pause when the typewriter effect is active.
 var pause_char : String = '|' # The character used in the JSON file to define where pauses should be. If you change this you'll need to edit all your dialogue files.
 var newline_char : String = '@' # The character used in the JSON file to break lines. If you change this you'll need to edit all your dialogue files.
@@ -58,7 +58,7 @@ var show_names : bool = true # Turn on and off the character name labels
 var portrait_box_height : int = 200 # Portrait box height (in pixels)
 var portrait_box_width : int = 200 # Portrait box width (in pixels)
 var auto_next : bool = true # Enables automatically calling next on the dialogue sequence
-var dialogue_continue_wait_time : float = 2.0 # The pause time before the dialogue automatically continues.
+var dialogue_continue_wait_time : float = 3.0 # The pause time before the dialogue automatically continues.
 # END OF SETUP #
 
 
