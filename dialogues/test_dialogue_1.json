@@ -3,8 +3,6 @@
         "type": "text",
         "name": "Super Tester",
         "background": "Noise",
-        "avatar": "priestfemaleport-sm.png",
-        "position": "left",
         "content": "Hello, friend.",
         "next": "test1",
         "transition": true,
@@ -13,8 +11,6 @@
     "test1": {
         "type": "text",
         "name": "Super Tester",
-        "avatar": "priestfemaleport-sm.png",
-        "position": "left",
         "content": "You are testing a modified version of Godot Open Dialogue.",
         "next": "test2",
         "animation_in": "on"
@@ -22,8 +18,6 @@
     "test2": {
         "type": "text",
         "name": "Super Tester",
-        "avatar": "priestfemaleport-sm.png",
-        "position": "left",
         "content": "I really hope it works, this is a cool addon to Godot.",
         "animation_in": "on",
         "wait_time": 1,
@@ -32,7 +26,6 @@
     "enter_adversary": {
         "type": "text",
         "name": "Token Adversary",
-        "position": "left",
         "transition": true,
         "transition_time": 0.5,
         "background": "Noise",
@@ -42,7 +35,6 @@
     "hero_confronts_1": {
         "type": "text",
         "name": "Super Tester",
-        "position": "left",
         "transition": true,
         "background": "Noise",
         "content": "Token Adversary. |I should have known you'd appear.||@@But you've made a grave mistake.",
@@ -51,7 +43,6 @@
     "hero_confronts_2": {
         "type": "text",
         "name": "Token Adversary",
-        "position": "left",
         "transition": true,
         "background": "Noise",
         "content": "Oh? |.|.|.|How so?",
@@ -60,7 +51,6 @@
     "hero_confronts_3": {
         "type": "text",
         "name": "Super Tester",
-        "position": "left",
         "transition": true,
         "background": "Noise",
         "content": "The fact that we are even having [i]this conversation[/i] is proof that this customization of Godot Open Dialogue does, in fact, work!",
@@ -69,7 +59,6 @@
     "adversary_defeated": {
         "type": "text",
         "name": "Token Adversary",
-        "position": "left",
         "transition": true,
         "background": "Noise",
         "content": "Curses!",

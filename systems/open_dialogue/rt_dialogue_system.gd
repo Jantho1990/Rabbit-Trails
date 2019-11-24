@@ -468,32 +468,17 @@ func next():
 
 
 func check_names(block):
-	if not show_names:
-		return
 	if block.has('name'):
 		var data = { 'character_name': block.name }
 		if block.has('background'):
 			data.background_name = block.background
 		character_manager.emit_signal('change_character', data)
-		print('NEE HEHE')
 			
-		if block['position'] == 'left':
-			name_left.text = block['name']
-			yield(get_tree(), 'idle_frame')
-#			name_left.rect_size.x = 0
-#			name_left.rect_position.x += name_offset.x
-			name_left.set_process(true)
-			name_left.show()
-			name_right.hide()
-		else:
-			name_right.text = block['name']
-			
-			yield(get_tree(), 'idle_frame')
-			name_right.rect_size.x = 0
-			name_right.rect_position.x = frame_width - name_right.rect_size.x - name_offset.x
-			name_right.set_process(true)
-			name_right.show()
-			name_left.hide()
+		name_left.text = block['name']
+		yield(get_tree(), 'idle_frame')
+		name_left.set_process(true)
+		name_left.show()
+		name_right.hide()
 	else:
 		pass
 
