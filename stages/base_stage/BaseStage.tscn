@@ -16,3 +16,9 @@ format = 1
 [node name="TileMap" type="TileMap" parent="."]
 format = 1
 script = ExtResource( 2 )
+
+[node name="Cinematics" type="Node" parent="."]
+
+[node name="Marks" type="Node" parent="Cinematics"]
+
+[node name="Triggers" type="Node" parent="."]

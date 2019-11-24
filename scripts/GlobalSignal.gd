@@ -117,3 +117,7 @@ func callback(event):
 			node.call(listener.method_name)
 		else:
 			node.call(listener.method_name, data)
+
+# Detect if listeners exist for an event name.
+func has_listeners(event_name):
+	return _event_listeners.has(event_name)

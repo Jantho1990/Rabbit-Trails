@@ -129,6 +129,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/TilemapCollisionArea.gd"
 }, {
+"base": "Timer",
+"class": "TimedTrigger",
+"language": "GDScript",
+"path": "res://systems/triggers/TimedTrigger.gd"
+}, {
+"base": "Area2D",
+"class": "Trigger",
+"language": "GDScript",
+"path": "res://systems/triggers/Trigger.gd"
+}, {
 "base": "BaseStage",
 "class": "TutorialStage",
 "language": "GDScript",
@@ -169,6 +179,8 @@ _global_script_class_icons={
 "ThrustGizmo": "",
 "ThrustGizmoContainer": "",
 "TilemapCollisionArea": "",
+"TimedTrigger": "",
+"Trigger": "",
 "TutorialStage": "",
 "UnitCommandButton": "",
 "UserStore": ""
