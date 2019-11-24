@@ -1,6 +1,12 @@
 extends Node
 
-var data = {} setget _private_set,_private_get
+class_name DataStore
+
+###
+# Base class for anything that needs to store data in a dynamically accessible manner.
+###
+
+var _data = {} setget _private_set,_private_get
 
 func _private_set(_throwaway):
 	print("Do not try to manipulate the private data object.")
@@ -12,17 +18,17 @@ func _private_get():
 func set(key, value):
 	match typeof(value):
 		_:
-			data[key] = value
+			_data[key] = value
 
 # Get data from data store.
 # If retrieving from a multidimensional dictionary, use "." to get deeper levels.
 func get(key):
 	# Should we add an event here to say data is being accessed?
 	if key.find('.') == -1:
-		return data[key]
+		return _data[key]
 		
 	var keys = key.split('.')
-	var ret = data
+	var ret = _data
 	for _key in keys:
 		if ret.has(_key):
 			print("Key not found in global data: ", _key)

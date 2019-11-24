@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://stages/BaseStage.gd"
 }, {
 "base": "Node",
+"class": "DataStore",
+"language": "GDScript",
+"path": "res://scripts/DataStore.gd"
+}, {
+"base": "Node",
 "class": "DoorContainer",
 "language": "GDScript",
 "path": "res://containers/DoorContainer/DoorContainer.gd"
@@ -123,9 +128,15 @@ _global_script_classes=[ {
 "class": "UnitCommandButton",
 "language": "GDScript",
 "path": "res://ui/buttons/unit_command/UnitCommandButton.gd"
+}, {
+"base": "DataStore",
+"class": "UserStore",
+"language": "GDScript",
+"path": "res://scripts/UserStore.gd"
 } ]
 _global_script_class_icons={
 "BaseStage": "",
+"DataStore": "",
 "DoorContainer": "",
 "EnemyContainer": "",
 "EnemyGenerator": "",
@@ -147,7 +158,8 @@ _global_script_class_icons={
 "ThrustGizmo": "",
 "ThrustGizmoContainer": "",
 "TilemapCollisionArea": "",
-"UnitCommandButton": ""
+"UnitCommandButton": "",
+"UserStore": ""
 }
 
 [application]
@@ -158,6 +170,7 @@ config/icon="res://icon.png"
 [autoload]
 
 global="*res://scripts/global.gd"
+UserStore="*res://scripts/UserStore.gd"
 GlobalStore="*res://scripts/DataStore.gd"
 math="*res://scripts/math.gd"
 helpers="*res://scripts/helpers.gd"
