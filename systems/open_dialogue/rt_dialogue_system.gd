@@ -15,7 +15,8 @@ var dialogues_folder = 'res://dialogues' # Folder where the JSON files will be s
 var choice_scene = load('res://systems/open_dialogue/Choice.tscn') # Base scene for que choices
 ## Required nodes ##
 onready var frame : Node = $Frame # The container node for the dialogues.
-onready var portrait_box : Node = $Frame/PortraitBox # The container node for the avatar portrait.
+onready var portrait_box : Node = $PortraitBox # The container node for the avatar portrait.
+onready var character_manager : Node = $PortraitBox/CharacterManager
 onready var label : Node = $Frame/RichTextLabel # The label where the text will be displayed.
 onready var choices : Node = $Frame/Choices # The container node for the choices.
 onready var timer : Node = $Timer # Timer node.
@@ -125,6 +126,7 @@ var shaking : bool = false
 
 func _ready():
 	set_physics_process(true)
+	GlobalSignal.listen('dialogue', self, '_on_Dialogue')
 	timer.connect('timeout', self, '_on_Timer_timeout')
 	sprite_timer.connect('timeout', self, '_on_Sprite_Timer_timeout')
 	set_frame()
@@ -135,6 +137,16 @@ func _physics_process(delta):
 		sprite.offset = Vector2(rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount)
 	pass
 
+
+func _on_Dialogue(data):
+	var func_name = data.func_name
+	match func_name:
+		'initiate':
+			var file_id = data.file_id
+			var block = data.get('block', 'first')
+			initiate(file_id, block)
+		_:
+			print('No dialogue function called "', func_name, '"')
 
 func set_frame(): # Mostly aligment operations.
 	match frame_position:
@@ -436,6 +448,12 @@ func check_names(block):
 	if not show_names:
 		return
 	if block.has('name'):
+		var data = { 'character_name': block.name }
+		if block.has('background'):
+			data.background_name = block.background
+		character_manager.emit_signal('change_character', data)
+		print('NEE HEHE')
+			
 		if block['position'] == 'left':
 			name_left.text = block['name']
 			yield(get_tree(), 'idle_frame')

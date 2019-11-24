@@ -2,6 +2,7 @@
     "first": {
         "type": "text",
         "name": "Super Tester",
+        "background": "Noise",
         "avatar": "priestfemaleport-sm.png",
         "position": "left",
         "content": "Hello, friend.",

@@ -12,10 +12,10 @@ var current_character
 var current_background
 
 func _private_set(__throwaway__):
-	connect('change_character', self, '_on_Change_character')
 	print('Private variable.')
 
 func _ready():
+	connect('change_character', self, '_on_Change_character')	
 	if characters.size() > 0:
 		for character in characters:
 			var loaded_character = load(character).instance()
@@ -26,12 +26,13 @@ func _ready():
 			_loaded_backgrounds[loaded_background.background_name] = loaded_background
 	
 	#Test
-	_on_Change_character({
-		'character_name': 'Super Tester',
-		'background_name': 'Noise'
-	})
+#	_on_Change_character({
+#		'character_name': 'Super Tester',
+#		'background_name': 'Noise'
+#	})
 
 func _on_Change_character(data):
+	print('FOUND IT')
 	var character_name = data.character_name
 	
 	if data.has('background_name'):
