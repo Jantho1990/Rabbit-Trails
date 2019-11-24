@@ -23,6 +23,7 @@ rect_min_size = Vector2( 250, 250 )
 mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+visible = false
 margin_right = 250.0
 margin_bottom = 250.0
 mouse_filter = 1
