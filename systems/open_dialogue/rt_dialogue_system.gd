@@ -452,6 +452,7 @@ func next():
 		character_manager.emit_signal('hide_character')
 		avatar_left = ''
 		avatar_right = ''
+		print('CLEAN')
 	else:
 		label.bbcode_text = ''
 		if choices.get_child_count() > 0: # If has choices, remove them.
@@ -816,6 +817,9 @@ func _on_Continue_timer_timeout():
 	continue_timer.stop()
 	if next_step != '' and dialogue[next_step].has('transition') and dialogue[next_step].transition:
 		handle_character_transition(dialogue[next_step])
+	elif next_step == '':
+		# Currently going to assume that we will always transition out, may refactor later to be configurable.		
+		handle_character_transition('') # End scene
 	else:
 		next()
 
@@ -827,7 +831,7 @@ func handle_character_transition(step):
 	# Show the transition background.
 	character_manager.emit_signal('show_transition')
 	var transition_time = character_transition_time
-	if step.has('transition_time'):
+	if typeof(step) != TYPE_STRING and step.has('transition_time'):
 		transition_time = step.transition_time
 	transition_timer.start(transition_time)
 
@@ -836,10 +840,12 @@ func _on_Transition_timer_timeout():
 	print('transition timer timeout')
 	transition_timer.stop()
 	character_manager.emit_signal('hide_transition')
-	if typeof(current) != TYPE_STRING: # If it is not a string, then this is not the first step.
-		next()
-	else: # Means it is an empty string, so it's the first step.
+	#if typeof(current) != TYPE_STRING or next_step != '': # If it is not a string, then this is not the first step.
+	#	next()
+	if first_step != '': # If it is not an empty string, then this is the first step.
 		first(first_step)
+	else:
+		next()
 
 func _on_Sprite_Timer_timeout():
 	sprite.position = previous_pos
