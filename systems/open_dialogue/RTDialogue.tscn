@@ -66,7 +66,7 @@ rect_min_size = Vector2( 200, 200 )
 color = Color( 0.898039, 0.0941176, 0.0941176, 1 )
 
 [node name="CharacterManager" parent="PortraitBox" instance=ExtResource( 3 )]
-characters = [ "res://ui/characters/simple/TestCharacter.tscn" ]
+characters = [ "res://ui/characters/simple/TestCharacter.tscn", "res://ui/characters/simple/TestCharacter2.tscn" ]
 backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn", "res://ui/characters/backgrounds/simple/SolidBackground.tscn" ]
 
 [node name="SpriteLeft2" type="Sprite" parent="PortraitBox"]

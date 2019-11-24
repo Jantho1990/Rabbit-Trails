@@ -24,6 +24,14 @@
         "avatar": "priestfemaleport-sm.png",
         "position": "left",
         "content": "I really hope it works, this is a cool addon to Godot.",
-        "animation_in": "on"
+        "animation_in": "on",
+        "wait_time": 1,
+        "next": "test3"
+    },
+    "test3": {
+        "type": "text",
+        "name": "Token Adversary",
+        "position": "left",
+        "content": "Ah ha ha. |You think this will work, eh?|@How foolish of you, to presume such a thing!",
     }
 }
