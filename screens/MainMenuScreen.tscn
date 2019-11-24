@@ -1,0 +1,59 @@
+[gd_scene format=2]
+
+[node name="MainMenuScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 974.0
+margin_bottom = 550.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 421.0
+margin_top = 191.0
+margin_right = 503.0
+margin_bottom = 309.0
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 82.0
+margin_bottom = 14.0
+text = "Rabbit Trails"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 82.0
+margin_bottom = 22.0
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 82.0
+margin_bottom = 46.0
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 82.0
+margin_bottom = 70.0
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 82.0
+margin_bottom = 94.0
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 82.0
+margin_bottom = 118.0
+text = "Quit"
