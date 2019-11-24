@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 export(String) var unit_name
 export(String, 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C') var command_card_key
