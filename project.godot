@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BaseStage",
 "language": "GDScript",
-"path": "res://stages/BaseStage.gd"
+"path": "res://stages/base_stage/BaseStage.gd"
 }, {
 "base": "Node",
 "class": "DataStore",
@@ -124,6 +124,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/TilemapCollisionArea.gd"
 }, {
+"base": "BaseStage",
+"class": "TutorialStage",
+"language": "GDScript",
+"path": "res://stages/tutorial_stage/TutorialStage.gd"
+}, {
 "base": "Button",
 "class": "UnitCommandButton",
 "language": "GDScript",
@@ -158,6 +163,7 @@ _global_script_class_icons={
 "ThrustGizmo": "",
 "ThrustGizmoContainer": "",
 "TilemapCollisionArea": "",
+"TutorialStage": "",
 "UnitCommandButton": "",
 "UserStore": ""
 }
