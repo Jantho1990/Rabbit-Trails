@@ -20,6 +20,7 @@ onready var character_manager : Node = $PortraitBox/CharacterManager
 onready var label : Node = $Frame/RichTextLabel # The label where the text will be displayed.
 onready var choices : Node = $Frame/Choices # The container node for the choices.
 onready var timer : Node = $Timer # Timer node.
+onready var continue_timer : Node = $ContinueTimer
 onready var continue_indicator : Node = $ContinueIndicator # Blinking square displayed when the text is all printed.
 onready var animations : Node = $AnimationPlayer
 onready var sprite_left : Node = $SpriteLeft # Used for showing the avatar on the dialogue
@@ -56,6 +57,8 @@ var name_offset : Vector2 = Vector2(-10, -15) # Offsets the name labels relative
 var show_names : bool = true # Turn on and off the character name labels
 var portrait_box_height : int = 200 # Portrait box height (in pixels)
 var portrait_box_width : int = 200 # Portrait box width (in pixels)
+var auto_next : bool = true # Enables automatically calling next on the dialogue sequence
+var dialogue_continue_wait_time : float = 2.0 # The pause time before the dialogue automatically continues.
 # END OF SETUP #
 
 
@@ -128,6 +131,7 @@ func _ready():
 	set_physics_process(true)
 	GlobalSignal.listen('dialogue', self, '_on_Dialogue')
 	timer.connect('timeout', self, '_on_Timer_timeout')
+	continue_timer.connect('timeout', self, '_on_Continue_timer_timeout')
 	sprite_timer.connect('timeout', self, '_on_Sprite_Timer_timeout')
 	set_frame()
 
@@ -224,7 +228,7 @@ func not_question():
 
 
 func first(block):
-	frame.show()
+#	frame.show()
 	if block == 'first': # Check if we are going to use the default 'first' block
 		if dialogue.has('repeat'):
 			if progress.get(dialogues_dict).has(id): # Checks if it's the first interaction.
@@ -348,6 +352,10 @@ func update_dialogue(step): # step == whole dialogue block
 	elif enable_continue_indicator: # If typewriter effect is disabled check if the ContinueIndicator should be displayed
 		continue_indicator.show()
 		animations.play('Continue_Indicator')
+	
+	if wait_time <= 0 and auto_next: # If typewriter effect is disabled and we have automatic continue on
+		print('shotgun')
+		handle_continue(step)
 
 
 func check_pauses(string):
@@ -427,7 +435,8 @@ func next():
 		dialogue = null
 		name_left.hide()
 		name_right.hide()
-		frame.hide() 
+#		frame.hide() 
+		clean_bbcode('') # Clear text box.
 		avatar_left = ''
 		avatar_right = ''
 	else:
@@ -762,6 +771,9 @@ func _on_Timer_timeout():
 			animations.play('Continue_Indicator')
 			continue_indicator.show()
 		timer.stop()
+		if auto_next: # If we have automatic continue on
+			print('shotgun')
+			handle_continue(current)
 		return
 
 
@@ -775,6 +787,21 @@ func update_pause():
 	paused = false
 	timer.wait_time = wait_time
 	timer.start()
+
+
+func handle_continue(step):
+	print('handling continue')
+	var wait_time = dialogue_continue_wait_time
+	if step.has('wait_time'):
+		wait_time = step.wait_time
+	
+	continue_timer.start(wait_time)
+
+
+func _on_Continue_timer_timeout():
+	print('continue timer timeout')
+	continue_timer.stop()
+	next()
 
 
 func _on_Sprite_Timer_timeout():

@@ -47,6 +47,8 @@ anims/Continue_Indicator = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="ContinueTimer" type="Timer" parent="."]
+
 [node name="SpriteTimer" type="Timer" parent="."]
 one_shot = true
 
