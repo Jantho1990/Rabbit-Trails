@@ -27,11 +27,9 @@ tracks/0/keys = {
 content_margin_left = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.768627, 0, 0.258824, 1 )
-corner_radius_top_left = 3
+bg_color = Color( 0.0745098, 0.239216, 0.0980392, 1 )
 corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+anti_aliasing = false
 
 [node name="RTDialogue" type="Control"]
 anchor_right = 1.0
@@ -69,7 +67,7 @@ color = Color( 0.898039, 0.0941176, 0.0941176, 1 )
 
 [node name="CharacterManager" parent="PortraitBox" instance=ExtResource( 3 )]
 characters = [ "res://ui/characters/simple/TestCharacter.tscn" ]
-backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn" ]
+backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn", "res://ui/characters/backgrounds/simple/SolidBackground.tscn" ]
 
 [node name="SpriteLeft2" type="Sprite" parent="PortraitBox"]
 visible = false
@@ -81,10 +79,10 @@ offset = Vector2( 50, 0 )
 [node name="Frame" type="ColorRect" parent="."]
 margin_left = 200.0
 margin_top = 15.0
-margin_right = 500.0
+margin_right = 600.0
 margin_bottom = 185.0
 rect_min_size = Vector2( 400, 120 )
-color = Color( 0.175781, 0.175781, 0.175781, 1 )
+color = Color( 0.145098, 0.14902, 0.145098, 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Frame"]
 anchor_left = 0.5
@@ -107,6 +105,7 @@ scroll_active = false
 [node name="Choices" type="Control" parent="Frame"]
 
 [node name="NameRight" type="Label" parent="Frame"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -75.0
@@ -121,8 +120,9 @@ align = 2
 valign = 1
 
 [node name="NameLeft" type="Label" parent="Frame"]
-margin_right = 74.0
-margin_bottom = 25.0
+margin_top = -15.0
+margin_right = 400.0
+margin_bottom = 10.0
 size_flags_horizontal = 15
 size_flags_vertical = 15
 custom_styles/normal = SubResource( 2 )

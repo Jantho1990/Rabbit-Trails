@@ -433,10 +433,12 @@ func next():
 			sprite_left.modulate = white_transparent
 			sprite_right.modulate = white_transparent
 		dialogue = null
-		name_left.hide()
-		name_right.hide()
+		name_left.text = ''
+#		name_left.hide()
+#		name_right.hide()
 #		frame.hide() 
 		clean_bbcode('') # Clear text box.
+		character_manager.emit_signal('hide_character')
 		avatar_left = ''
 		avatar_right = ''
 	else:
@@ -466,8 +468,8 @@ func check_names(block):
 		if block['position'] == 'left':
 			name_left.text = block['name']
 			yield(get_tree(), 'idle_frame')
-			name_left.rect_size.x = 0
-			name_left.rect_position.x += name_offset.x
+#			name_left.rect_size.x = 0
+#			name_left.rect_position.x += name_offset.x
 			name_left.set_process(true)
 			name_left.show()
 			name_right.hide()

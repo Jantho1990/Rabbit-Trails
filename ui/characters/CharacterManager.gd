@@ -1,6 +1,7 @@
 extends Control
 
 signal change_character
+signal hide_character
 
 export(Array, String, FILE, '*.tscn') var characters
 export(Array, String, FILE, '*.tscn') var backgrounds
@@ -11,11 +12,14 @@ var _loaded_backgrounds = {} setget _private_set,get_loaded_backgrounds
 var current_character
 var current_background
 
+var default_background = 'SolidBackground'
+
 func _private_set(__throwaway__):
 	print('Private variable.')
 
 func _ready():
-	connect('change_character', self, '_on_Change_character')	
+	connect('change_character', self, '_on_Change_character')
+	connect('hide_character', self, '_on_Hide_character')
 	if characters.size() > 0:
 		for character in characters:
 			var loaded_character = load(character).instance()
@@ -41,6 +45,10 @@ func _on_Change_character(data):
 	
 	display_character(character_name)
 
+func _on_Hide_character():
+	hide_character()
+	display_background(default_background)
+
 func get_loaded_characters():
 	return _loaded_characters
 
@@ -51,6 +59,10 @@ func get_character(character_name):
 	if _loaded_characters.has(character_name):
 		return _loaded_characters[character_name]
 	print('No character found named ', character_name)
+
+func hide_character():
+	if current_character:
+		remove_child(current_character)
 
 func get_background(background_name):
 	if _loaded_backgrounds.has(background_name):
