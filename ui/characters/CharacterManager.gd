@@ -2,6 +2,7 @@ extends Control
 
 signal change_character
 signal hide_character
+signal show_transition
 
 export(Array, String, FILE, '*.tscn') var characters
 export(Array, String, FILE, '*.tscn') var backgrounds
@@ -12,7 +13,8 @@ var _loaded_backgrounds = {} setget _private_set,get_loaded_backgrounds
 var current_character
 var current_background
 
-var default_background = 'SolidBackground'
+export(String) var default_background = 'SolidBackground'
+export(String) var transition_background = 'Static'
 
 func _private_set(__throwaway__):
 	print('Private variable.')
@@ -20,6 +22,7 @@ func _private_set(__throwaway__):
 func _ready():
 	connect('change_character', self, '_on_Change_character')
 	connect('hide_character', self, '_on_Hide_character')
+	connect('show_transition', self, '_on_Show_transition')
 	if characters.size() > 0:
 		for character in characters:
 			var loaded_character = load(character).instance()
@@ -48,6 +51,9 @@ func _on_Change_character(data):
 func _on_Hide_character():
 	hide_character()
 	display_background(default_background)
+
+func _on_Show_transition():
+	show_transition()
 
 func get_loaded_characters():
 	return _loaded_characters
@@ -84,3 +90,9 @@ func display_background(background_name):
 		current_background = background
 		add_child(current_background)
 		current_background.position = Vector2(rect_size.x / 2, rect_size.y / 2)
+
+func show_transition():
+	hide_character()
+	display_background(transition_background)
+	if current_background.has_node('AnimationPlayer'):
+		current_background.play()

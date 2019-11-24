@@ -7,7 +7,8 @@
         "position": "left",
         "content": "Hello, friend.",
         "next": "test1",
-        "animation_in": "on"
+        "transition": true,
+        "transition_time": 1.0
     },
     "test1": {
         "type": "text",
@@ -32,6 +33,8 @@
         "type": "text",
         "name": "Token Adversary",
         "position": "left",
+        "transition": true,
+        "background": "Noise",
         "content": "Ah ha ha. |You think this will work, eh?|@How foolish of you, to presume such a thing!",
     }
 }

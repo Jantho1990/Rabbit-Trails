@@ -21,6 +21,7 @@ onready var label : Node = $Frame/RichTextLabel # The label where the text will 
 onready var choices : Node = $Frame/Choices # The container node for the choices.
 onready var timer : Node = $Timer # Timer node.
 onready var continue_timer : Node = $ContinueTimer
+onready var transition_timer : Node = $TransitionTimer
 onready var continue_indicator : Node = $ContinueIndicator # Blinking square displayed when the text is all printed.
 onready var animations : Node = $AnimationPlayer
 onready var sprite_left : Node = $SpriteLeft # Used for showing the avatar on the dialogue
@@ -59,6 +60,7 @@ var portrait_box_height : int = 200 # Portrait box height (in pixels)
 var portrait_box_width : int = 200 # Portrait box width (in pixels)
 var auto_next : bool = true # Enables automatically calling next on the dialogue sequence
 var dialogue_continue_wait_time : float = 3.0 # The pause time before the dialogue automatically continues.
+var character_transition_time : float = 0.5 # How long a character transition should last by default.
 # END OF SETUP #
 
 
@@ -127,11 +129,13 @@ var avatar_right : String = ''
 
 var shaking : bool = false
 
+
 func _ready():
 	set_physics_process(true)
 	GlobalSignal.listen('dialogue', self, '_on_Dialogue')
 	timer.connect('timeout', self, '_on_Timer_timeout')
 	continue_timer.connect('timeout', self, '_on_Continue_timer_timeout')
+	transition_timer.connect('timeout', self, '_on_Transition_timer_timeout')
 	sprite_timer.connect('timeout', self, '_on_Sprite_Timer_timeout')
 	set_frame()
 
@@ -417,6 +421,7 @@ func clean_bbcode(string):
 func next():
 	if not dialogue or on_animation: # Check if is in the middle of a dialogue 
 		return
+	
 	clean() # Be sure all the variables used before are restored to their default values.
 	if wait_time > 0: # Check if the typewriter effect is active.
 		if label.visible_characters < number_characters: # Checks if the phrase is complete.
@@ -803,8 +808,24 @@ func handle_continue(step):
 func _on_Continue_timer_timeout():
 	print('continue timer timeout')
 	continue_timer.stop()
-	next()
+	if next_step != '' and dialogue[next_step].has('transition') and dialogue[next_step].transition:
+		handle_character_transition()
+	else:
+		next()
 
+func handle_character_transition():
+	print('handling transition')
+	character_manager.emit_signal('show_transition')
+	var transition_time = character_transition_time
+	if current.has('transition_time'):
+		transition_time = current.transition_time
+	transition_timer.start(transition_time)
+
+
+func _on_Transition_timer_timeout():
+	print('transition timer timeout')
+	transition_timer.stop()
+	next()
 
 func _on_Sprite_Timer_timeout():
 	sprite.position = previous_pos
