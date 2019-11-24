@@ -10,7 +10,7 @@ class_name UserStore
 signal data_updated
 signal data_loaded
 
-var save_file_path = 'user://rabbit-trails/save-file.txt' setget _private_set,_private_get
+var save_file_path = 'user://rabbit-trails/save-file.json' setget _private_set,_private_get
 
 func _private_set(__throwaway__):
 	print('Private property.')
