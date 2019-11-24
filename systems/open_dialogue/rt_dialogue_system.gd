@@ -60,7 +60,7 @@ var portrait_box_height : int = 200 # Portrait box height (in pixels)
 var portrait_box_width : int = 200 # Portrait box width (in pixels)
 var auto_next : bool = true # Enables automatically calling next on the dialogue sequence
 var dialogue_continue_wait_time : float = 3.0 # The pause time before the dialogue automatically continues.
-var character_transition_time : float = 0.5 # How long a character transition should last by default.
+var character_transition_time : float = 0.1 # How long a character transition should last by default.
 # END OF SETUP #
 
 
