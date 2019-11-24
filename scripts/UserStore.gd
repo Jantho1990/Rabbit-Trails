@@ -8,6 +8,7 @@ class_name UserStore
 ###
 
 signal data_updated
+signal data_loaded
 
 var save_file_path = 'user://rabbit-trails/save-file.txt' setget _private_set,_private_get
 
@@ -43,3 +44,4 @@ func get_data_from_file():
 	var saved_data = parse_json(save_file.get_line())
 	save_file.close()
 	_data = saved_data
+	emit_signal('data_updated')
