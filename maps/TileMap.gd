@@ -16,11 +16,13 @@ func _init():
 
 func get_atlas_tile_collisions():
 	var ret = []
-	var tile_shapes = tile_set.tile_get_shapes(0)
-	for shape in tile_shapes:
-		var atlas_tile = shape.autotile_coord
-		ret.push_back(atlas_tile)
-	return ret 
+	var tiles = tile_set.get_tiles_ids()
+	for tile in tiles:
+		var tile_shapes = tile_set.tile_get_shapes(tile)
+		for shape in tile_shapes:
+			var atlas_tile = shape.autotile_coord
+			ret.push_back(atlas_tile)
+		return ret 
 
 func _ready():
 	generate_collision_areas()
