@@ -821,6 +821,10 @@ func _on_Continue_timer_timeout():
 
 func handle_character_transition(step):
 	print('handling transition')
+	# Clear the text elements.
+	name_left.text = ''
+	clean_bbcode('') # Clear text box.
+	# Show the transition background.
 	character_manager.emit_signal('show_transition')
 	var transition_time = character_transition_time
 	if step.has('transition_time'):
