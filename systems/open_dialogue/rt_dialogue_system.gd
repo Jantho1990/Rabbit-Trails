@@ -66,6 +66,7 @@ var character_transition_time : float = 0.5 # How long a character transition sh
 
 # Default values. Don't change them unless you really know what you're doing.
 var id
+var first_step = ''
 var next_step = ''
 var dialogue
 var phrase = ''
@@ -213,7 +214,11 @@ func initiate(file_id, block = 'first'): # Load the whole dialogue into a variab
 	var json = file.get_as_text()
 	dialogue = JSON.parse(json).result
 	file.close()
-	first(block) # Call the first dialogue block
+	first_step = block
+	if dialogue[first_step].has('transition') and dialogue[first_step].transition:
+		handle_character_transition(dialogue[first_step])
+	else:
+		first(first_step) # Call the first dialogue block
 
 #func start_from(file_id, block): # Similar to 
 
@@ -233,6 +238,7 @@ func not_question():
 
 func first(block):
 #	frame.show()
+	first_step = '' # We are processing the first step, make sure we clear the variable.
 	if block == 'first': # Check if we are going to use the default 'first' block
 		if dialogue.has('repeat'):
 			if progress.get(dialogues_dict).has(id): # Checks if it's the first interaction.
@@ -809,23 +815,26 @@ func _on_Continue_timer_timeout():
 	print('continue timer timeout')
 	continue_timer.stop()
 	if next_step != '' and dialogue[next_step].has('transition') and dialogue[next_step].transition:
-		handle_character_transition()
+		handle_character_transition(dialogue[next_step])
 	else:
 		next()
 
-func handle_character_transition():
+func handle_character_transition(step):
 	print('handling transition')
 	character_manager.emit_signal('show_transition')
 	var transition_time = character_transition_time
-	if current.has('transition_time'):
-		transition_time = current.transition_time
+	if step.has('transition_time'):
+		transition_time = step.transition_time
 	transition_timer.start(transition_time)
 
 
 func _on_Transition_timer_timeout():
 	print('transition timer timeout')
 	transition_timer.stop()
-	next()
+	if typeof(current) != TYPE_STRING: # If it is not a string, then this is not the first step.
+		next()
+	else: # Means it is an empty string, so it's the first step.
+		first(first_step)
 
 func _on_Sprite_Timer_timeout():
 	sprite.position = previous_pos
