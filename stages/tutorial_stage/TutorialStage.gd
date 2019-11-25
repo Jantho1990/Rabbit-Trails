@@ -14,6 +14,7 @@ func _ready():
 	triggers.get_trigger('OpeningDialogue').start(1.5)
 #	cinematics.get_mark('LevelStart')
 	cinematics.focus_on_mark('LevelStart')
+	GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {

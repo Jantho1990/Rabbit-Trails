@@ -13,6 +13,5 @@ func _ready():
 #	pass
 
 
-func _on_NewGameButton_pressed():
-	UserData.set('current_stage_name', 'TutorialStage')
-	get_tree().change_scene('res://screens/GameScreen.tscn')
+func _on_ContinueButton_pressed():
+	GlobalSignal.dispatch('advance_stage')

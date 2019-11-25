@@ -134,6 +134,7 @@ var shaking : bool = false
 func _ready():
 	set_physics_process(true)
 	GlobalSignal.listen('dialogue', self, '_on_Dialogue')
+	GlobalSignal.listen('kill_dialogue', self, '_on_Kill_dialogue')
 	timer.connect('timeout', self, '_on_Timer_timeout')
 	continue_timer.connect('timeout', self, '_on_Continue_timer_timeout')
 	transition_timer.connect('timeout', self, '_on_Transition_timer_timeout')
@@ -145,6 +146,14 @@ func _physics_process(delta):
 	if shaking:
 		sprite.offset = Vector2(rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount)
 	pass
+
+
+func _on_Kill_dialogue():
+	next_step = ''
+	timer.stop()
+	continue_timer.stop()
+	transition_timer.stop()
+	next()
 
 
 func _on_Dialogue(data):
