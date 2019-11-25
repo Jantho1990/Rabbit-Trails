@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://stages/base_stage/BaseStage.gd"
 }, {
+"base": "Position2D",
+"class": "CinematicMark2D",
+"language": "GDScript",
+"path": "res://systems/cinematics/CinematicMark2D.gd"
+}, {
 "base": "Node",
 "class": "DataStore",
 "language": "GDScript",
@@ -156,6 +161,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseStage": "",
+"CinematicMark2D": "",
 "DataStore": "",
 "DoorContainer": "",
 "EnemyContainer": "",
@@ -203,6 +209,7 @@ Sound="*res://scripts/Sound.gd"
 Selection="*res://systems/selection_manager/SelectionManager.gd"
 GlobalSignal="*res://scripts/GlobalSignal.gd"
 PROGRESS="*res://systems/open_dialogue/progress.gd"
+ActiveCameraManager="*res://systems/active_camera/ActiveCameraManager.gd"
 
 [display]
 

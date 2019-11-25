@@ -4,4 +4,3 @@
 
 [node name="CinematicMark2D" type="Position2D"]
 script = ExtResource( 1 )
-
