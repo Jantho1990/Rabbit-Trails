@@ -34,10 +34,12 @@ func _on_Active_camera_changed(data):
 	if active_camera.name != camera.camera_name:
 #		breakpoint
 		locked = true
+		print('CORN')
 	else:
 		locked = false
 #		position = previous_active_camera.camera.get_camera_screen_center()
 		camera.align()
+		print('PEAS')
 #		camera.force_update_scroll()
 	
 #	if active_camera.name == camera.camera_name:

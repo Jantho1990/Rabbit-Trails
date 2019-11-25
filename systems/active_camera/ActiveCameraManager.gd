@@ -13,9 +13,12 @@ func _ready():
 #	GlobalSignal.dispatch('debug_label', { 'text': ActiveCameraManager.active_camera })
 
 func register(camera_name, camera):
+	if camera.has_node('ActiveCamera2D'):
+		camera = camera.get_node('ActiveCamera2D')
 	cameras[camera_name] = {
 		'name': camera_name,
 		'camera': camera,
+		'parent': camera.get_parent(),
 		'active': false
 	}
 	print(camera_name, ' was registered', cameras.has(camera_name))
