@@ -9,11 +9,12 @@ class_name BaseStage
 onready var tile_map = $TileMap
 
 func _ready():
-	GlobalSignal.dispatch('resize_camera_bounds', {
+	GlobalSignal.dispatch('active_camera_resize_bounds', {
 		'bounds': {
 			'top': tile_map.dimensions.y,
 			'bottom': tile_map.dimensions.y + tile_map.dimensions.height,
 			'left': tile_map.dimensions.x,
 			'right': tile_map.dimensions.x + tile_map.dimensions.width
-		}
+		},
+		'all_cameras': true
 	})

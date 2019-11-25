@@ -5,7 +5,7 @@ var screen_size
 var mouse_captured = false
 var mouse_speed = 5
 
-onready var camera = $Camera2D
+onready var camera = $ActiveCamera2D
 
 var vr
 var vs
@@ -19,10 +19,10 @@ func _ready():
 # Allows the camera limits to be resized, e.g. by a tilemap to prevent scrolling outside the map.
 func _on_Resize_camera_bounds(data):
 	var bounds = data.bounds
-	$Camera2D.limit_bottom = bounds.bottom
-	$Camera2D.limit_top = bounds.top
-	$Camera2D.limit_left = bounds.left
-	$Camera2D.limit_right = bounds.right
+	camera.limit_bottom = bounds.bottom
+	camera.limit_top = bounds.top
+	camera.limit_left = bounds.left
+	camera.limit_right = bounds.right
 #	breakpoint
 
 func _process(delta):

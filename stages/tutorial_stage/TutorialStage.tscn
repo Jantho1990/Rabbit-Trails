@@ -48,6 +48,7 @@ position = Vector2( 2079.23, 357.994 )
 mark_name = "LevelStart"
 
 [node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
+camera_name = "CinematicCamera"
 
 [node name="Triggers" type="Node" parent="."]
 script = ExtResource( 8 )
