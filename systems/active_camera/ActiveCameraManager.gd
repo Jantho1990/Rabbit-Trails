@@ -4,9 +4,13 @@ var cameras = {}
 
 var active_camera = null
 
+var previous_active_camera_name = ''
+
 func _ready():
 	GlobalSignal.listen('active_camera_resize_bounds', self, '_on_Resize_camera_bounds')
 
+#func _process(delta):
+#	GlobalSignal.dispatch('debug_label', { 'text': ActiveCameraManager.active_camera })
 
 func register(camera_name, camera):
 	cameras[camera_name] = {
@@ -43,10 +47,22 @@ func activate_camera(camera_name):
 	if cameras.has(camera_name):
 		if active_camera:
 			active_camera.camera.current = false
+			previous_active_camera_name = active_camera.name
 		active_camera = cameras[camera_name]
 		active_camera.camera.current = true
+		GlobalSignal.dispatch('active_camera_changed', {
+			'current': active_camera,
+			'previous': get_camera(previous_active_camera_name)
+		})
 	else:
 		print('No camera named "', camera_name, '" in Active Cameras.', cameras)
+
+func activate_previous_camera():
+	if previous_active_camera_name == '':
+		print('No previous camera, ignoring command.')
+		return
+	
+	activate_camera(previous_active_camera_name)
 
 func deactivate_active_camera():
 	if active_camera:
@@ -58,3 +74,9 @@ func get_active_camera():
 
 func has_active_camera():
 	return !!active_camera
+
+func get_camera(camera_name):
+	if cameras.has(camera_name):
+		return cameras[camera_name]
+	
+	print('No camera with name "', camera_name, '" in Active Cameras')

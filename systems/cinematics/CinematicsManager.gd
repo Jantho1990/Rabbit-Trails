@@ -20,6 +20,18 @@ func focus_on_mark(mark_name):
 	var mark = get_mark(mark_name)
 	if not mark:
 		return
-	camera.current = true
+	
+	ActiveCameraManager.activate_camera(camera.camera_name)
 	camera.position = mark.position
-	camera.current = false
+	camera.force_update_scroll()
+#	breakpoint
+	ActiveCameraManager.activate_previous_camera()
+#	var t1 = Timer.new()
+#	add_child(t1)
+#	t1.one_shot = true
+#	t1.start(2)
+#	t1.connect('timeout', self, 'on_Timeout')
+#	breakpoint
+
+func on_Timeout():
+	ActiveCameraManager.activate_previous_camera()

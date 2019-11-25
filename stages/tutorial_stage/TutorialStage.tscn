@@ -44,7 +44,7 @@ script = ExtResource( 5 )
 [node name="Marks" type="Node" parent="Cinematics"]
 
 [node name="LevelStart" parent="Cinematics/Marks" instance=ExtResource( 6 )]
-position = Vector2( 2079.23, 357.994 )
+position = Vector2( 2296.89, 343.674 )
 mark_name = "LevelStart"
 
 [node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
