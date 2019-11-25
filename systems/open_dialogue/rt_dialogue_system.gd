@@ -140,6 +140,7 @@ func _ready():
 	transition_timer.connect('timeout', self, '_on_Transition_timer_timeout')
 	sprite_timer.connect('timeout', self, '_on_Sprite_Timer_timeout')
 	set_frame()
+	clean_name_and_text() # Lets us keep the defaults in engine layout while not showing them after game start.
 
 
 func _physics_process(delta):
@@ -165,6 +166,12 @@ func _on_Dialogue(data):
 			initiate(file_id, block)
 		_:
 			print('No dialogue function called "', func_name, '"')
+
+
+func clean_name_and_text():
+	name_left.text = ''
+	clean_bbcode('') # Clear text box.
+
 
 func set_frame(): # Mostly aligment operations.
 	match frame_position:
