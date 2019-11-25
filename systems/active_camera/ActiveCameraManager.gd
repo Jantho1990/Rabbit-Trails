@@ -75,6 +75,11 @@ func deactivate_active_camera():
 func get_active_camera():
 	return active_camera
 
+func get_previous_camera():
+	if previous_active_camera_name != '':
+		return get_camera(previous_active_camera_name)
+	return null
+
 func has_active_camera():
 	return !!active_camera
 
