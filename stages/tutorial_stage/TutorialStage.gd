@@ -16,6 +16,7 @@ func _ready():
 #	cinematics.get_mark('LevelStart')
 	cinematics.focus_on_mark('LevelStart')
 #	GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
+#	GlobalSignal.dispatch('defeat', {})
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {
