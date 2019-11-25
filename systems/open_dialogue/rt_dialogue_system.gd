@@ -222,6 +222,7 @@ func initiate(file_id, block = 'first'): # Load the whole dialogue into a variab
 	file.open('%s/%s.json' % [dialogues_folder, id], file.READ)
 	var json = file.get_as_text()
 	dialogue = JSON.parse(json).result
+	dialogue['file_id'] = file_id
 	file.close()
 	first_step = block
 	if dialogue[first_step].has('transition') and dialogue[first_step].transition:
@@ -452,6 +453,7 @@ func next():
 		else:
 			sprite_left.modulate = white_transparent
 			sprite_right.modulate = white_transparent
+		GlobalSignal.dispatch('dialogue_finished', { 'dialogue': dialogue })
 		dialogue = null
 		name_left.text = ''
 #		name_left.hide()
