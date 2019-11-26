@@ -8,12 +8,5 @@ func _ready():
 
 func _on_Stage_time_updated(data):
 	var time = data.time
-	var display_time = ''
-#	if time % 60 >= 1:
-#		display_time = '00:' + String(round(time)).pad_zeros(2)
-##	elif time % 600 >= 1:
-##		display_time = '0' + String(time % 600) + ':' + String(round(time)).pad_zeros(2)
-#	else:
-#		display_time = String(time / 60).pad_zeros(2) + ':' + String(round(time)).pad_zeros(2)
-	display_time = String(round(time / 60)).pad_zeros(2) + ':' + String(time % 60).pad_zeros(2)
+	var display_time = String(round(time / 60)).pad_zeros(2) + ':' + String(time % 60).pad_zeros(2)
 	display.set_value(display_time)
