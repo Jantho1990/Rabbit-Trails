@@ -70,6 +70,6 @@ spawn_at_start = 1
 target_container_id = "Rabbit"
 
 [node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1088, 413.998 )
+position = Vector2( 2880, 413.998 )
 
 [node name="RabbitContainer" parent="." instance=ExtResource( 12 )]
