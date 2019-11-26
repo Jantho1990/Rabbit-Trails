@@ -22,7 +22,7 @@ func _physics_process(delta):
 	
 	if mark_move_active:
 #		var prev_cam = ActiveCameraManager.get_previous_camera()
-		camera.position = lerp(camera.position, current_mark.position, 0.05)
+		camera.position = lerp(camera.position, current_mark.position, 0.18)
 		if camera.position.distance_to(current_mark.position) < 1:
 			mark_move_active = false
 #			camera.camera.smoothing_enabled = false
