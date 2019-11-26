@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Gizmo
 
+export(int) var budget_cost = 1000 # Used by the Budget system.
+
 enum COLLISION_LAYERS {
 	PLACED = 4,
 	MOVING = 8

@@ -19,6 +19,7 @@ export(float) var linear_damp
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("body_entered", self, "on_Body_entered")
+	
 
 func _physics_process(delta):
 	apply_gravity_to_bodies()

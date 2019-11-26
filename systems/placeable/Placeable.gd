@@ -12,6 +12,9 @@ export(bool) var allowed_to_place = false
 # Can entity be moved
 export(bool) var allowed_to_move = false
 
+# Has entity been placed before
+var first_placement = true
+
 onready var parent = get_parent()
 onready var placement_area = get_node_or_null('PlacementArea')
 
@@ -56,6 +59,9 @@ func _on_Deselection(previously_selected_unit):
 			return false
 		
 		allowed_to_move = false
+		if first_placement:
+			Budget.subtract(parent.budget_cost)
+			first_placement = false
 
 func _on_Snap_placement(location):
 	var collision_shape = placement_area.get_node('CollisionShape2D').shape
