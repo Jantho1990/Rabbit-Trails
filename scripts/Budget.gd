@@ -27,3 +27,6 @@ func set_money(value):
 func reset():
 	money = 0
 	GlobalSignal.dispatch("budget_reset")
+
+func can_afford(value):
+	return money - value >= 0
