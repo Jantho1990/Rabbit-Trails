@@ -21,6 +21,7 @@ func _ready():
 		print("Container requires GlobalSignal.")
 
 func on_Add_entity(data):
+	print('adding rabbit')
 	if data.container_id == container_id:
 		var entity = data.entity
 		if data.instance == true:

@@ -251,3 +251,9 @@ func start_hop_timer():
 func _on_hop_timer_stop():
 	allowed_to_hop = true
 	state.swap('bound')
+
+func freeze():
+	$MovementHandler.freeze()
+
+func unfreeze():
+	$MovementHandler.unfreeze()

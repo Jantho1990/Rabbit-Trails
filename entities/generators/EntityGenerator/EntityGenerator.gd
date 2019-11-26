@@ -57,6 +57,7 @@ func _ready():
 		return
 	else:
 		Entity = load(Entity)
+	print('Generator loaded: ', name)
 
 func _physics_process(delta):
 	# Called every frame. Delta is time since last frame.

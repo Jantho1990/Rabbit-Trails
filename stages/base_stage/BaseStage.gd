@@ -18,3 +18,7 @@ func _ready():
 		},
 		'all_cameras': true
 	})
+	# Map_loaded is bad naming convention, but using it until I can refactor EntityGenerator
+	GlobalSignal.dispatch("Map_loaded", {
+		"node": self
+	})
