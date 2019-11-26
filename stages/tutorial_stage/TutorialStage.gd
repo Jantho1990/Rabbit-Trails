@@ -18,6 +18,7 @@ func _ready():
 #	GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
 #	GlobalSignal.dispatch('defeat', {})
 	Budget.set_money(5000)
+	Rabbits.reset()
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {
