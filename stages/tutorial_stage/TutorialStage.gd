@@ -19,6 +19,7 @@ func _ready():
 #	GlobalSignal.dispatch('defeat', {})
 	Budget.set_money(5000)
 	Rabbits.reset()
+	GlobalSignal.dispatch('rabbit_hole_activate')
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {

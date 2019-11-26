@@ -2,6 +2,8 @@ extends Control
 
 class_name StatBarDisplay
 
+export(Color) var font_color = Color(1, 1, 1, 1)
+
 onready var label = $Spacing/Label
 onready var label_color = label.get('custom_colors/font_color')
 onready var label_tween = label.get_node('Tween')
@@ -11,7 +13,8 @@ var flash_time = 0.2
 var flash_delay = 0.2
 
 func _ready():
-	label_tween.connect('tween_all_completed', self, '_on_Flash_completed')	
+	label_tween.connect('tween_all_completed', self, '_on_Flash_completed')
+	label.set('custom_colors/font_color', font_color)
 
 func set_value(value):
 	label.text = String(value)

@@ -246,7 +246,7 @@ func jump_bump(): # Add a slight bump, used for phone movement.
 
 func start_hop_timer():
 #	allowed_to_hop = false
-	hop_timer.start(0.75)
+	hop_timer.start(0.49)
 
 func _on_hop_timer_stop():
 	allowed_to_hop = true

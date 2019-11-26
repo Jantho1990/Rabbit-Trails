@@ -66,7 +66,7 @@ trigger_name = "OpeningDialogue"
 
 [node name="RabbitHole" parent="." instance=ExtResource( 10 )]
 position = Vector2( 111.037, 413.998 )
-spawn_at_start = 1
+active = false
 target_container_id = "Rabbit"
 
 [node name="RabbitCatch" parent="." instance=ExtResource( 11 )]

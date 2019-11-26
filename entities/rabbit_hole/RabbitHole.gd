@@ -15,4 +15,4 @@ func _on_Rabbit_hole_deactivate():
 func _on_Add_entity(data):
 	var entity = data.entity
 	if entity is Rabbit:
-		pass
+		Rabbits.add_rabbit()

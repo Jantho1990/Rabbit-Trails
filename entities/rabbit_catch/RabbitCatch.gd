@@ -24,3 +24,4 @@ func _on_Capture_tween_completed(tween, rabbit):
 	remove_child(tween)
 	tween.queue_free()
 	rabbit.queue_free()
+	Rabbits.capture_rabbit()
