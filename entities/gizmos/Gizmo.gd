@@ -15,6 +15,7 @@ var PriceTag
 
 func _ready():
 	GlobalSignal.listen('unit_placed', self, '_on_Unit_placed')
+	GlobalSignal.listen('unit_cannot_afford', self, '_on_Unit_placed')
 	CollisionArea = get_node_or_null('CollisionArea')
 	Placeable = get_node_or_null('Placeable')
 	PriceTag = get_node_or_null('PriceTag')
@@ -46,3 +47,8 @@ func _on_Unit_placed(data):
 	var unit = data.unit
 	if self == unit and PriceTag:
 		PriceTag.dismiss()
+
+func _on_Unit_cannot_afford(data):
+	var unit = data.unit
+	if self == unit and PriceTag:
+		PriceTag.flash_danger(3)

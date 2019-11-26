@@ -10,4 +10,6 @@ func _ready():
 
 func dismiss():
 	print('GET OUTTA HERE')
+	if tween.is_active():
+		tween.stop_all()
 	tween.start()

@@ -54,9 +54,6 @@ func _on_Deselection(previously_selected_unit):
 	print('This is ', parent.name, ', and it is ', allowed_to_move, ' that I am allowed to move')
 	if previously_selected_unit == parent:
 		print(parent.name, " is the previously selected unit")
-		if not Budget.can_afford(parent.budget_cost):
-			print('cannot afford')
-			return false
 		if allowed_to_move and not allowed_to_place:
 			print("not allowed to place")
 			return false

@@ -37,6 +37,10 @@ func _on_Build_unit(data):
 		print('Building unit ', unit_name)
 		var buildable_unit = buildable_units[unit_name]
 		var unit = buildable_unit.instance()
+		if not Budget.can_afford(unit.budget_cost):
+			print('cannot afford to build ', unit.name)
+			GlobalSignal.dispatch('unit_cannot_afford', { 'unit': unit })
+			return false
 		Selection.select_entity(unit)
 		GlobalSignal.dispatch("add_" + unit_name, {
 			'entity': unit,
