@@ -16,8 +16,7 @@ script = ExtResource( 1 )
 [node name="InterfaceLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="EndStageModal" parent="InterfaceLayer" instance=ExtResource( 4 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="StageManager" parent="." instance=ExtResource( 5 )]
 stages = [ "res://stages/switch_test/SwitchTestStage.tscn", "res://stages/tutorial_stage/TutorialStage.tscn" ]
