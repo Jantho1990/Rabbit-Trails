@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/gizmos/JumpPadGizmo.gd" type="Script" id=1]
 [ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/vt323/VT323_25.tres" type="DynamicFont" id=7]
+[ext_resource path="res://entities/gizmos/PriceTag.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 75, 10 )
@@ -44,3 +46,11 @@ snap_placement = true
 shape = SubResource( 3 )
 
 [node name="Deletable" parent="." instance=ExtResource( 6 )]
+
+[node name="PriceTag" type="Label" parent="."]
+margin_left = 64.0
+margin_top = -32.0
+margin_right = 104.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
+script = ExtResource( 8 )

@@ -62,6 +62,7 @@ func _on_Deselection(previously_selected_unit):
 		if first_placement:
 			Budget.subtract(parent.budget_cost)
 			first_placement = false
+			GlobalSignal.dispatch('unit_placed', { 'unit': parent })
 
 func _on_Snap_placement(location):
 	var collision_shape = placement_area.get_node('CollisionShape2D').shape

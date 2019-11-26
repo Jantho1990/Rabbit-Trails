@@ -37,7 +37,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="BuildPlatformGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
-hint_tooltip = "Build Platform"
+hint_tooltip = "Build Platform ($1000)"
 unit_name = "PlatformGizmo"
 
 [node name="BuildBoingGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
