@@ -12,11 +12,11 @@ func _ready():
 	GlobalSignal.listen('rabbit_died', self, '_on_Rabbits_updated')
 
 func _on_Rabbits_reset():
-	rabbits_alive_display.set_value(0)
-	rabbits_captured_display.set_value(0)
-	rabbits_dead_display.set_value(0)
+	rabbits_alive_display.set_value(String(0).pad_zeros(2))
+	rabbits_captured_display.set_value(String(0).pad_zeros(2))
+	rabbits_dead_display.set_value(String(0).pad_zeros(2))
 
 func _on_Rabbits_updated(data):
-	rabbits_alive_display.set_value(data.alive)
-	rabbits_captured_display.set_value(data.captured)
-	rabbits_dead_display.set_value(data.dead)
+	rabbits_alive_display.set_value(String(data.alive).pad_zeros(2))
+	rabbits_captured_display.set_value(String(data.captured).pad_zeros(2))
+	rabbits_dead_display.set_value(String(data.dead).pad_zeros(2))
