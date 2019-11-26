@@ -4,6 +4,8 @@ var rabbits_alive = 0
 var rabbits_captured = 0
 var rabbits_dead = 0
 
+var all_rabbits_added = false # While false, will not keep track of whether all rabbits are captured or dead.
+
 func add_rabbit():
 	rabbits_alive += 1
 	GlobalSignal.dispatch("rabbit_added", { "alive": rabbits_alive, "captured": rabbits_captured, "dead": rabbits_dead })

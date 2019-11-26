@@ -11,7 +11,7 @@ onready var triggers = $Triggers
 
 func _ready():
 	GlobalSignal.listen('OpeningDialogue_stopped', self, '_on_OpeningDialogue_stopped')
-	GlobalSignal.listen('dialogue_finished', self, '_on_Dialogue_finished')
+#	GlobalSignal.listen('dialogue_finished', self, '_on_Dialogue_finished')
 	triggers.get_trigger('OpeningDialogue').start(1.5)
 #	cinematics.get_mark('LevelStart')
 	cinematics.focus_on_mark('LevelStart')
@@ -20,6 +20,10 @@ func _ready():
 	Budget.set_money(5000)
 	Rabbits.reset()
 	GlobalSignal.dispatch('rabbit_hole_activate')
+
+func _physics_process(delta):
+	if Rabbits.all_rabbits_added and Rabbits.rabbits_alive == 0:
+		GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {

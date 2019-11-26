@@ -16,3 +16,5 @@ func _on_Add_entity(data):
 	var entity = data.entity
 	if entity is Rabbit:
 		Rabbits.add_rabbit()
+		if entity_count == maximum_entities:
+			Rabbits.all_rabbits_added = true
