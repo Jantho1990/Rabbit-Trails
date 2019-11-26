@@ -37,13 +37,13 @@ size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="BuildPlatformGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
-hint_tooltip = "Build Platform ($1000)"
+hint_tooltip = "Build Platform"
 unit_name = "PlatformGizmo"
 
-[node name="BuildBoingGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
+[node name="BuildJumpPadGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 80.0
 margin_right = 150.0
-hint_tooltip = "Build Boing Gizmo"
+hint_tooltip = "Build Jump Pad"
 texture_normal = ExtResource( 3 )
 unit_name = "JumpPadGizmo"
 command_card_key = "A"
@@ -51,7 +51,7 @@ command_card_key = "A"
 [node name="BuildThrustGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 160.0
 margin_right = 230.0
-hint_tooltip = "Build Deterrent Gizmo"
+hint_tooltip = "Build Thrust"
 texture_normal = ExtResource( 4 )
 unit_name = "ThrustGizmo"
 command_card_key = "D"
@@ -65,7 +65,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="BuildGravGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
-hint_tooltip = "Build Grav Gizmo"
+hint_tooltip = "Build Grav"
 texture_normal = ExtResource( 5 )
 unit_name = "GravGizmo"
 command_card_key = "W"
@@ -73,7 +73,7 @@ command_card_key = "W"
 [node name="BuildScarecrowGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
 margin_left = 80.0
 margin_right = 150.0
-hint_tooltip = "Build Deterrent Gizmo"
+hint_tooltip = "Build Scarecrow"
 texture_normal = ExtResource( 6 )
 unit_name = "ScarecrowGizmo"
 command_card_key = "S"
