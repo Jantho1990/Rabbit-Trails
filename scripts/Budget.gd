@@ -20,7 +20,7 @@ func divide(value):
 	money /= value
 	GlobalSignal.dispatch("budget_updated", { "value": value, "money": money })
 
-func set_points(value):
+func set_money(value):
 	money = value
 	GlobalSignal.dispatch("budget_set", { "value": value })
 

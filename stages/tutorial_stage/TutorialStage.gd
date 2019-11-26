@@ -17,6 +17,7 @@ func _ready():
 	cinematics.focus_on_mark('LevelStart')
 #	GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
 #	GlobalSignal.dispatch('defeat', {})
+	Budget.set_money(1500)
 
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {
