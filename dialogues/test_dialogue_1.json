@@ -20,6 +20,7 @@
         "name": "Super Tester",
         "content": "I really hope it works, this is a cool addon to Godot.",
         "animation_in": "on",
+        "next": "enter_adversary",
         "wait_time": 1
     },
     "enter_adversary": {
