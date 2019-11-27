@@ -15,6 +15,7 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
+	position.y += sin(global.run_time / 0.1) * 0.35
 	update()
 
 func _draw():

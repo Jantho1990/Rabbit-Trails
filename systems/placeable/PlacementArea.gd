@@ -59,6 +59,7 @@ func _draw():
 		else:
 			draw_offset = Vector2(0, 0)
 		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2) - draw_offset, ext)
+		GlobalSignal.dispatch('debug_label', { 'text': rec })
 		draw_rect(rec, placement_color, true)
 
 func _on_PlacementArea_area_exited(area):

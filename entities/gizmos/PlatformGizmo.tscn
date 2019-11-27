@@ -1,52 +1,132 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://entities/gizmos/PlatformGizmo.gd" type="Script" id=1]
-[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
-[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
-[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
-[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
-[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/vt323/VT323_25.tres" type="DynamicFont" id=7]
-[ext_resource path="res://entities/gizmos/PriceTag.gd" type="Script" id=8]
+[ext_resource path="res://entities/gizmos/images/platform (top only).png" type="Texture" id=2]
+[ext_resource path="res://entities/gizmos/images/platform (jets only).png" type="Texture" id=3]
+[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/vt323/VT323_25.tres" type="DynamicFont" id=9]
+[ext_resource path="res://entities/gizmos/PriceTag.gd" type="Script" id=10]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( -2, 4.43114e-34, 0.593909, 1 )
+colors = PoolColorArray( 1, 0.901961, 0.580392, 1, 0.984314, 0.807843, 0.380392, 1, 0.980392, 0.658824, 0.0156863, 1, 0, 0, 0, 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.8916 ), 0.0, 0.486013, 0, 0, Vector2( 0.613905, 0.6276 ), 0.0, 0.0, 0, 0, Vector2( 0.987515, 0.0996 ), 1.20714, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 75, 12 )
+extents = Vector2( 48, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 54, 32 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 48, 28 )
 
 [node name="PlatformGizmo" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Art" type="Node2D" parent="."]
+position = Vector2( 0, 10 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Top" type="Sprite" parent="Art"]
+texture = ExtResource( 2 )
+
+[node name="JetExhaustLeft" type="CPUParticles2D" parent="Art"]
+position = Vector2( -48, 12 )
+amount = 70
+emission_shape = 4
+emission_points = PoolVector2Array( -5, 10, 5, 10 )
+emission_normals = PoolVector2Array( -5, 10, 5, 10 )
+emission_colors = PoolColorArray( 0.764706, 0.109804, 0.109804, 1 )
+gravity = Vector2( 0, 20 )
+angle = 45.0
+scale_amount = 18.24
+scale_amount_random = 0.61
+color_ramp = SubResource( 2 )
+hue_variation_random = 0.59
+anim_speed_random = 0.17
+
+[node name="JetExhaustLeft2" type="CPUParticles2D" parent="Art"]
+visible = false
+show_behind_parent = true
+position = Vector2( -46.9986, 29.0233 )
+amount = 50
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+gravity = Vector2( 0, 50 )
+initial_velocity = 10.0
+angle = 45.0
+scale_amount = 18.24
+scale_amount_random = 0.61
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 2 )
+hue_variation_random = 0.59
+anim_speed_random = 0.17
+
+[node name="JetExhaustRight" type="CPUParticles2D" parent="Art"]
+position = Vector2( 48, 12 )
+amount = 70
+emission_shape = 4
+emission_points = PoolVector2Array( -5, 10, 5, 10 )
+emission_normals = PoolVector2Array( -5, 10, 5, 10 )
+emission_colors = PoolColorArray( 0.764706, 0.109804, 0.109804, 1 )
+gravity = Vector2( 0, 20 )
+angle = 45.0
+scale_amount = 18.24
+scale_amount_random = 0.61
+color_ramp = SubResource( 2 )
+hue_variation_random = 0.59
+anim_speed_random = 0.17
+
+[node name="Jets" type="Sprite" parent="Art"]
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="CollisionArea" type="StaticBody2D" parent="."]
+position = Vector2( 0, -6 )
 collision_layer = 8
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 1 )
 one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="SelectionArea" parent="." instance=ExtResource( 2 )]
+[node name="SelectionArea" parent="." instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
-[node name="Draggable" parent="." instance=ExtResource( 3 )]
+[node name="Draggable" parent="." instance=ExtResource( 5 )]
 
-[node name="Placeable" parent="." instance=ExtResource( 4 )]
+[node name="Placeable" parent="." instance=ExtResource( 6 )]
 allowed_to_move = true
 
-[node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
+[node name="PlacementArea" parent="Placeable" instance=ExtResource( 7 )]
+position = Vector2( 0, 6 )
 collision_layer = 4
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
-[node name="Deletable" parent="." instance=ExtResource( 6 )]
+[node name="Deletable" parent="." instance=ExtResource( 8 )]
 
 [node name="PriceTag" type="Label" parent="."]
 margin_left = 64.0
 margin_top = -32.0
 margin_right = 129.0
 margin_bottom = 1.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 9 )
 text = "$1000"
-script = ExtResource( 8 )
+script = ExtResource( 10 )

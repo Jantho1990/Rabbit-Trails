@@ -206,7 +206,6 @@ func look():
 			if collider_parent is ScarecrowGizmo:
 				turn_around()
 		elif result.collider is TileMap and not in_air:
-			print(state.current)
 			turn_around()
 #		print("LOOKING AT ", result)
 		
@@ -274,7 +273,7 @@ func jump_bump(): # Add a slight bump, used for phone movement.
 
 func start_hop_timer():
 #	allowed_to_hop = false
-	hop_timer.start(0.49)
+	hop_timer.start(0.49 + (variance() * 0.05))
 
 func _on_hop_timer_stop():
 	allowed_to_hop = true
