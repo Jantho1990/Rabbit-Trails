@@ -4,6 +4,8 @@ class_name Gizmo
 
 export(int) var budget_cost = 1000 # Used by the Budget system.
 
+var is_gizmo = true # Used by collision system to check if this is a gizmo.
+
 enum COLLISION_LAYERS {
 	PLACED = 4,
 	MOVING = 8
@@ -28,8 +30,8 @@ func _physics_process(delta):
 	if Selection.selected_entity == self and Placeable.allowed_to_move and \
 		not CollisionArea.collision_layer == COLLISION_LAYERS.MOVING:
 			CollisionArea.collision_layer = COLLISION_LAYERS.MOVING
-	if Selection.selected_entity == self:
-		GlobalSignal.dispatch('debug_label', { 'text': CollisionArea.collision_layer })
+#	if Selection.selected_entity == self:
+#		GlobalSignal.dispatch('debug_label', { 'text': CollisionArea.collision_layer })
 
 func _exit_tree():
 	Selection.unregister_listener('select', self, '_on_Selection')

@@ -34,12 +34,12 @@ func _on_Active_camera_changed(data):
 	if active_camera.name != camera.camera_name:
 #		breakpoint
 		locked = true
-		print('CORN')
+#		print('CORN')
 	else:
 		locked = false
 #		position = previous_active_camera.camera.get_camera_screen_center()
 		camera.align()
-		print('PEAS')
+#		print('PEAS')
 #		camera.force_update_scroll()
 	
 #	if active_camera.name == camera.camera_name:
@@ -61,7 +61,7 @@ func _physics_process(delta):
 	else:
 		position = ActiveCameraManager.get_active_camera().camera.get_camera_screen_center()
 	update()
-	GlobalSignal.dispatch('debug_label', { 'text': position })
+#	GlobalSignal.dispatch('debug_label', { 'text': position })
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var motion

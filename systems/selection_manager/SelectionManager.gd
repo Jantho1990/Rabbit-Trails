@@ -79,7 +79,7 @@ func clear_selection():
 
 # Select a entity
 func select_entity(entity = null):
-	if entity is InputEventMouseMotion: # This somehow happened once, and I need to know what triggered it
+	if entity is InputEventMouseMotion or entity is InputEventMouseButton: # This somehow happened once, and I need to know what triggered it
 		breakpoint
 #	breakpoint
 #	if suppress_selection:
