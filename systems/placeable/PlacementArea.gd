@@ -58,7 +58,7 @@ func _draw():
 			draw_offset = position - snap_location + Vector2(0, collision_shape.extents.y / 2)
 		else:
 			draw_offset = Vector2(0, 0)
-		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2) - draw_offset, ext)
+		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x, ext.y) - draw_offset, ext * 2)
 		GlobalSignal.dispatch('debug_label', { 'text': rec })
 		draw_rect(rec, placement_color, true)
 
