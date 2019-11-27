@@ -219,6 +219,8 @@ func look():
 #		state.pop()
 
 func turn_around():
+	if in_air:
+		return
 	direction.x = -direction.x
 	$Sprite.flip_h = !$Sprite.flip_h
 
@@ -277,7 +279,10 @@ func start_hop_timer():
 
 func _on_hop_timer_stop():
 	allowed_to_hop = true
-	state.swap('bound')
+	if in_air:
+		state.swap('idle')
+	else:
+		state.swap('bound')
 
 func freeze():
 	$MovementHandler.freeze()
