@@ -108,7 +108,9 @@ func _on_Rotate_unit_right():
 
 func _on_Delay_timer_stop(body, delay_timer):
 	print('FIRE', body, delay_timer)
+	body.position = global_position
 	body.motion = impulse_force * impulse_direction
+	GlobalSignal.dispatch('debug_label', { 'text': body.motion })
 	remove_child(delay_timer)
 
 func allow_drag():
@@ -120,8 +122,9 @@ func apply_gravity_to_bodies():
 		for body in bodies:
 			if "motion" in body:
 #				print("grav before", body.motion)
-				body_position = global_position
-				body.motion += impulse_force * impulse_direction
+				body.position = global_position
+				body.motion = impulse_force * impulse_direction
+				breakpoint
 #				GlobalSignal.dispatch('debug_label', { 'text': body.motion })
 #				if abs(body.motion.y) > gravity:
 #					body.motion = gravity_vec * gravity
