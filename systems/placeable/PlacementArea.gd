@@ -62,7 +62,7 @@ func _draw():
 	var collision_shape = get_node('CollisionShape2D').shape
 	var placement_color = Color(0, 1, 0, 0.5) if placement_valid else Color(1, 0, 0, 0.5)
 	if collision_shape is CircleShape2D:
-		draw_circle(Vector2(0, 0), 50, placement_color) # +6 = safe_margin
+		draw_circle(Vector2(0, 0), collision_shape.radius, placement_color) # +6 = safe_margin
 	elif collision_shape is RectangleShape2D:
 #		var ext = owner.get_node(NodePath('CollisionArea/CollisionShape2D')).shape.extents
 		var ext = collision_shape.extents

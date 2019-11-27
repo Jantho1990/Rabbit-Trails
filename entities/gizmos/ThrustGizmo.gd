@@ -34,13 +34,22 @@ func _ready():
 
 func _physics_process(delta):
 #	apply_gravity_to_bodies()
-	update()
+#	update()
+	match direction:
+		DIRECTIONS.RIGHT:
+			rotation_degrees = 0
+		DIRECTIONS.LEFT:
+			rotation_degrees = 180
+		DIRECTIONS.DOWN:
+			rotation_degrees = 90
+		DIRECTIONS.UP:
+			rotation_degrees = 270
 
-func _draw():
-	draw_circle(Vector2(0, 0), 20, Color(0, 1, 1))
-	circle_outline(Vector2(0, 0), 50, Color(1, 1, 0.5)) # +6 = safe_margin
-	if Selection.is_entity_selected(self):
-		_draw_direction()
+#func _draw():
+#	draw_circle(Vector2(0, 0), 20, Color(0, 1, 1))
+#	circle_outline(Vector2(0, 0), 50, Color(1, 1, 0.5)) # +6 = safe_margin
+#	if Selection.is_entity_selected(self):
+#		_draw_direction()
 
 func _draw_direction():
 	draw_line(Vector2(0, 0), impulse_direction * 40, Color(1, 0, 0), 2)
@@ -111,6 +120,7 @@ func apply_gravity_to_bodies():
 		for body in bodies:
 			if "motion" in body:
 #				print("grav before", body.motion)
+				body_position = global_position
 				body.motion += impulse_force * impulse_direction
 #				GlobalSignal.dispatch('debug_label', { 'text': body.motion })
 #				if abs(body.motion.y) > gravity:

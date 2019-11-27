@@ -1,28 +1,40 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/gizmos/ThrustGizmo.gd" type="Script" id=1]
-[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=2]
-[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=3]
-[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=4]
-[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=5]
-[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/vt323/VT323_25.tres" type="DynamicFont" id=7]
-[ext_resource path="res://entities/gizmos/PriceTag.gd" type="Script" id=8]
+[ext_resource path="res://entities/gizmos/images/thrust.png" type="Texture" id=2]
+[ext_resource path="res://systems/selection_manager/SelectionArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/draggable/Draggable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/placeable/Placeable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://systems/placeable/PlacementArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://systems/deletable/Deletable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://fonts/vt323/VT323_25.tres" type="DynamicFont" id=8]
+[ext_resource path="res://entities/gizmos/PriceTag.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 50.0
+radius = 90.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 70.0
+radius = 110.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 50.0
+radius = 90.0
 
 [node name="ThrustGizmo" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+budget_cost = null
+direction = null
+impulse_force = null
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Art"]
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -31,29 +43,29 @@ collision_mask = 13
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 1 )
 
-[node name="SelectionArea" parent="." instance=ExtResource( 2 )]
+[node name="SelectionArea" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea"]
 shape = SubResource( 2 )
 
-[node name="Draggable" parent="." instance=ExtResource( 3 )]
+[node name="Draggable" parent="." instance=ExtResource( 4 )]
 
-[node name="Placeable" parent="." instance=ExtResource( 4 )]
+[node name="Placeable" parent="." instance=ExtResource( 5 )]
 allowed_to_place = true
 allowed_to_move = true
 
-[node name="PlacementArea" parent="Placeable" instance=ExtResource( 5 )]
+[node name="PlacementArea" parent="Placeable" instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Placeable/PlacementArea"]
 shape = SubResource( 3 )
 
-[node name="Deletable" parent="." instance=ExtResource( 6 )]
+[node name="Deletable" parent="." instance=ExtResource( 7 )]
 
 [node name="PriceTag" type="Label" parent="."]
 margin_left = 64.0
 margin_top = -64.0
 margin_right = 104.0
 margin_bottom = -31.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 text = "1"
-script = ExtResource( 8 )
+script = ExtResource( 9 )
