@@ -30,3 +30,4 @@ __meta__ = {
 
 [node name="Rabbit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 288.087, 380.053 )
+MAX_SPEED = 600

@@ -8,10 +8,10 @@ class_name Rabbit
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
-const MAX_SPEED = 400
+
 const JUMP_HEIGHT = -550
 const JUMP_FORGIVENESS = 0.08
-const SIGHT_RANGE = 100
+const SIGHT_RANGE = 400
 const JUMP_THRESHOLD_RANGE = (SIGHT_RANGE / 2) + 10
 const ATTACK_RANGE = 40
 const MELEE_RANGE = 50
@@ -26,6 +26,8 @@ export(float) var walk_speed = 100.00
 
 # Jump bump
 export(float) var jump_bump_height = 400.00
+
+export(int) var MAX_SPEED = 400
 
 ###
 # PROPERTIES
@@ -104,6 +106,25 @@ func _physics_process(delta):
 #	GlobalSignal.dispatch('debug_label', { 'text': 'Impulse: ' + String(impulse) })	
 	motion = move_and_slide(motion, UP)
 #	print('bunny', motion)
+#	update() # Only needed when debugging the look range
+
+func _draw():
+	return
+	var target = self
+#	print("player ", player.position)
+	var hit_pos = (SIGHT_RANGE * target.direction) + target.position
+	var result = castRay(target, hit_pos, collision_mask)
+	if result:
+		var cshape = $CollisionShape2D.shape
+#		hit_pos = result.position - (Vector2(cshape.radius, cshape.height) * target.direction)
+#	draw_circle(target.position, detect_radius, vis_color)
+	draw_line(Vector2(0, 0), Vector2(SIGHT_RANGE * target.direction.x, 0), Color(1, 0, 0))
+#	draw_circle((hit_pos), 5, Color(1, 0, 0))
+
+func castRay(player, spell_direction, collision):
+	var space_state = player.get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(player.position, spell_direction, [self, player], collision) # 61 is collision mask for everything except tilemap
+	return result
 
 ###
 # MOVEMENT METHODS
@@ -116,13 +137,13 @@ func move_idle():
 	pass
 
 func move_left():
-	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
+	motion.x = max(motion.x - ACCELERATION, -MAX_SPEED) + variance()
 #	$Sprite.scale.x = 1
 	direction.x = -1
 #	playAnim('run', -1, 1.6)
 
 func move_right():
-	motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
+	motion.x = min(motion.x + ACCELERATION, MAX_SPEED) + variance()
 #	$Sprite.scale.x = -1
 	direction.x = 1
 #	playAnim('run', -1, 1.6)
@@ -131,6 +152,10 @@ func move_up():
 #	motion.y = JUMP_HEIGHT
 #	jump()
 	pass
+
+func variance():
+	var modifier = 1
+	return math.rand(10) * math.randOneFrom([-modifier, modifier])
 
 ###
 # STATE METHODS
@@ -180,7 +205,8 @@ func look():
 			var collider_parent = result.collider.get_parent()
 			if collider_parent is ScarecrowGizmo:
 				turn_around()
-		elif result.collider is TileMap:
+		elif result.collider is TileMap and not in_air:
+			print(state.current)
 			turn_around()
 #		print("LOOKING AT ", result)
 		
@@ -200,8 +226,8 @@ func turn_around():
 # The point at farthest looking range.
 func get_sight_points():
 	return {
-		"ahead": position + (Vector2(SIGHT_RANGE, 0) * direction),
-		"above": position + (Vector2(JUMP_THRESHOLD_RANGE, 0) * direction) + Vector2(0, JUMP_HEIGHT)
+		"ahead": position + (Vector2(SIGHT_RANGE, 0) * direction)
+#		"above": position + (Vector2(JUMP_THRESHOLD_RANGE, 0) * direction) + Vector2(0, JUMP_HEIGHT)
 	}
 
 # Jump
@@ -229,6 +255,8 @@ func move():
 		in_air = false
 		$Sprite/AnimationPlayer.play('hop_land')
 		state.swap('idle')
+	else:
+		in_air = true
 	
 	match int(direction.x):
 		-1:

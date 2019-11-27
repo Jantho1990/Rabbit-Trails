@@ -97,6 +97,7 @@ height = 26.5277
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
+walk_speed = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
