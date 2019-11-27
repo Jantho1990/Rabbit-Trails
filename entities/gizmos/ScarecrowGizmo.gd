@@ -15,11 +15,12 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	update()
+	pass
+#	update()
 
-func _draw():
-	var ext = $CollisionArea/CollisionShape2D.shape.extents
-	var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
-	draw_rect(rec, Color(1, 1, 1))
-	var crossbeam = Rect2(Vector2(0, 0) - Vector2(ext.x * 2, ext.y / 2), Vector2(ext.x * 4, ext.x))
-	draw_rect(crossbeam, Color(1, 1, 1))
+#func _draw():
+#	var ext = $CollisionArea/CollisionShape2D.shape.extents
+#	var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
+#	draw_rect(rec, Color(1, 1, 1))
+#	var crossbeam = Rect2(Vector2(0, 0) - Vector2(ext.x * 2, ext.y / 2), Vector2(ext.x * 4, ext.x))
+#	draw_rect(crossbeam, Color(1, 1, 1))
