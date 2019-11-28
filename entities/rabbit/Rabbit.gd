@@ -7,6 +7,7 @@ class_name Rabbit
 ###
 const UP = Vector2(0, -1)
 const GRAVITY = 20
+const MAX_GRAVITY = 1000
 const ACCELERATION = 50
 
 const JUMP_HEIGHT = -550
@@ -75,9 +76,17 @@ func _ready():
 	hop_timer.one_shot = true
 	add_child(hop_timer)
 
+func apply_gravity():
+	motion.y = min(motion.y + GRAVITY, MAX_GRAVITY)
+	if motion.y == MAX_GRAVITY:
+		# Falling at deadly velocity
+#		breakpoint
+		motion.x = lerp(motion.x, 0, 0.5)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	motion.y += GRAVITY
+	apply_gravity()
+#	motion.y += GRAVITY
 #	if not is_on_floor():
 #		$Sprite/AnimationPlayer.play('hop_takeoff')
 #	else:
@@ -165,8 +174,9 @@ func state_idle():
 	$Sprite/AnimationPlayer.play('idle')
 	if is_on_floor():
 		# Apply friction
+		in_air = false
 		motion.x = lerp(motion.x, 0, 0.8)
-	if not allowed_to_hop and hop_timer.time_left <= 0:
+	if not in_air and not allowed_to_hop and hop_timer.time_left <= 0:
 		start_hop_timer()
 		
 #	if math.randOneIn(100):
@@ -178,16 +188,6 @@ func state_jump():
 
 func state_bound():
 	move()
-#	if not is_on_floor():
-#		$Sprite/AnimationPlayer.play('hop_takeoff')
-#	else:
-#		print('shark')
-#		in_air = false
-#		$Sprite/AnimationPlayer.play('hop_land')
-##		$Sprite/AnimationPlayer.animation_set_next('hop_land', 'idle')
-#		state.swap('idle')
-##		if allowed_to_hop:
-#		start_hop_timer()
 
 ###
 # OTHER METHODS
@@ -208,15 +208,6 @@ func look():
 		elif result.collider is TileMap and not in_air:
 			turn_around()
 #		print("LOOKING AT ", result)
-		
-#		sight_target = result.collider
-#		if result.collider.get_class() == "TileMap" and not is_jumping and is_on_floor():
-#			if (position - result.position).x <= JUMP_THRESHOLD_RANGE and state.current != "jump":
-#				state.push("jump")
-#		elif result.collider.name == "Player" and state.current != "attack":
-#			state.add("bound")
-#	elif state.current == "bound":
-#		state.pop()
 
 func turn_around():
 	if in_air:
