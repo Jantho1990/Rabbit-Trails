@@ -138,7 +138,6 @@ walk_speed = 200.0
 texture = ExtResource( 2 )
 vframes = 5
 hframes = 3
-frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/dead = SubResource( 8 )
