@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://entities/rabbit_hole/RabbitHole.gd" type="Script" id=1]
+[ext_resource path="res://entities/rabbit_hole/hole.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 40 )
+extents = Vector2( 64, 36 )
 
 [node name="RabbitHole" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,16 +16,23 @@ spawn_rate = 1.0
 maximum_increase_rate = 0.0
 maximum_increase_limit = 10
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 28 )
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Art"]
+visible = false
 margin_left = -40.0
 margin_top = -40.0
 margin_right = 40.0
 margin_bottom = 40.0
 color = Color( 0.396078, 0.0156863, 0.0156863, 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+[node name="Sprite" type="Sprite" parent="Art"]
+texture = ExtResource( 2 )

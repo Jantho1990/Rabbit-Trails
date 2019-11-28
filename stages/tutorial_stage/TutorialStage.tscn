@@ -53,7 +53,7 @@ position = Vector2( 126.11, 413.998 )
 mark_name = "LevelStart"
 
 [node name="OpeningDialogue" parent="Cinematics/Marks" instance=ExtResource( 6 )]
-position = Vector2( 3136, 359.734 )
+position = Vector2( 2176, 399.734 )
 mark_name = "OpeningDialogue"
 
 [node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
@@ -67,13 +67,13 @@ script = ExtResource( 8 )
 trigger_name = "OpeningDialogue"
 
 [node name="RabbitHole" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2688, 399.734 )
+position = Vector2( 1792, 384 )
 active = false
 maximum_entities = 1
 maximum_increase_limit = 1
 target_container_id = "Rabbit"
 
 [node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2176, 1512 )
+position = Vector2( 2944, 399.734 )
 
 [node name="RabbitContainer" parent="." instance=ExtResource( 12 )]
