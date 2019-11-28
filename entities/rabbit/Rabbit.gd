@@ -88,6 +88,8 @@ func apply_gravity():
 		motion.x = lerp(motion.x, 0, 0.5)
 		falling_at_death_speed = true
 		state.push('falling')
+	elif falling_at_death_speed:
+		falling_at_death_speed = false
 
 func hit_ground_too_fast():
 	return is_on_floor() and falling_at_death_speed
@@ -128,6 +130,8 @@ func _physics_process(delta):
 	
 #	GlobalSignal.dispatch('debug_label', { 'text': 'Impulse: ' + String(impulse) })	
 	motion = move_and_slide(motion, UP)
+	if hit_ground_too_fast():
+		die()
 #	print('bunny', motion)
 #	update() # Only needed when debugging the look range
 
@@ -205,11 +209,11 @@ func state_bound():
 
 func state_falling():
 	$Sprite/AnimationPlayer.play('fall')
-	if hit_ground_too_fast():
-		dead = true
-		state.push('dead')
-		Rabbits.kill_rabbit()
-	elif is_on_floor():
+#	if hit_ground_too_fast():
+#		dead = true
+#		state.push('dead')
+#		Rabbits.kill_rabbit()
+	if is_on_floor():
 		state.pop()
 		falling_at_death_speed = false
 
@@ -219,6 +223,12 @@ func state_dead():
 ###
 # OTHER METHODS
 ###
+
+# Kill the rabbit
+func die():
+	dead = true
+	state.push('dead')
+	Rabbits.kill_rabbit()
 
 # Look at what's ahead.
 func look():

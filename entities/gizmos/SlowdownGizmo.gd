@@ -23,13 +23,14 @@ func _ready():
 
 func _physics_process(delta):
 	apply_gravity_to_bodies()
-	update()
+#	update()
 
 func _draw():
 	draw_circle(Vector2(0, 0), 10, Color(0, 0, 1))
 	circle_outline(Vector2(0, 0), 50, Color(0, 1, 0)) # +6 = safe_margin
 
 func on_Body_entered(body):
+	body.position = Vector2(global_position.x, body.position.y)
 	bodies.push_back(body)
 
 func on_Body_exited(body):
@@ -46,7 +47,8 @@ func apply_gravity_to_bodies():
 		for body in bodies:
 			if "motion" in body:
 #				print("grav before", body.motion)
-				body.motion += gravity_vec * gravity * linear_damp
+				body.motion = Vector2(0, 10)
+				#body.position = global_position
 #				if abs(body.motion.y) > gravity:
 #					body.motion = gravity_vec * gravity
 #				print("grav after", body.motion)
