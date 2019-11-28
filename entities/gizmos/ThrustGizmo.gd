@@ -79,11 +79,13 @@ func _on_Body_entered(body):
 #		body.motion += impulse_force * impulse_direction
 #		body.add_impulse(impulse_force * impulse_direction)
 		bodies.push_back(body)
-		var delay_timer = Timer.new()
-		delay_timer.one_shot = true
-		delay_timer.connect('timeout', self, '_on_Delay_timer_stop', [body, delay_timer])
-		delay_timer.start(0.075)
-		add_child(delay_timer)
+		body.position = global_position
+		body.motion = impulse_force * impulse_direction
+#		var delay_timer = Timer.new()
+#		delay_timer.one_shot = true
+#		delay_timer.connect('timeout', self, '_on_Delay_timer_stop', [body, delay_timer])
+#		delay_timer.start(0.075)
+#		add_child(delay_timer)
 
 func _on_Body_exited(body):
 	if bodies.has(body):
@@ -124,7 +126,7 @@ func apply_gravity_to_bodies():
 #				print("grav before", body.motion)
 				body.position = global_position
 				body.motion = impulse_force * impulse_direction
-				breakpoint
+#				breakpoint
 #				GlobalSignal.dispatch('debug_label', { 'text': body.motion })
 #				if abs(body.motion.y) > gravity:
 #					body.motion = gravity_vec * gravity

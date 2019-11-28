@@ -24,6 +24,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+impulse_force = 5000.0
 
 [node name="Art" type="Node2D" parent="."]
 
