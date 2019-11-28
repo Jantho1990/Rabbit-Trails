@@ -1,9 +1,44 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/rabbit/Rabbit.gd" type="Script" id=1]
 [ext_resource path="res://entities/rabbit/images/128 beige bunny sprite sheet.png" type="Texture" id=2]
 [ext_resource path="res://handlers/MovementHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/state/StackStateMachine.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=8]
+resource_name = "dead"
+length = 0.08
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 14 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fall"
+length = 0.32
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 10 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "hop"
@@ -101,11 +136,13 @@ walk_speed = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-vframes = 3
+vframes = 5
 hframes = 3
-frame = 6
+frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/dead = SubResource( 8 )
+anims/fall = SubResource( 7 )
 anims/hop = SubResource( 1 )
 anims/hop_land = SubResource( 2 )
 anims/hop_takeoff = SubResource( 3 )
