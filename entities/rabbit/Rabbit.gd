@@ -208,6 +208,7 @@ func state_falling():
 	if hit_ground_too_fast():
 		dead = true
 		state.push('dead')
+		Rabbits.kill_rabbit()
 	elif is_on_floor():
 		state.pop()
 		falling_at_death_speed = false
