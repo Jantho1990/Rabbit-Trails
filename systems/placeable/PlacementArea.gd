@@ -74,6 +74,9 @@ func _draw():
 		var rec = Rect2(Vector2(0, 0) - Vector2(ext.x, ext.y) - draw_offset, ext * 2)
 #		GlobalSignal.dispatch('debug_label', { 'text': rec })
 		draw_rect(rec, placement_color, true)
+	elif collision_shape is ConvexPolygonShape2D:
+		var points = collision_shape.points
+		draw_colored_polygon(points, placement_color)
 
 func _on_PlacementArea_area_exited(area):
 	handle_placement_validation(area, 'exit')

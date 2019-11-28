@@ -46,7 +46,7 @@ margin_right = 150.0
 hint_tooltip = "Build Jump Pad"
 texture_normal = ExtResource( 3 )
 unit_name = "JumpPadGizmo"
-command_card_key = "A"
+command_card_key = "W"
 
 [node name="BuildThrustGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 160.0
@@ -64,11 +64,11 @@ rect_min_size = Vector2( 0, 70 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
-[node name="BuildGravGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
-hint_tooltip = "Build Grav"
+[node name="BuildSlowdownGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
+hint_tooltip = "Build Slowdown"
 texture_normal = ExtResource( 5 )
-unit_name = "GravGizmo"
-command_card_key = "W"
+unit_name = "SlowdownGizmo"
+command_card_key = "A"
 
 [node name="BuildScarecrowGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
 margin_left = 80.0

@@ -110,6 +110,9 @@ func deselect_entity(entity = null):
 		return
 	
 	var selection_area = get_selection_area(entity)
+	if selection_area == null: # This shouldn't happen, but some weird nodes are getting stored as selected entities, so this hopefully gets rid of them.
+		selected_entity = null
+		return
 	selection_area.mark_as_deselected()
 	previously_selected_entity = selected_entity
 	entity_recently_deselected = true

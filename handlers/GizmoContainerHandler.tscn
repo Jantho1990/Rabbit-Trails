@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://containers/PlatformGizmoContainer/PlatformGizmoContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://containers/GravGizmoContainer/GravGizmoContainer.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://containers/JumpPadGizmoContainer/JumpPadGizmoContainer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://containers/ThrustGizmoContainer/ThrustGizmoContainer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://containers/ScarecrowGizmoContainer/ScarecrowGizmoContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://containers/SlowdownGizmoContainer/SlowdownGizmoContainer.gd" type="Script" id=7]
 
 [node name="GizmoContainerHandler" type="Node"]
 
@@ -26,3 +27,7 @@ container_id = "ThrustGizmo"
 
 [node name="ScarecrowGizmoContainer" parent="." instance=ExtResource( 6 )]
 container_id = "ScarecrowGizmo"
+
+[node name="SlowdownGizmoContainer" type="Node" parent="."]
+script = ExtResource( 7 )
+container_id = "SlowdownGizmo"

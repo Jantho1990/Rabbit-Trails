@@ -124,6 +124,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://containers/ScarecrowGizmoContainer/ScarecrowGizmoContainer.gd"
 }, {
+"base": "Gizmo",
+"class": "SlowdownGizmo",
+"language": "GDScript",
+"path": "res://entities/gizmos/SlowdownGizmo.gd"
+}, {
+"base": "Node",
+"class": "SlowdownGizmoContainer",
+"language": "GDScript",
+"path": "res://containers/SlowdownGizmoContainer/SlowdownGizmoContainer.gd"
+}, {
 "base": "Control",
 "class": "StatBarDisplay",
 "language": "GDScript",
@@ -203,6 +213,8 @@ _global_script_class_icons={
 "Rabbit": "",
 "ScarecrowGizmo": "",
 "ScarecrowGizmoContainer": "",
+"SlowdownGizmo": "",
+"SlowdownGizmoContainer": "",
 "StatBarDisplay": "",
 "SwitchTest": "",
 "TestSquare": "",
