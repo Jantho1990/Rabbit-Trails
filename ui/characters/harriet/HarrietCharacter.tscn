@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/characters/simple/SimpleCharacter.gd" type="Script" id=1]
+[ext_resource path="res://ui/characters/harriet/200px Harriet  (ref. open-closed).png" type="Texture" id=2]
+
+[node name="HarrietCharacter" type="Node2D"]
+script = ExtResource( 1 )
+character_name = "Harriet"
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )

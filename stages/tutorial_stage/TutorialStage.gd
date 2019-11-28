@@ -28,7 +28,7 @@ func _physics_process(delta):
 func _on_OpeningDialogue_stopped():
 	GlobalSignal.dispatch('dialogue', {
 		'func_name': 'initiate',
-		'file_id': 'test_dialogue_1',
+		'file_id': 'test_dialogue_2',
 	})
 	cinematics.move_to_mark('OpeningDialogue')
 

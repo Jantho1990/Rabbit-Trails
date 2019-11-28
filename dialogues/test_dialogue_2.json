@@ -1,0 +1,66 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Harold",
+        "background": "Noise",
+        "content": "Hello, friend.",
+        "next": "test1",
+        "transition": true,
+        "transition_time": 3.0
+    },
+    "test1": {
+        "type": "text",
+        "name": "Harold",
+        "content": "You are testing a modified version of Godot Open Dialogue.",
+        "next": "test2",
+        "animation_in": "on"
+    },
+    "test2": {
+        "type": "text",
+        "name": "Harold",
+        "content": "I really hope it works, this is a cool addon to Godot.",
+        "animation_in": "on",
+        "next": "enter_adversary",
+        "wait_time": 1
+    },
+    "enter_adversary": {
+        "type": "text",
+        "name": "Harriet",
+        "transition": true,
+        "transition_time": 0.5,
+        "background": "Noise",
+        "content": "Ah ha ha. |You think this will work, eh?|@@How foolish of you, to presume such a thing!",
+        "next": "hero_confronts_1"
+    },
+    "hero_confronts_1": {
+        "type": "text",
+        "name": "Harold",
+        "transition": true,
+        "background": "Noise",
+        "content": "Harriet. |I should have known you'd appear.||@@But you've made a grave mistake.",
+        "next": "hero_confronts_2"
+    },
+    "hero_confronts_2": {
+        "type": "text",
+        "name": "Harriet",
+        "transition": true,
+        "background": "Noise",
+        "content": "Oh? |.|.|.|How so?",
+        "next": "hero_confronts_3"
+    },
+    "hero_confronts_3": {
+        "type": "text",
+        "name": "Harold",
+        "transition": true,
+        "background": "Noise",
+        "content": "The fact that we are even having [i]this conversation[/i] is proof that this customization of Godot Open Dialogue does, in fact, work!",
+        "next": "adversary_defeated"
+    },
+    "adversary_defeated": {
+        "type": "text",
+        "name": "Harriet",
+        "transition": true,
+        "background": "Noise",
+        "content": "Curses!",
+    }
+}
