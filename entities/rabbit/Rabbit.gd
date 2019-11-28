@@ -53,6 +53,10 @@ var in_air = false
 var allowed_to_hop = true
 var hop_timer = Timer.new()
 
+# Death
+var falling_at_death_speed = false
+var dead = false
+
 ###
 # ONREADY PROPERTIES
 ###
@@ -82,6 +86,11 @@ func apply_gravity():
 		# Falling at deadly velocity
 #		breakpoint
 		motion.x = lerp(motion.x, 0, 0.5)
+		falling_at_death_speed = true
+		state.push('falling')
+
+func hit_ground_too_fast():
+	return is_on_floor() and falling_at_death_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -99,7 +108,8 @@ func _physics_process(delta):
 		is_jumping = false
 		state.pop()
 	
-	look()
+	if not dead:
+		look()
 	
 	match state.current:
 		"idle":
@@ -108,6 +118,10 @@ func _physics_process(delta):
 			state_jump()
 		"bound":
 			state_bound()
+		"falling":
+			state_falling()
+		"dead":
+			state_dead()
 		_:
 			print("No state defined.", state.current)
 			pass
@@ -188,6 +202,18 @@ func state_jump():
 
 func state_bound():
 	move()
+
+func state_falling():
+	$Sprite/AnimationPlayer.play('fall')
+	if hit_ground_too_fast():
+		dead = true
+		state.push('dead')
+	elif is_on_floor():
+		state.pop()
+		falling_at_death_speed = false
+
+func state_dead():
+	$Sprite/AnimationPlayer.play('dead')
 
 ###
 # OTHER METHODS

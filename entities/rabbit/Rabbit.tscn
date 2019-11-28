@@ -156,5 +156,5 @@ shape = SubResource( 1 )
 [node name="MovementHandler" parent="." instance=ExtResource( 3 )]
 
 [node name="State" parent="." instance=ExtResource( 4 )]
-states = [ "idle", "bound", "jump" ]
+states = [ "idle", "bound", "jump", "falling", "dead" ]
 default = "bound"
