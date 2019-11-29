@@ -30,6 +30,7 @@
         "background": "HarrietBackground",
         "transition": true,
         "content": "Relax, Harold, they'll pick it up soon enough.",
+        "wait_time": 1.0,
         "next": "greetings_harold_3"
     },
     "greetings_harold_3": {
