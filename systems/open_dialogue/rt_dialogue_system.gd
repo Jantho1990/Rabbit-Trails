@@ -182,7 +182,7 @@ func set_frame(): # Mostly aligment operations.
 			self.anchor_bottom = 0
 			self.rect_position = Vector2(0, frame_margin_vertical)
 		'bottom':
-			print('bottom')
+#			print('bottom')
 			self.anchor_left = 0.5
 			self.anchor_top = 1
 			self.anchor_right = 0.5
@@ -282,7 +282,7 @@ func update_dialogue(step): # step == whole dialogue block
 			check_newlines(phrase_raw)
 			clean_bbcode(step['content'])
 			number_characters = phrase_raw.length()
-			print('OVER HERE')
+#			print('OVER HERE')
 			check_animation(step)
 			check_names(step)
 			
@@ -293,7 +293,7 @@ func update_dialogue(step): # step == whole dialogue block
 				
 		'divert': # Simple way to create complex dialogue trees
 			not_question()
-			print(step['true'])
+#			print(step['true'])
 			match step['condition']:
 				'boolean':
 					if progress.get(step['dictionary']).has(step['variable']):
@@ -381,7 +381,7 @@ func update_dialogue(step): # step == whole dialogue block
 		animations.play('Continue_Indicator')
 	
 	if wait_time <= 0 and auto_next: # If typewriter effect is disabled and we have automatic continue on
-		print('shotgun')
+#		print('shotgun')
 		handle_continue(step)
 
 
@@ -470,7 +470,7 @@ func next():
 		character_manager.emit_signal('hide_character')
 		avatar_left = ''
 		avatar_right = ''
-		print('CLEAN')
+#		print('CLEAN')
 	else:
 		label.bbcode_text = ''
 		if choices.get_child_count() > 0: # If has choices, remove them.
@@ -658,7 +658,7 @@ func animate_sprite(direction, image, animation):
 			on_animation = true
 		
 		'on':
-			print('HIT THIS')
+#			print('HIT THIS')
 			load_image(sprite, image)
 			tween.interpolate_property(sprite, 'modulate',
 					light_gray_opaque, white_opaque, ease_in_speed,
@@ -681,7 +681,7 @@ func animate_sprite(direction, image, animation):
 
 
 func load_image(sprite, image):
-	print('image: ', '%s/%s' % [characters_folder, image])
+#	print('image: ', '%s/%s' % [characters_folder, image])
 	sprite.texture = load('%s/%s' % [characters_folder, image])
 
 
@@ -789,7 +789,7 @@ func _on_Timer_timeout():
 			continue_indicator.show()
 		timer.stop()
 		if auto_next: # If we have automatic continue on
-			print('shotgun')
+#			print('shotgun')
 			handle_continue(current)
 		return
 
@@ -807,7 +807,7 @@ func update_pause():
 
 
 func handle_continue(step):
-	print('handling continue')
+#	print('handling continue')
 	var wait_time = dialogue_continue_wait_time
 	if step.has('wait_time'):
 		wait_time = step.wait_time
@@ -816,7 +816,7 @@ func handle_continue(step):
 
 
 func _on_Continue_timer_timeout():
-	print('continue timer timeout')
+#	print('continue timer timeout')
 	continue_timer.stop()
 	if next_step != '' and dialogue[next_step].has('transition') and dialogue[next_step].transition:
 		handle_character_transition(dialogue[next_step])
@@ -827,7 +827,7 @@ func _on_Continue_timer_timeout():
 		next()
 
 func handle_character_transition(step):
-	print('handling transition')
+#	print('handling transition')
 	# Clear the text elements.
 	name_left.text = ''
 	clean_bbcode('') # Clear text box.
@@ -840,7 +840,7 @@ func handle_character_transition(step):
 
 
 func _on_Transition_timer_timeout():
-	print('transition timer timeout')
+#	print('transition timer timeout')
 	transition_timer.stop()
 	character_manager.emit_signal('hide_transition')
 	#if typeof(current) != TYPE_STRING or next_step != '': # If it is not a string, then this is not the first step.

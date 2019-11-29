@@ -10,12 +10,12 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _input(event):
+func _unhandled_input(event):
 #	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 #		print("triggered")
 #		emit_signal("selection_area_triggered", parent)
 	
-	if event is InputEventMouseButton and event.pressed and not mouse_over_ui:
+	if event is InputEventMouseButton and event.pressed:# and not mouse_over_ui:
 		if event.button_index == BUTTON_LEFT:
 			if not Selection.has_selection():
 #				emit_signal("selection_area_triggered", parent)

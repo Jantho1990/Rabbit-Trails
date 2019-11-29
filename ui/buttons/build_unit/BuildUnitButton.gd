@@ -21,3 +21,19 @@ func _input(event):
 
 func _on_BuildUnitButton_pressed():
 	GlobalSignal.dispatch('build_unit', { 'unit_name': unit_name })
+
+func deactivate_button():
+	hide()
+	set_process(false)
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+	set_process_input(false)
+	print(name, ' deactivated')
+
+func activate_button():
+	show()
+	set_process(true)
+	set_physics_process(true)
+	set_process_unhandled_input(true)
+	set_process_input(true)
+	print(name, ' activated')
