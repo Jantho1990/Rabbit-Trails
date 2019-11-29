@@ -2,65 +2,49 @@
     "first": {
         "type": "text",
         "name": "Harold",
-        "background": "Noise",
-        "content": "Hello, friend.",
-        "next": "test1",
+        "background": "HaroldBackground",
         "transition": true,
-        "transition_time": 3.0
+        "transition_time": 1.0,
+        "content": "Greetings! |I presume you're the new Rabbit Trail Manager we just hired. I'm Dr. Harold. Let me be the first to welcome you to Rabbit Procural Technologies.",
+        "next": "greetings_harriet_1"
     },
-    "test1": {
-        "type": "text",
-        "name": "Harold",
-        "content": "You are testing a modified version of Godot Open Dialogue.",
-        "next": "test2",
-        "animation_in": "on"
-    },
-    "test2": {
-        "type": "text",
-        "name": "Harold",
-        "content": "I really hope it works, this is a cool addon to Godot.",
-        "animation_in": "on",
-        "next": "enter_adversary",
-        "wait_time": 1
-    },
-    "enter_adversary": {
+    "greetings_harriet_1": {
         "type": "text",
         "name": "Harriet",
+        "background": "HarrietBackground",
         "transition": true,
-        "transition_time": 0.5,
-        "background": "Noise",
-        "content": "Ah ha ha. |You think this will work, eh?|@@How foolish of you, to presume such a thing!",
-        "next": "hero_confronts_1"
+        "content": "The rest of us not-nerds call it R-Tech.|@@Hi, I'm Harriet, ASH Specialist extraordinaire.",
+        "next": "greetings_harold_2"
     },
-    "hero_confronts_1": {
+    "greetings_harold_2": {
         "type": "text",
         "name": "Harold",
+        "background": "HaroldBackground",
         "transition": true,
-        "background": "Noise",
-        "content": "Harriet. |I should have known you'd appear.||@@But you've made a grave mistake.",
-        "next": "hero_confronts_2"
+        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but we sling acronyms like a coporation.",
+        "next": "greetings_harriet_2"
     },
-    "hero_confronts_2": {
+    "greetings_harriet_2": {
         "type": "text",
         "name": "Harriet",
+        "background": "HarrietBackground",
         "transition": true,
-        "background": "Noise",
-        "content": "Oh? |.|.|.|How so?",
-        "next": "hero_confronts_3"
+        "content": "Relax, Harold, they'll pick it up soon enough.",
+        "next": "greetings_harold_3"
     },
-    "hero_confronts_3": {
+    "greetings_harold_3": {
         "type": "text",
         "name": "Harold",
+        "background": "HaroldBackground",
         "transition": true,
-        "background": "Noise",
-        "content": "The fact that we are even having [i]this conversation[/i] is proof that this customization of Godot Open Dialogue does, in fact, work!",
-        "next": "adversary_defeated"
+        "content": "That's [i]Dr.[/i] Harold, excuse me. And you are, technically, Dr. Harriet.",
+        "next": "greetings_harriet_3"
     },
-    "adversary_defeated": {
+    "greetings_harriet_3": {
         "type": "text",
         "name": "Harriet",
+        "background": "HarrietBackground",
         "transition": true,
-        "background": "Noise",
-        "content": "Curses!",
+        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RM would like to move on and actually learn what they're going to do."
     }
 }
