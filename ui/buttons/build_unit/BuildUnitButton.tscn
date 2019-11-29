@@ -7,7 +7,6 @@
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
-mouse_filter = 1
 texture_normal = ExtResource( 1 )
 script = ExtResource( 2 )
 [connection signal="pressed" from="." to="." method="_on_BuildUnitButton_pressed"]

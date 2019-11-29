@@ -34,6 +34,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 250.0
 margin_bottom = 250.0
+mouse_filter = 0
 
 [node name="UnitCommandCard" parent="MarginContainer" instance=ExtResource( 3 )]
 visible = false
@@ -41,3 +42,4 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 250.0
 margin_bottom = 250.0
+mouse_filter = 0
