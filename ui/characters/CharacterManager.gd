@@ -54,7 +54,7 @@ func _ready():
 #	})
 
 func _on_Change_character(data):
-	print('FOUND IT')
+#	print('FOUND IT')
 	var character_name = data.character_name
 	
 	if data.has('background_name'):
@@ -71,7 +71,7 @@ func _on_Show_transition():
 	show_transition()
 
 func _on_Hide_transition():
-	print('HIDE')
+#	print('HIDE')
 	hide_transition()
 
 func get_loaded_characters():

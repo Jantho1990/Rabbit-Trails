@@ -27,7 +27,7 @@ tracks/0/keys = {
 content_margin_left = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.0745098, 0.239216, 0.0980392, 1 )
+bg_color = Color( 0.0588235, 0.223529, 0.388235, 1 )
 corner_radius_top_right = 3
 anti_aliasing = false
 
@@ -69,7 +69,8 @@ color = Color( 0.898039, 0.0941176, 0.0941176, 1 )
 
 [node name="CharacterManager" parent="PortraitBox" instance=ExtResource( 3 )]
 characters = [ "res://ui/characters/simple/TestCharacter.tscn", "res://ui/characters/simple/TestCharacter2.tscn", "res://ui/characters/harold/HaroldCharacter.tscn", "res://ui/characters/harriet/HarrietCharacter.tscn" ]
-backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn", "res://ui/characters/backgrounds/simple/SolidBackground.tscn", "res://ui/characters/backgrounds/simple/StaticBackground.tscn", "res://ui/characters/backgrounds/simple/HaroldBackground.tscn", "res://ui/characters/backgrounds/simple/HarrietBackground.tscn" ]
+backgrounds = [ "res://ui/characters/backgrounds/simple/NoiseBackground.tscn", "res://ui/characters/backgrounds/simple/SolidBackground.tscn", "res://ui/characters/backgrounds/simple/StaticBackground.tscn", "res://ui/characters/backgrounds/simple/HaroldBackground.tscn", "res://ui/characters/backgrounds/simple/HarrietBackground.tscn", "res://ui/characters/backgrounds/simple/LogoBackground.tscn" ]
+default_background = "LogoBackground"
 
 [node name="SpriteLeft2" type="Sprite" parent="PortraitBox"]
 visible = false

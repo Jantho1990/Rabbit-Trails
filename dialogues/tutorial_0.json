@@ -21,7 +21,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
-        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but we sling acronyms like a coporation.",
+        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but we sling acronyms like a corporation.",
         "next": "greetings_harriet_2"
     },
     "greetings_harriet_2": {
@@ -46,6 +46,6 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RM would like to move on and actually learn what they're going to do."
+        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do."
     }
 }
