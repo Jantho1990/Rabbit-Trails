@@ -18,7 +18,7 @@ onready var tween = $FlashTween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hover_color.modulate = Color(1, 1, 1, 0)
+	hover_color.modulate = HIDE_COLOR
 	connect('mouse_entered', self, '_on_Mouse_entered')
 	connect('mouse_exited', self, '_on_Mouse_exited')
 	hover_color.connect('mouse_entered', self, '_on_Mouse_entered')
