@@ -2,6 +2,7 @@ extends TextureButton
 
 export(String) var unit_name
 export(String, 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C') var command_card_key
+export(bool) var allow_auto_activate = true
 
 var hovering = false
 
@@ -28,8 +29,9 @@ func _ready():
 	GlobalSignal.listen('flash_button', self, '_on_Flash_button')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if not visible:
+		stop_hover()
 
 func _input(event):
 	if event is InputEventKey and \
@@ -43,30 +45,41 @@ func _on_Flash_button(data):
 		flash(times)
 
 func _on_Mouse_entered():
+	start_hover()
+
+func _on_Mouse_exited():
+	stop_hover()
+
+func start_hover():
 	if tween.is_active(): # Button is being flashed.
 		return
 	hovering = true
 	hover_color.modulate = SHOW_COLOR
 
-func _on_Mouse_exited():
+func stop_hover():
 	if tween.is_active(): # Button is being flashed.
 		return
 	hovering = false
 	hover_color.modulate = HIDE_COLOR
 
 func _on_Tween_all_completed():
-	pass
+	stop_hover()
 
 func _on_BuildUnitButton_pressed():
 	GlobalSignal.dispatch('build_unit', { 'unit_name': unit_name })
 
 func deactivate_button():
 	hide()
+	stop_hover()
 	set_process(false)
 	set_physics_process(false)
 	set_process_unhandled_input(false)
 	set_process_input(false)
 	print(name, ' deactivated')
+
+func deactivate():
+	if allow_auto_activate:
+		deactivate_button()
 
 func activate_button():
 	show()
@@ -76,12 +89,15 @@ func activate_button():
 	set_process_input(true)
 	print(name, ' activated')
 
+func activate():
+	if allow_auto_activate:
+		activate_button()
+
 func flash(times = 1):
 	if tween.is_active():
 		reset_tween()
 	if hovering:
-		hover_color.modulate = HIDE_COLOR
-		hovering = false
+		stop_hover()
 	for i in range(0, times * 2, 2):
 		tween.interpolate_property(hover_color, 'modulate', HIDE_COLOR, SHOW_COLOR, flash_time, Tween.TRANS_LINEAR, Tween.EASE_IN, flash_delay * i)
 		tween.interpolate_property(hover_color, 'modulate', SHOW_COLOR, HIDE_COLOR, flash_time, Tween.TRANS_LINEAR, Tween.EASE_IN, flash_delay * (i + 1))

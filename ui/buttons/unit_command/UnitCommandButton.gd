@@ -4,6 +4,7 @@ class_name UnitCommandButton
 
 export(String) var command_name
 export(String, '', 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C') var command_card_key
+export(bool) var allow_auto_activate = true
 
 onready var command_card = owner
 
@@ -37,6 +38,10 @@ func deactivate_button():
 	set_process_input(false)
 	print(name, ' deactivated')
 
+func deactivate():
+	if allow_auto_activate:
+		deactivate_button()
+
 func activate_button():
 	show()
 	set_process(true)
@@ -44,3 +49,7 @@ func activate_button():
 	set_process_unhandled_input(true)
 	set_process_input(true)
 	print(name, ' activated')
+
+func activate():
+	if allow_auto_activate:
+		activate_button()

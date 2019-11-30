@@ -18,7 +18,7 @@ func _ready():
 		buttons.push_back(button)
 
 func deactivate_tree():
-	propagate_call('deactivate', [], true)
+	propagate_call('deactivate', [], false)
 
 func deactivate_buttons():
 	for button in buttons:
@@ -38,7 +38,7 @@ func deactivate():
 	print(name, ' deactivated')
 
 func activate_tree():
-	propagate_call('activate', [], true)
+	propagate_call('activate', [], false)
 
 func activate():
 	show()

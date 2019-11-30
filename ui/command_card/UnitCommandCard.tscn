@@ -59,12 +59,14 @@ custom_constants/separation = 10
 texture_normal = ExtResource( 5 )
 command_name = "rotate_unit_left"
 command_card_key = "A"
+allow_auto_activate = false
 
 [node name="RightRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 4 )]
 margin_left = 80.0
 margin_right = 150.0
 command_name = "rotate_unit_right"
 command_card_key = "S"
+allow_auto_activate = false
 
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 160.0
