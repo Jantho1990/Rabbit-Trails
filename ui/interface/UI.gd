@@ -6,4 +6,5 @@ func _unhandled_input(event):
 			if Selection.has_selection():
 				Selection.clear_selection()
 		elif event.button_index == BUTTON_RIGHT:
-			Selection.clear_selection()
+			if Selection.has_selection():
+				GlobalSignal.dispatch('cancel_placement') # Triggers cancel placment logic in Placeable of selected unit.

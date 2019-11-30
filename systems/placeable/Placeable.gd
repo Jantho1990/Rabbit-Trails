@@ -15,6 +15,10 @@ export(bool) var allowed_to_move = false
 # Has entity been placed before
 var first_placement = true
 
+# Placement is being cancelled
+var is_cancelling_placement = false
+var old_position = Vector2(0, 0)
+
 onready var parent = get_parent()
 onready var placement_area = get_node_or_null('PlacementArea')
 
@@ -25,6 +29,7 @@ func _ready():
 	Selection.register_listener('deselect', self, '_on_Deselection')
 	connect('tree_exiting', self, '_on_Exiting_tree')
 	GlobalSignal.listen('move_unit', self, '_on_Move_unit')
+	GlobalSignal.listen('cancel_placement', self, '_on_Cancel_placement')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -43,6 +48,7 @@ func _on_Move_unit():
 	if Selection.selected_entity == parent: # or Selection.previously_selected_entity == parent:
 		print("moving unit")
 		allowed_to_move = true
+		old_position = parent.position
 
 func _on_Selection(selected_unit, previously_selected_unit = null):
 	if allowed_to_move:
@@ -54,17 +60,35 @@ func _on_Deselection(previously_selected_unit):
 	print('This is ', parent.name, ', and it is ', allowed_to_move, ' that I am allowed to move')
 	if previously_selected_unit == parent:
 		print(parent.name, " is the previously selected unit")
-		if allowed_to_move and not allowed_to_place:
-			print("not allowed to place")
-			return false
 		
-		allowed_to_move = false
-		if first_placement:
-			Budget.subtract(parent.budget_cost)
-			first_placement = false
-			GlobalSignal.dispatch('unit_placed', { 'unit': parent })
+		if not is_cancelling_placement:
+			if allowed_to_move and not allowed_to_place:
+				print("not allowed to place")
+				return false
+			
+			allowed_to_move = false
+			
+			if first_placement:
+				Budget.subtract(parent.budget_cost)
+				first_placement = false
+				GlobalSignal.dispatch('unit_placed', { 'unit': parent })
+		else:
+			if allowed_to_move:
+				if first_placement:
+					var signal_name = 'remove_' + previously_selected_unit.name
+					GlobalSignal.dispatch(signal_name, { 'entity': previously_selected_unit })
+				else:
+					allowed_to_move = false
+					parent.position = old_position # Move it back to where it was.
 
 func _on_Snap_placement(location):
 	var collision_shape = placement_area.get_node('CollisionShape2D').shape
 	var offset = Vector2(0, collision_shape.extents.y / 2)
 	parent.position = location - (offset)
+
+func _on_Cancel_placement():
+	cancel_placement()
+
+func cancel_placement():
+	is_cancelling_placement = true
+	Selection.clear_selection()
