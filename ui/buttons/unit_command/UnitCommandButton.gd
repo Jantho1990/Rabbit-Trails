@@ -77,6 +77,7 @@ func _on_UnitCommandButton_pressed():
 
 func deactivate_button():
 	hide()
+	stop_hover()
 	set_process(false)
 	set_physics_process(false)
 	set_process_unhandled_input(false)
