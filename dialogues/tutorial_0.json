@@ -56,7 +56,6 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do.",
-        "next": "test_signal_dispatch"
+        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do."
     }
 }
