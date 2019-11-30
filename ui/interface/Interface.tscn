@@ -29,5 +29,8 @@ margin_left = -512.0
 margin_right = 512.0
 margin_bottom = 50.0
 
-[node name="PausePopup" parent="." instance=ExtResource( 4 )]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PausePopup" parent="PauseLayer" instance=ExtResource( 4 )]
 pause_mode = 2
