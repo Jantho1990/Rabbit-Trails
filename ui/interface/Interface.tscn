@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tests/DebugLabel.gd" type="Script" id=1]
 [ext_resource path="res://ui/interface/UI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/interface/GameMenus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/modals/PausePopup.tscn" type="PackedScene" id=4]
 
 [node name="InterfaceLayer" type="CanvasLayer"]
 
@@ -27,3 +28,6 @@ anchor_bottom = 0.0
 margin_left = -512.0
 margin_right = 512.0
 margin_bottom = 50.0
+
+[node name="PausePopup" parent="." instance=ExtResource( 4 )]
+pause_mode = 2
