@@ -20,4 +20,3 @@ func _on_BackButton_pressed():
 func toggle_fullscreen():
 	OS.window_fullscreen = fullscreen_button.pressed
 	emit_signal('button_action', 'fullscreen')
-#	GlobalSignal.dispatch('fullscreen_triggered')
