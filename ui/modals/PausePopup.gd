@@ -53,6 +53,8 @@ func main_menu():
 	get_tree().paused = false
 	ActiveCameraManager.deactivate_active_camera()
 	ActiveCameraManager.remove_all_cameras()
+	Rabbits.reset()
+	Rabbits.all_rabbits_added = false
 	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
 
 func options_back():

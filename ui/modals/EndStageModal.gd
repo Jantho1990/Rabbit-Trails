@@ -5,8 +5,7 @@ onready var defeat_modal = $DefeatModal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	victory_modal.hide()
-	defeat_modal.hide()
+	hide_modals()
 	GlobalSignal.listen('victory', self, '_on_Victory')
 	GlobalSignal.listen('defeat', self, '_on_Defeat')
 	GlobalSignal.listen('advance_stage', self, '_on_Advance_stage')
