@@ -7,6 +7,7 @@ onready var unit_card = get_node('MarginContainer/UnitCommandCard')
 func _ready():
 	Selection.register_listener('select', self, '_on_Selection')
 	Selection.register_listener('clear', self, '_on_Clear_selection')
+	GlobalSignal.listen('delete_unit', self, '_on_Delete_unit')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -27,3 +28,6 @@ func _on_Clear_selection(__throwaway__):
 func _on_Selection(__throwaway__, __throwaway2__):
 	show_unit_card()
 	print('show unit card')
+
+func _on_Delete_unit():
+	show_build_card()
