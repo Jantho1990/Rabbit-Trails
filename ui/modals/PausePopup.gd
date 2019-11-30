@@ -11,6 +11,7 @@ func _ready():
 	popup_exclusive = true
 	connect('hide', self, '_on_Hide')
 	pause_modal.set_change_menu_func(funcref(self, 'change_menu'))
+	pause_modal.set_resume_game_func(funcref(self, 'resume_game'))
 	options_modal.set_back_func(funcref(self, 'options_back'))
 	active_menu = pause_modal
 
@@ -26,9 +27,7 @@ func _input(event):
 #		popup_exclusive = false
 		get_tree().paused = true
 	elif event.is_action_pressed('ui_cancel'):
-		print('UNPAUSE')
-		get_tree().paused = false
-		emit_signal('hide')
+		resume_game()
 
 func _on_Hide():
 	hide()
@@ -43,6 +42,11 @@ func change_menu(menu_name):
 			modal.show()
 		else:
 			modal.hide()
+
+func resume_game():
+	print('UNPAUSE')
+	get_tree().paused = false
+	emit_signal('hide')
 
 func options_back():
 	change_menu('PauseModal')
