@@ -55,6 +55,8 @@ func main_menu():
 	ActiveCameraManager.remove_all_cameras()
 	Rabbits.reset()
 	Rabbits.all_rabbits_added = false
+	GlobalSignal.clear()
+	Selection.reset()
 	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
 
 func options_back():

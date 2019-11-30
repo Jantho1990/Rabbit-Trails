@@ -36,6 +36,13 @@ func _input(event):
 	if event.pressed:
 		pass
 
+func reset():
+	selected_entity = null
+	previously_selected_entity = null
+	select_listeners = {}
+	deselect_listeners = {}
+	clear_listeners = {}
+
 func register_listener(event_name, node, method_name):
 	var listener = { 'node': node, 'method_name': method_name }
 	match event_name:
