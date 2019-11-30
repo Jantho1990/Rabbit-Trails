@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/menus/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://ui/menus/VolumeSubmenu.tscn" type="PackedScene" id=2]
 
 [node name="OptionsMenu" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 20
 script = ExtResource( 1 )
 
 [node name="Button" type="Button" parent="."]
@@ -14,6 +16,7 @@ margin_bottom = 20.0
 text = "Option 1"
 
 [node name="Fullscreen" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 40.0
 custom_constants/separation = 50
@@ -29,8 +32,12 @@ margin_left = 116.0
 margin_right = 192.0
 margin_bottom = 40.0
 
+[node name="VolumeSubmenu" parent="." instance=ExtResource( 2 )]
+margin_top = 60.0
+margin_bottom = 134.0
+
 [node name="BackButton" type="Button" parent="."]
-margin_top = 44.0
+margin_top = 154.0
 margin_right = 1024.0
-margin_bottom = 64.0
+margin_bottom = 174.0
 text = "Back"
