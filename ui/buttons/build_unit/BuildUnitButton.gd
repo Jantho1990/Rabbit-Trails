@@ -3,8 +3,18 @@ extends TextureButton
 export(String) var unit_name
 export(String, 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C') var command_card_key
 
+var hovering = false
+
+const SHOW_COLOR = Color(1, 1, 1, 1)
+const HIDE_COLOR = Color(1, 1, 1, 0)
+
+var flash_time = 0.2
+var flash_delay = 0.4
+
 onready var command_card = owner
 onready var hover_color = $HoverColor
+onready var tween = $FlashTween
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hover_color.modulate = Color(1, 1, 1, 0)
@@ -12,6 +22,10 @@ func _ready():
 	connect('mouse_exited', self, '_on_Mouse_exited')
 	hover_color.connect('mouse_entered', self, '_on_Mouse_entered')
 	hover_color.connect('mouse_exited', self, '_on_Mouse_exited')
+	
+	tween.connect('tween_all_completed', self, '_on_Tween_all_completed')
+	
+	GlobalSignal.listen('flash_button', self, '_on_Flash_button')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -23,13 +37,24 @@ func _input(event):
 			char(event.scancode) == command_card_key:
 				GlobalSignal.dispatch('build_unit', { 'unit_name': unit_name })
 
+func _on_Flash_button(data):
+	if data.button_name == name:
+		var times = data.flash_times if data.has('flash_times') else 3
+		flash(times)
+
 func _on_Mouse_entered():
-	hover_color.modulate = Color(1, 1, 1, 1)
+	if tween.is_active(): # Button is being flashed.
+		return
+	hovering = true
+	hover_color.modulate = SHOW_COLOR
 
 func _on_Mouse_exited():
-	hover_color.modulate = Color(1, 1, 1, 0)
+	if tween.is_active(): # Button is being flashed.
+		return
+	hovering = false
+	hover_color.modulate = HIDE_COLOR
 
-func flash():
+func _on_Tween_all_completed():
 	pass
 
 func _on_BuildUnitButton_pressed():
@@ -50,3 +75,21 @@ func activate_button():
 	set_process_unhandled_input(true)
 	set_process_input(true)
 	print(name, ' activated')
+
+func flash(times = 1):
+	if tween.is_active():
+		reset_tween()
+	if hovering:
+		hover_color.modulate = HIDE_COLOR
+		hovering = false
+	for i in range(0, times * 2, 2):
+		tween.interpolate_property(hover_color, 'modulate', HIDE_COLOR, SHOW_COLOR, flash_time, Tween.TRANS_LINEAR, Tween.EASE_IN, flash_delay * i)
+		tween.interpolate_property(hover_color, 'modulate', SHOW_COLOR, HIDE_COLOR, flash_time, Tween.TRANS_LINEAR, Tween.EASE_IN, flash_delay * (i + 1))
+	tween.start()
+
+func _on_Flash_completed():
+	reset_tween()
+
+func reset_tween():
+	tween.stop_all()
+	tween.remove_all()

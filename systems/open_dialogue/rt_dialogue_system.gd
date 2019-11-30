@@ -360,6 +360,15 @@ func update_dialogue(step): # step == whole dialogue block
 				'random':
 					randomize()
 					next_step = step['value'][randi() % step['value'].size()]
+				'global_signal_dispatch':
+					var signal_data = {}
+					if step.has('signal_data'):
+						signal_data = step['signal_data']
+					GlobalSignal.dispatch(step['signal_name'], signal_data)
+					if step.has('next'):
+						next_step = step['next']
+					else:
+						next_step = ''
 			
 			if step.has('text'):
 				label.bbcode_text = step['text']
@@ -371,7 +380,7 @@ func update_dialogue(step): # step == whole dialogue block
 				check_names(step)
 			else:
 				label.visible_characters = number_characters
-				next()
+				handle_continue(step)
 	
 	if wait_time > 0: # Check if the typewriter effect is active and then starts the timer.
 		label.visible_characters = 0

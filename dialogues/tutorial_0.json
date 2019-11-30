@@ -1,5 +1,15 @@
 {
     "first": {
+        "type": "action",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildPlatformGizmoButton",
+            "flash_times": 4
+        },
+        "next": "temp"
+    },
+    "temp": {
         "type": "text",
         "name": "Harold",
         "background": "HaroldBackground",
@@ -46,6 +56,7 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do."
+        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do.",
+        "next": "test_signal_dispatch"
     }
 }
