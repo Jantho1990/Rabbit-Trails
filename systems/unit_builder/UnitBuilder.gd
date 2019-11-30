@@ -23,6 +23,7 @@ func _ready():
 		print('path', path)
 		var buildable_unit = load(buildable_units_path + unit_name + '.tscn')
 		buildable_units[unit_name] = buildable_unit
+		GlobalSignal.dispatch('unit_loaded', { 'unit': buildable_unit })
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

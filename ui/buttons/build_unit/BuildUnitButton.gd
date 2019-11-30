@@ -27,6 +27,7 @@ func _ready():
 	tween.connect('tween_all_completed', self, '_on_Tween_all_completed')
 	
 	GlobalSignal.listen('flash_button', self, '_on_Flash_button')
+	GlobalSignal.listen('unit_loaded', self, '_on_Unit_loaded')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,6 +39,14 @@ func _input(event):
 		event.is_action('command_card_key') and \
 			char(event.scancode) == command_card_key:
 				GlobalSignal.dispatch('build_unit', { 'unit_name': unit_name })
+
+func _on_Unit_loaded(data):
+	var unit = data.unit
+	var unit_inst = unit.instance()
+	if unit_inst.name == unit_name:
+		hint_tooltip += ' ($' + String(unit_inst.budget_cost) + ')'
+	
+	unit_inst.queue_free()
 
 func _on_Flash_button(data):
 	if data.button_name == name:
