@@ -85,6 +85,7 @@ margin_right = 230.0
 hint_tooltip = "Build Lift Gizmo"
 unit_name = "LiftGizmo"
 command_card_key = "E"
+allow_auto_activate = false
 
 [node name="InputRow3" type="HBoxContainer" parent="MarginContainer/InputRowContainer"]
 margin_top = 160.0
