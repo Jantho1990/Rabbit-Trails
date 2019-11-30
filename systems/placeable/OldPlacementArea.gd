@@ -93,10 +93,10 @@ func validate_placement_ground(collision):
 #		else:
 #			placement_valid = false
 	if is_on_floor():
-		GlobalSignal.dispatch('debug_label', { 'text': 'on ground' })
+#		GlobalSignal.dispatch('debug_label', { 'text': 'on ground' })
 		placement_valid = true
 	else:
-		GlobalSignal.dispatch('debug_label', { 'text': 'no collision' })
+#		GlobalSignal.dispatch('debug_label', { 'text': 'no collision' })
 		placement_valid = false
 
 func validate_placement_wall(collision):

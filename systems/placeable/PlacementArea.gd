@@ -23,9 +23,12 @@ onready var placeable = get_parent()
 func _ready():
 	connect('body_entered', self, '_on_Body_entered')
 	connect('body_exited', self, '_on_Body_exited')
-	pass
+	match placement_type:
+		placement_types.GROUND, placement_types.WALL:
+			placement_valid = false
 
 func _physics_process(delta):
+#	GlobalSignal.dispatch('debug_label', { 'text': 'Allowed to move: ' + String(placeable.allowed_to_move)})
 	position = owner.position
 #	position = parent.position
 	collisions_updated = false
@@ -54,7 +57,7 @@ func _on_Body_exited(body):
 	handle_placement_validation(body, 'exit')
 
 func _draw():
-	GlobalSignal.dispatch('debug_label', { 'text': placement_valid })
+#	GlobalSignal.dispatch('debug_label', { 'text': placement_valid })
 	
 	if not placeable.allowed_to_move:
 		return

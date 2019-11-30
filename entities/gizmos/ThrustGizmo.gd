@@ -112,7 +112,7 @@ func _on_Delay_timer_stop(body, delay_timer):
 	print('FIRE', body, delay_timer)
 	body.position = global_position
 	body.motion = impulse_force * impulse_direction
-	GlobalSignal.dispatch('debug_label', { 'text': body.motion })
+#	GlobalSignal.dispatch('debug_label', { 'text': body.motion })
 	remove_child(delay_timer)
 
 func allow_drag():

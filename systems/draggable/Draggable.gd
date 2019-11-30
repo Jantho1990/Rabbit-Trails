@@ -25,6 +25,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+#	GlobalSignal.dispatch('debug_label', { 'text': parent.name +  ' Allowed to drag: ' + String(allowed_to_drag)})
 	var parent_allowed_to_drag
 	if parent.has_method('allow_drag'):
 		parent_allowed_to_drag = parent.allow_drag()

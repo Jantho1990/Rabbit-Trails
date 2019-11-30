@@ -82,6 +82,7 @@ func _on_Deselection(previously_selected_unit):
 					parent.position = old_position # Move it back to where it was.
 
 func _on_Snap_placement(location):
+	GlobalSignal.dispatch('debug_label', { 'text': 'Snap: ' +  String(location) })
 	var collision_shape = placement_area.get_node('CollisionShape2D').shape
 	var offset = Vector2(0, collision_shape.extents.y / 2)
 	parent.position = location - (offset)
