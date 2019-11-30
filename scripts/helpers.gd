@@ -38,3 +38,8 @@ func get_time_string(value): # get the time cost in a string
 			return String(time) + " month"
 		else:
 			return String(time) + " months"
+
+# Get the node's original name before Godot made it unique.
+func get_node_original_name(node):
+	var node_name_array = node.name.split('@')
+	return node_name_array[1] if node_name_array.size() > 1 else node_name_array[0]

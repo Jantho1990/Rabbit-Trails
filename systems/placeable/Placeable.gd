@@ -75,7 +75,7 @@ func _on_Deselection(previously_selected_unit):
 		else:
 			if allowed_to_move:
 				if first_placement:
-					var signal_name = 'remove_' + global.get_node_original_name(previously_selected_unit)
+					var signal_name = 'remove_' + helpers.get_node_original_name(previously_selected_unit)
 					GlobalSignal.dispatch(signal_name, { 'entity': previously_selected_unit })
 				else:
 					allowed_to_move = false
