@@ -25,6 +25,11 @@ func register(camera_name, camera):
 	if not has_active_camera(): # If this is the first camera, activate it.
 		activate_camera(camera_name)
 
+func remove_all_cameras():
+	for camera in cameras.values():
+		camera.camera.queue_free()
+	cameras = {}
+
 # Allows the camera limits to be resized, e.g. by a tilemap to prevent scrolling outside the map.
 func _on_Resize_camera_bounds(data):
 	print('SMACK', data)

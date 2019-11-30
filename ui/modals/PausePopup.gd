@@ -50,6 +50,9 @@ func resume_game():
 func main_menu():
 	# TODO: code for stage management
 	
+	get_tree().paused = false
+	ActiveCameraManager.deactivate_active_camera()
+	ActiveCameraManager.remove_all_cameras()
 	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
 
 func options_back():
