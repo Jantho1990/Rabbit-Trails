@@ -57,7 +57,7 @@ func _on_Selection(selected_unit, previously_selected_unit = null):
 
 func _on_Deselection(previously_selected_unit):
 	print(previously_selected_unit.name, ' was previously selected')
-	print('This is ', parent.name, ', and it is ', allowed_to_move, ' that I am allowed to move')
+	print('This is ', parent.name, ', and it is ', allowed_to_move, ' that I am allowed to move and ', is_cancelling_placement, ' that I am cancelling my placement.')
 	if previously_selected_unit == parent:
 		print(parent.name, " is the previously selected unit")
 		
@@ -75,7 +75,7 @@ func _on_Deselection(previously_selected_unit):
 		else:
 			if allowed_to_move:
 				if first_placement:
-					var signal_name = 'remove_' + previously_selected_unit.name
+					var signal_name = 'remove_' + global.get_node_original_name(previously_selected_unit)
 					GlobalSignal.dispatch(signal_name, { 'entity': previously_selected_unit })
 				else:
 					allowed_to_move = false
@@ -87,7 +87,8 @@ func _on_Snap_placement(location):
 	parent.position = location - (offset)
 
 func _on_Cancel_placement():
-	cancel_placement()
+	if Selection.is_entity_selected(parent):
+		cancel_placement()
 
 func cancel_placement():
 	is_cancelling_placement = true
