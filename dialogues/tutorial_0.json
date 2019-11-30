@@ -15,7 +15,7 @@
         "background": "HaroldBackground",
         "transition": true,
         "transition_time": 1.0,
-        "content": "Greetings! |I presume you're the new Rabbit Trail Manager we just hired. I'm Dr. Harold. Let me be the first to welcome you to Rabbit Procural Technologies.",
+        "content": "Greetings! |I presume you're the new Rabbit Trail Manager we just hired. I'm Dr. Harold. Let me be the first to welcome you to [b][color=#3399ff]Rabbit Procural Technologies[/color][/b].",
         "next": "greetings_harriet_1"
     },
     "greetings_harriet_1": {
@@ -23,7 +23,7 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "The rest of us not-nerds call it R-Tech.|@@Hi, I'm Harriet, ASH Specialist extraordinaire.",
+        "content": "The rest of us not-nerds call it [b][color=#3399ff]R-Tech[/color][/b].|@@Hi, I'm Harriet, ASH Specialist extraordinaire.",
         "next": "greetings_harold_2"
     },
     "greetings_harold_2": {
