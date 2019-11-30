@@ -6,6 +6,7 @@ signal button_action
 func _ready():
 	$OptionsButton.connect('pressed', self, '_on_OptionsButton_pressed')
 	$ResumeButton.connect('pressed', self, '_on_ResumeButton_pressed')
+	$QuitButton.connect('pressed', self, '_on_QuitButton_pressed')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -16,3 +17,6 @@ func _on_OptionsButton_pressed():
 
 func _on_ResumeButton_pressed():
 	emit_signal('button_action', 'resume_game')
+
+func _on_QuitButton_pressed():
+	emit_signal('button_action', 'main_menu')

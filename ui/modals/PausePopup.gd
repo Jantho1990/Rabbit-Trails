@@ -10,8 +10,7 @@ onready var modals = $MarginContainer/PanelContainer.get_children()
 func _ready():
 	popup_exclusive = true
 	connect('hide', self, '_on_Hide')
-	pause_modal.set_change_menu_func(funcref(self, 'change_menu'))
-	pause_modal.set_resume_game_func(funcref(self, 'resume_game'))
+	connect_pause_modal()
 	options_modal.set_back_func(funcref(self, 'options_back'))
 	active_menu = pause_modal
 
@@ -48,5 +47,15 @@ func resume_game():
 	get_tree().paused = false
 	emit_signal('hide')
 
+func main_menu():
+	# TODO: code for stage management
+	
+	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
+
 func options_back():
 	change_menu('PauseModal')
+
+func connect_pause_modal():
+	pause_modal.set_change_menu_func(funcref(self, 'change_menu'))
+	pause_modal.set_resume_game_func(funcref(self, 'resume_game'))
+	pause_modal.set_main_menu_func(funcref(self, 'main_menu'))
