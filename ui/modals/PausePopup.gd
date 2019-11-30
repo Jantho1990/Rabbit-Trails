@@ -1,4 +1,6 @@
-extends PopupPanel
+extends Control
+
+var refresh_needed = false
 
 var active_menu
 
@@ -8,22 +10,28 @@ onready var modals = $MarginContainer/PanelContainer.get_children()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	popup_exclusive = true
+#	popup_exclusive = true
 	connect('hide', self, '_on_Hide')
+	hide()
 	connect_pause_modal()
 	options_modal.set_back_func(funcref(self, 'options_back'))
+	options_modal.fullscreen_func = funcref(self, '_on_Fullscreen_triggered')
 	active_menu = pause_modal
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if refresh_needed:
+#		breakpoint
+#		popup_centered_ratio(1)
+		refresh_needed = false
 
 func _input(event):
 	if event.is_action_pressed('ui_pause') and not get_tree().paused:
 #		breakpoint
 		print('PAUSE')
-		popup_centered_ratio(1)
+#		popup_centered_ratio(1)
 #		popup_exclusive = false
+		show()
 		get_tree().paused = true
 	elif event.is_action_pressed('ui_cancel'):
 		resume_game()
@@ -41,6 +49,10 @@ func change_menu(menu_name):
 			modal.show()
 		else:
 			modal.hide()
+
+func _on_Fullscreen_triggered():
+#	popup_centered_ratio(1) # Resize the popup screen
+	refresh_needed = true
 
 func resume_game():
 	print('UNPAUSE')
