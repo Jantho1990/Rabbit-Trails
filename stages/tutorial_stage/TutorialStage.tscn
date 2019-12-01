@@ -74,6 +74,6 @@ maximum_increase_limit = 1
 target_container_id = "Rabbit"
 
 [node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2944, 399.734 )
+position = Vector2( 1792, 1512 )
 
 [node name="RabbitContainer" parent="." instance=ExtResource( 12 )]

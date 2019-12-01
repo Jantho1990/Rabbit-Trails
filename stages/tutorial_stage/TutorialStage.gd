@@ -30,7 +30,7 @@ func _on_OpeningDialogue_stopped():
 		'func_name': 'initiate',
 		'file_id': 'tutorial_0',
 	})
-#	cinematics.move_to_mark('OpeningDialogue')
+	cinematics.move_to_mark('OpeningDialogue')
 
 func _on_Dialogue_finished(data):
 	var dialogue = data.dialogue
