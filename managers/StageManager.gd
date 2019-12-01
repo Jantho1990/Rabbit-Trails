@@ -69,7 +69,7 @@ func load_stage(stage):
 	Score.reset_current_score()
 	Rabbits.reset()
 	Rabbits.all_rabbits_added = false
-	Selection.reset()
+	Selection.clear_selection()
 	start_stage_time()
 
 func unload_current_stage():
