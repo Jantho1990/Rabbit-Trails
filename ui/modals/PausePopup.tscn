@@ -4,7 +4,7 @@
 [ext_resource path="res://ui/modals/PauseModal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/modals/OptionsModal.tscn" type="PackedScene" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.254902, 0.286275, 0.345098, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -37,17 +37,17 @@ margin_right = 512.0
 margin_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-margin_left = 369.0
-margin_top = 197.0
-margin_right = 655.0
-margin_bottom = 403.0
-custom_styles/panel = SubResource( 2 )
+margin_left = 352.0
+margin_top = 148.0
+margin_right = 672.0
+margin_bottom = 451.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="PauseModal" parent="MarginContainer/PanelContainer" instance=ExtResource( 2 )]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 283.0
-margin_bottom = 203.0
+margin_right = 317.0
+margin_bottom = 300.0
 
 [node name="OptionsModal" parent="MarginContainer/PanelContainer" instance=ExtResource( 3 )]
 visible = false

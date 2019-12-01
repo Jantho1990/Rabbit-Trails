@@ -13,14 +13,14 @@ func _ready():
 	eei_stat_title.text = stat_title
 	set_content(stat_content)
 
-func _set(property, value):
+func set(property, value):
 	match property:
 		'stat_title':
 			eei_stat_title.text = value
 		'stat_content':
 			set_content(value)
 	
-	self.set(property, value)
+	self._set(property, value)
 
 func set_content(value):
 	eei_stat_content.text = value
