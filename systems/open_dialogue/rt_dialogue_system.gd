@@ -228,6 +228,7 @@ func set_frame(): # Mostly aligment operations.
 
 
 func initiate(file_id, block = 'first'): # Load the whole dialogue into a variable
+	print('Loading dialogue: ', file_id)
 	id = file_id
 	var file = File.new()
 	file.open('%s/%s.json' % [dialogues_folder, id], file.READ)
@@ -237,6 +238,8 @@ func initiate(file_id, block = 'first'): # Load the whole dialogue into a variab
 	file.close()
 	first_step = block
 	if dialogue[first_step].has('transition') and dialogue[first_step].transition:
+#		if file_id == 'tutorial_explanation':
+#			breakpoint
 		handle_character_transition(dialogue[first_step])
 	else:
 		first(first_step) # Call the first dialogue block
@@ -473,7 +476,7 @@ func next():
 		else:
 			sprite_left.modulate = white_transparent
 			sprite_right.modulate = white_transparent
-		GlobalSignal.dispatch('dialogue_finished', { 'dialogue': dialogue })
+		var old_dialogue = dialogue # This will be dispatched in the dialogue_finished signal emission.
 		dialogue = null
 		name_left.text = ''
 #		name_left.hide()
@@ -483,6 +486,7 @@ func next():
 		character_manager.emit_signal('hide_character')
 		avatar_left = ''
 		avatar_right = ''
+		GlobalSignal.dispatch('dialogue_finished', { 'dialogue': old_dialogue })
 #		print('CLEAN')
 	else:
 		label.bbcode_text = ''
