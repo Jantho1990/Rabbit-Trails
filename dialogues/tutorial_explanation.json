@@ -1,0 +1,44 @@
+{
+    "first": {
+        "type": "action",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "transition_time": 1.0,
+        "text": "First, observe the giant hole in the ground the camera just focused on. That's the Rabbit Hole. |It leads directly to where the rabbits are nesting.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "tutorial_cinematic_mark",
+        "signal_data": {
+            "mark_name": "RabbitHole"
+        },
+        "next": "explanation_harold_2"
+    },
+    "explanation_harold_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "As the surveyor, my job is to monitor the state of the rabbits, and let you know when they're about to come out of their hole.",
+        "next": "explanation_harold_3"
+    },
+    "explanation_harold_3": {
+        "type": "action",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "text": "I can also point out potential hazard areas in the environment, such as this steep precipice.@@|If a rabbit falls too far and hits the ground|.|.|.well, let's just say that would be bad for the rabbit.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "tutorial_cinematic_mark",
+        "signal_data": {
+            "mark_name": "SteepDrop"
+        },
+        "next": "explanation_harriet_1"
+    },
+    "explanation_harriet_1": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "And R-Tech's bottom line."
+    }
+}

@@ -61,8 +61,17 @@ mark_name = "LevelStart"
 position = Vector2( 2176, 399.734 )
 mark_name = "OpeningDialogue"
 
-[node name="EEC" parent="Cinematics/Marks" instance=ExtResource( 6 )]
+[node name="ECC" parent="Cinematics/Marks" instance=ExtResource( 6 )]
 position = Vector2( 1932.41, 1419.66 )
+mark_name = "ECC"
+
+[node name="RabbitHole" parent="Cinematics/Marks" instance=ExtResource( 6 )]
+position = Vector2( 1798.02, 318.506 )
+mark_name = "RabbitHole"
+
+[node name="SteepDrop" parent="Cinematics/Marks" instance=ExtResource( 6 )]
+position = Vector2( 3399.97, 396.934 )
+mark_name = "SteepDrop"
 
 [node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
 camera_name = "CinematicCamera"

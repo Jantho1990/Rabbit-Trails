@@ -55,7 +55,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
-        "content": "Uh, um, yes, of course. Sorry about that. Without further ado, let's begin the training.",
+        "content": "Uh|, um|, yes, of course. Sorry about that.|@@Without further ado, let's begin the training.",
         "wait_time": 1.0,
         "next": "set_tutorial_intro_complete"
     },
@@ -65,7 +65,8 @@
         "dictionary": "variables",
         "value": [
             [ "tutorial_intro_complete", true ]
-        ]
+        ],
+        "wait_time": 0.001
     },
     "flash_platform": {
         "type": "action",
