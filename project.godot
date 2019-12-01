@@ -252,7 +252,7 @@ Score="*res://scripts/Score.gd"
 
 [display]
 
-mouse_cursor/custom_image="res://mouse/test_cursor_sm.png"
+mouse_cursor/custom_image="res://mouse/mouse-rotated.png"
 
 [input]
 
