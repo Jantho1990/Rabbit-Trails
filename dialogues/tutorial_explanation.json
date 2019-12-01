@@ -17,7 +17,6 @@
         "type": "text",
         "name": "Harold",
         "background": "HaroldBackground",
-        "transition": true,
         "content": "As the surveyor, my job is to monitor the state of the rabbits, and let you know when they're about to come out of their hole.",
         "next": "explanation_harold_3"
     },
@@ -25,7 +24,6 @@
         "type": "action",
         "name": "Harold",
         "background": "HaroldBackground",
-        "transition": true,
         "text": "I can also point out potential hazard areas in the environment, such as this steep precipice.|@@If a rabbit falls too far and hits the ground...well, let's just say that would be bad for the rabbit.",
         "operation": "global_signal_dispatch",
         "signal_name": "tutorial_cinematic_mark",
