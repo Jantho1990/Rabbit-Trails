@@ -347,6 +347,7 @@ func update_dialogue(step): # step == whole dialogue block
 		'question': # Moved to question() function to make the code more readable.
 			label.bbcode_text = step['text']
 			question(step['text'], step['options'], step['next'])
+			check_pauses(label.get_text())
 			check_newlines(phrase_raw)
 			clean_bbcode(step['text'])
 			check_animation(step)
