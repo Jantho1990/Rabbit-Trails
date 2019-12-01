@@ -36,9 +36,9 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
-margin_left = 126.0
+margin_left = 54.0
 margin_top = 172.0
-margin_right = 898.0
+margin_right = 970.0
 margin_bottom = 428.0
 
 [node name="LogoContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
@@ -50,4 +50,14 @@ margin_right = 512.0
 margin_bottom = 256.0
 texture = ExtResource( 3 )
 
-[node name="MainMenuPopup" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource( 4 )]
+[node name="MainMenuContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 516.0
+margin_right = 916.0
+margin_bottom = 256.0
+
+[node name="MainMenuPopup" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/MainMenuContainer" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 70.0
+margin_right = 400.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 400, 100 )
