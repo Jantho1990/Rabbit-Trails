@@ -7,6 +7,7 @@ extends VBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$NewGameButton.connect('pressed', self, '_on_NewGameButton_pressed')
+	$ExitButton.connect('pressed', self, '_on_ExitButton_pressed')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -16,3 +17,6 @@ func _on_NewGameButton_pressed():
 #	breakpoint
 	UserData.set('current_stage_name', 'TutorialStage')
 	get_tree().change_scene('res://screens/GameScreen.tscn')
+
+func _on_ExitButton_pressed():
+	get_tree().quit()
