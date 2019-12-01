@@ -48,7 +48,7 @@ texture_normal = ExtResource( 3 )
 unit_name = "JumpPadGizmo"
 command_card_key = "W"
 
-[node name="BuildThrustGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
+[node name="BuildThrustGizmoButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 160.0
 margin_right = 230.0
 hint_tooltip = "Build Thrust"
@@ -78,7 +78,7 @@ texture_normal = ExtResource( 6 )
 unit_name = "ScarecrowGizmo"
 command_card_key = "S"
 
-[node name="BuildLiftGizmoButton2" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
+[node name="BuildLiftGizmoButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 2 )]
 visible = false
 margin_left = 160.0
 margin_right = 230.0

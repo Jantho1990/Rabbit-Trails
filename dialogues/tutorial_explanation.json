@@ -251,7 +251,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "content": "However, if you cancel a placement by hitting the cancel button, or by right-clicking, the gizmo will not be placed, and no budget funding will be spent.",
-        "next": "explanation_controls_harriet_3"
+        "next": "explanation_controls_harold_movement_1"
     },
     "explanation_controls_harold_movement_1": {
         "type": "text",
