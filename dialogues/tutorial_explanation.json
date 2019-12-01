@@ -11,7 +11,7 @@
         "signal_data": {
             "mark_name": "RabbitHole"
         },
-        "next": "explanation_harold_2"
+        "next": "explanation_controls_harriet_1"
     },
     "explanation_harold_2": {
         "type": "text",
@@ -135,6 +135,143 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "Ai yai yai, yadda yadda yadda. Let's move on to the fun stuff: the Command Card."
+        "content": "Ai yai yai, yadda yadda yadda. Let's move on to the fun stuff: the Command Card.",
+        "next": "harold_interjection_1"
+    },
+    "harold_interjection_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Hey, I was about to do that",
+        "wait_time": 0.01,
+        "next": "explanation_controls_harriet_2"
+    },
+    "explanation_controls_harriet_2": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "The Command Card, on the right side of the console, is where you requisition Gizmos",
+        "wait_time": 0.25,
+        "next": "harold_interjection_2"
+    },
+    "harold_interjection_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "She means Rabbit Guidance Devices",
+        "wait_time": 0.01,
+        "next": "explanation_controls_harriet_3"
+    },
+    "explanation_controls_harriet_3": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "and issue commands to Gizmos that have already been placed on the mission field.",
+        "next": "explanation_controls_harriet_buttom_1"
+    },
+    "explanation_controls_harriet_buttom_1": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "The first gizmo is the Platform. As its name suggests, rabbits can jump on top of it to cross chasms.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildPlatformGizmoButton",
+            "flash_times": 4
+        },
+        "next": "explanation_controls_harriet_buttom_2"
+    },
+    "explanation_controls_harriet_buttom_2": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "The second gizmo is the Jump Pad. Rabbits can hop on this and get a large vertical boost upwards.| While the Platform can be placed anywhere in the air, the Jump Pad can only be placed on the ground.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildJumpPadGizmoButton",
+            "flash_times": 4
+        },
+        "next": "explanation_controls_harriet_buttom_3"
+    },
+    "explanation_controls_harriet_buttom_3": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "The third gizmo is the Thrust. This gizmo shunts a rabbit in the direction indicated by the red arrow. You can change the rotation to send a rabbit in whatever direction is needed to accomplish your goal.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildThrustGizmoButton",
+            "flash_times": 4
+        },
+        "next": "explanation_controls_harriet_buttom_4"
+    },
+    "explanation_controls_harriet_buttom_4": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "The fourth gizmo is the Slowdown. When you encounter those steep precipices Harold mentioned eariler, you can use these gizmos to slow a rabbit's fall. Gravity will take over again once they leave the gizmo's area of effect, so choose your placements wisely.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildSlowdownGizmoButton",
+            "flash_times": 4
+        },
+        "next": "explanation_controls_harriet_buttom_5"
+    },
+    "explanation_controls_harriet_buttom_5": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "Finally, we have the Scarecrow. When a rabbit sees a Scarecrow, they'll immediately turn around and move the opposite direction. This is useful in cases where a rabbit is heading somewhere you don't want it to go.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildScarecrowGizmoButton",
+            "flash_times": 4
+        },
+        "next": "explanation_controls_harold_budget_1"
+    },
+    "explanation_controls_harold_budget_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Now, you can't place these, uh, 'gizmos' for free. Each has a budget cost, which you can review by hovering over each gizmo's respective build button. When you place a gizmo, that budget cost will be subtracted from the budget funds I mentioned earlier.",
+        "next": "explanation_controls_harold_budget_2"
+    },
+    "explanation_controls_harold_budget_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "However, if you cancel a placement by hitting the cancel button, or by right-clicking, the gizmo will not be placed, and no budget funding will be spent.",
+        "next": "explanation_controls_harriet_3"
+    },
+    "explanation_controls_harold_movement_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "To move a placed unit, simply click on it to select it, then use the Unit Command Card to select what action you want to take. 'Move' lets you reposition the gizmo, at no cost, 'Cancel' lets you cancel a movement in progress, and 'Delete' scraps the gizmo, refunding half of its cost.",
+        "next": "explanation_controls_harold_movement_2"
+    },
+    "explanation_controls_harold_movement_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "Note that right-clicking while moving a gizmo will also cancel the movement, and return the gizmo to the place you originally placed it.",
+        "next": "explanation_ending_harriet_1"
+    },
+    "explanation_ending_harriet_1": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "Whew, that was a lot of info. To pass the intro exam, simply bring the test bunny safely to the ECC. Good luck!"
     }
 }

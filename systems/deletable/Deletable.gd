@@ -19,4 +19,5 @@ func _ready():
 func on_Delete_unit():
 	if Selection.selected_entity == parent: # or Selection.previously_selected_entity == parent:
 		Selection.clear_selection()
+		Budget.add(parent.budget_cost / 2) # Refund part of the budget_cost
 		parent.queue_free()
