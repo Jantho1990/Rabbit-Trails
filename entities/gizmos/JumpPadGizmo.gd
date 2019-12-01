@@ -16,9 +16,10 @@ func _ready():
 
 func _physics_process(delta):
 	apply_impulse_to_bodies()
-	update()
+#	update()
 
 func _draw():
+	return
 	var ext = $CollisionArea/CollisionShape2D.shape.extents
 	var rec = Rect2(Vector2(0, 0) - Vector2(ext.x / 2, ext.y / 2), ext)
 	draw_rect(rec, Color(0.5, 0.5, 1))
