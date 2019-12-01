@@ -19,6 +19,9 @@ func _ready():
 #	GlobalSignal.listen('resize_camera_bounds', self, '_on_Resize_camera_bounds')
 	GlobalSignal.listen('active_camera_changed', self, '_on_Active_camera_changed')
 
+func _exit_tree():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 # Allows the camera limits to be resized, e.g. by a tilemap to prevent scrolling outside the map.
 func _on_Resize_camera_bounds(data):
 	var bounds = data.bounds
@@ -56,46 +59,20 @@ func _on_Timeout():
 	locked = false
 
 func _physics_process(delta):
+	if not get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		return
 	if not locked:
 		position = get_global_mouse_position()
 	else:
 		position = ActiveCameraManager.get_active_camera().camera.get_camera_screen_center()
-	update()
+#	update()
 #	GlobalSignal.dispatch('debug_label', { 'text': position })
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-var motion
-func _input(event):
-#	pass
-#	GlobalSignal.dispatch('debug_label', { 'text': get_global_mouse_position() })
-#	if is_nan(get_global_mouse_position().x):
-#		breakpoint
-#	if event is InputEventMouseMotion:
-##		position = event.global_position
-#		if mouse_captured:
-#			pass
-##			position += (event.relative * event.speed * 2)
-##			var ms = get_viewport().get_mouse_position()
-##			breakpoint
-##		motion = Input.get_last_mouse_speed()
-##		position += motion.normalized() * 45
-	
-#	if event is InputEventMouseButton:
-##		breakpoint
-#		pass
-	
-	if event is InputEventKey:
-		if event.is_action_pressed('ui_cancel'):
-			if mouse_captured:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				mouse_captured = false
-			elif not mouse_captured:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-				mouse_captured = true
-#		breakpoint
-#	clamp_camera()
-
 func _draw():
+	return
 	draw_circle(Vector2(0, 0), 3, Color(1, 0, 0))
 
 #func clamp_camera():
