@@ -18,7 +18,8 @@ func _ready():
 func _on_NewGameButton_pressed():
 #	breakpoint
 	UserData.set('has_current_game', true)
-	UserData.set('current_stage_name', 'TutorialStage')
+#	UserData.set('current_stage_name', 'TutorialStage')
+	UserData.set('current_stage_name', 'Grass1Stage')
 	get_tree().change_scene('res://screens/GameScreen.tscn')
 
 func _on_OptionsButton_pressed():

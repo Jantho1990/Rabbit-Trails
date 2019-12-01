@@ -1,0 +1,41 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "transition_time": 1.0,
+        "content": "That's the last of the rabbits, Trailmaster.",
+        "next": "grass_1_end_harriet_2"
+    },
+    "grass_1_end_harriet_2": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "content": "Did you get the news, though? Apparently there's some operational difficulties back at base, and there's not going to be any work for us for awhile.",
+        "next": "grass_1_end_harold_1"
+    },
+    "grass_1_end_harold_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "What? But this work is so profitable, how could there not be work for us?",
+        "next": "grass_1_end_harriet_3"
+    },
+    "grass_1_end_harriet_3": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "Seems like they just ran out of time to line up more work. Maybe things will be resolved at some point in the near future.",
+        "next": "grass_1_end_harold_2"
+    },
+    "grass_1_end_harold_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Hopefully. I do enjoy being able to collect a paycheck..."
+    }
+}

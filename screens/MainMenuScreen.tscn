@@ -57,7 +57,7 @@ margin_bottom = 256.0
 
 [node name="MainMenuPopup" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/MainMenuContainer" instance=ExtResource( 4 )]
 margin_left = 0.0
-margin_top = 58.0
+margin_top = 78.0
 margin_right = 400.0
-margin_bottom = 198.0
+margin_bottom = 178.0
 rect_min_size = Vector2( 400, 100 )

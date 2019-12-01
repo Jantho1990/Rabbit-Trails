@@ -1,0 +1,10 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "transition_time": 1.0,
+        "content": "The rabbits are moving, Trailmaster! Expect them to start emerging from the hole shortly."
+    }
+}

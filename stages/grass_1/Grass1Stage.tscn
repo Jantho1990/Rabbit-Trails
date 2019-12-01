@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://stages/grass_1/Grass1Stage.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/grass/sky_background.tres" type="TileSet" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://systems/cinematics/CinematicMark2D.gd" type="Script" id=6]
 [ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://systems/triggers/TriggerManager.gd" type="Script" id=8]
-[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=9]
-[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=10]
-[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://systems/triggers/TimedTrigger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=11]
+[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=12]
 
 [node name="Grass1Stage" type="Node2D"]
 script = ExtResource( 1 )
+passing_score = 20000
+starting_budget = 15000
 
 [node name="BackgroundLayer" type="ParallaxBackground" parent="."]
 
@@ -37,22 +40,48 @@ script = ExtResource( 5 )
 [node name="Marks" type="Node" parent="Cinematics"]
 
 [node name="LevelStart" type="Position2D" parent="Cinematics/Marks"]
-position = Vector2( 2185.8, 125.228 )
+position = Vector2( 2432.46, 356.71 )
 script = ExtResource( 6 )
 mark_name = "LevelStart"
+
+[node name="RabbitHole" type="Position2D" parent="Cinematics/Marks"]
+position = Vector2( 2371.74, 360.504 )
+script = ExtResource( 6 )
+mark_name = "RabbitHole"
+
+[node name="EEC" type="Position2D" parent="Cinematics/Marks"]
+position = Vector2( 1180.18, 1954.31 )
+script = ExtResource( 6 )
+mark_name = "ECC"
+
+[node name="Route2" type="Position2D" parent="Cinematics/Marks"]
+position = Vector2( 197.329, 1100.49 )
+script = ExtResource( 6 )
+mark_name = "Route2"
+
+[node name="Route1" type="Position2D" parent="Cinematics/Marks"]
+position = Vector2( 2527.33, 1035.98 )
+script = ExtResource( 6 )
+mark_name = "Route1"
 
 [node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
 
 [node name="Triggers" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="RabbitHole" parent="." instance=ExtResource( 9 )]
+[node name="RabbitStart" parent="Triggers" instance=ExtResource( 9 )]
+trigger_name = "RabbitStart"
+
+[node name="RabbitHole" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2420.81, 219.642 )
-spawn_rate = 5.0
+active = false
+spawn_rate = 4.0
 maximum_entities = 15
 maximum_increase_limit = 15
+target_container_id = "Rabbit"
 
-[node name="RabbitCatch" parent="." instance=ExtResource( 10 )]
+[node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1146.42, 2074.51 )
 
-[node name="RabbitContainer" parent="." instance=ExtResource( 11 )]
+[node name="RabbitContainer" parent="." instance=ExtResource( 12 )]
+[connection signal="timeout" from="Triggers/RabbitStart" to="." method="_on_RabbitStart_timeout"]

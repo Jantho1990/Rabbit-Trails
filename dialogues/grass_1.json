@@ -1,0 +1,52 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "transition_time": 1.0,
+        "content": "I've got an eye on the bunnies. It seems they aren't yet aware of our presence. |How are things on your end, Dr. Harriet?",
+        "next": "grass_1_harriet_1"
+    },
+    "grass_1_harriet_1": {
+        "type": "action",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "text": "Doing alright. |Though I have trouble seeing why Ops deemed it necessary to squeeze the ECC way down here, instead of in a more accessible and open spot.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "grass_1_cinematic_mark",
+        "signal_data": {
+            "mark_name": "ECC"
+        },
+        "next": "grass_1_harorld_2"
+    },
+    "grass_1_harorld_2": {
+        "type": "action",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "text": "Just caution, I presume. With them being so highly wanted for research these days, rabbits worldwide seem to have become very alert to danger. If we set up too close, it could spook them early.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "grass_1_cinematic_mark",
+        "signal_data": {
+            "mark_name": "RabbitHole"
+        },
+        "next": "grass_1_harriet_2"
+    },
+    "grass_1_harriet_2": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "Whatever. Anyway, ECC's all fired up and ready for action.",
+        "next": "grass_1_harold_3"
+    },
+    "grass_1_harold_3": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Alright, Trailmaster, best get started. I'll let you know when the rabbits start moving."
+    }
+}
