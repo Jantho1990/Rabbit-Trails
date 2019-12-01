@@ -41,10 +41,10 @@
         "next": "explanation_harriet_2"
     },
     "explanation_harriet_2": {
-        "type": "text",
+        "type": "action",
         "name": "Harriet",
         "background": "HarrietBackground",
-        "text": "Let's take a look at the [b][color=#3399ff]Ethic Containment Chamber[/color][/b], or [b][color=#3399ff]ECC[/color][/b]. This is where we capture the rabbits and secure them for transport to one of our mass care centers. My job is to oversee the containment and transport processes, and ensure none of these valuable commodities comes to harm.",
+        "text": "Let's take a look at the [b][color=#3399ff]Ethical Containment Chamber[/color][/b], or [b][color=#3399ff]ECC[/color][/b]. This is where we capture the rabbits and secure them for transport to one of our mass care centers. My job is to oversee the containment and transport processes, and ensure none of these valuable commodities comes to harm.",
         "operation": "global_signal_dispatch",
         "signal_name": "tutorial_cinematic_mark",
         "signal_data": {
