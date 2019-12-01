@@ -248,6 +248,7 @@ PROGRESS="*res://systems/open_dialogue/progress.gd"
 ActiveCameraManager="*res://systems/active_camera/ActiveCameraManager.gd"
 Budget="*res://scripts/Budget.gd"
 Rabbits="*res://scripts/RabbitTracker.gd"
+Score="*res://scripts/Score.gd"
 
 [display]
 

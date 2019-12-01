@@ -15,3 +15,8 @@ func _ready():
 
 func _on_ContinueButton_pressed():
 	GlobalSignal.dispatch('advance_stage')
+
+# Overriding default
+func show():
+	visible = true
+	$MarginContainer/CenterContainer/VBoxContainer/EmployeeEfficiencyIndexDisplay.set_data()

@@ -23,7 +23,7 @@ func set(property, value):
 	self._set(property, value)
 
 func set_content(value):
-	eei_stat_content.text = value
+	eei_stat_content.text = String(abs(value))
 	match int(sign(float(value))):
 		1:
 			plus_sign.show()
@@ -31,3 +31,6 @@ func set_content(value):
 		-1:
 			plus_sign.hide()
 			minus_sign.show()
+		_:
+			plus_sign.hide()
+			minus_sign.hide()

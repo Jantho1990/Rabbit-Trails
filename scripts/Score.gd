@@ -25,7 +25,19 @@ func calculate_score(rabbits_alive, rabbits_dead, budget_remaining, time_elapsed
 		(rabbits_dead * RABBIT_DEAD_SCORE) + \
 		(budget_remaining * BUDGET_SCORE) + \
 		(time_elapsed * TIME_SCORE)
-	return min(raw_score, 0)
+	return max(raw_score, 0)
+
+func calculate_rabbits_captured_score(rabbits_captured):
+	return rabbits_captured * RABBIT_ALIVE_SCORE
+
+func calculate_rabbits_dead_score(rabbits_dead):
+	return rabbits_dead * RABBIT_DEAD_SCORE
+
+func calculate_budget_remaining_score(budget_remaining):
+	return budget_remaining * BUDGET_SCORE
+
+func calculate_time_elapsed_score(time_elapsed):
+	return time_elapsed * TIME_SCORE
 
 func add_current_score(value):
 	current_score += value

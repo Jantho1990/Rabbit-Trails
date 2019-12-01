@@ -1,20 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://fonts/tomorrow/Tomorrow-BoldItalic.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://ui/eei/EEIStat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ui/eei/EmployeeEfficiencyIndexDisplay.gd" type="Script" id=1]
+[ext_resource path="res://fonts/tomorrow/Tomorrow-BoldItalic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/eei/EEIStat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 28
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [node name="EmployeeEfficiencyIndexDisplay" type="HBoxContainer"]
 anchor_left = 0.5
@@ -26,6 +27,7 @@ margin_top = -300.0
 margin_right = 127.0
 margin_bottom = 300.0
 custom_constants/separation = 36
+script = ExtResource( 1 )
 
 [node name="Title" type="Label" parent="."]
 margin_top = 231.0
@@ -52,26 +54,26 @@ margin_bottom = 400.0
 margin_right = 248.0
 margin_bottom = 160.0
 
-[node name="RabbitsAlive" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 2 )]
+[node name="RabbitsCaptured" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 3 )]
 margin_right = 248.0
 margin_bottom = 37.0
-stat_title = "Rabbits Alive"
+stat_title = "Rabbits Captured"
 
-[node name="RabbitsDead" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 2 )]
+[node name="RabbitsDead" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 3 )]
 margin_top = 41.0
 margin_right = 248.0
 margin_bottom = 78.0
 stat_title = "Rabbits Dead"
 stat_content = "-6000"
 
-[node name="BudgetRemaining" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 2 )]
+[node name="BudgetRemaining" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 3 )]
 margin_top = 82.0
 margin_right = 248.0
 margin_bottom = 119.0
 stat_title = "Budget Remaining"
 stat_content = "200"
 
-[node name="TimeElapsed" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 2 )]
+[node name="TimeElapsed" parent="CenterContainer/VBoxContainer/StatContainer" instance=ExtResource( 3 )]
 margin_top = 123.0
 margin_right = 248.0
 margin_bottom = 160.0
