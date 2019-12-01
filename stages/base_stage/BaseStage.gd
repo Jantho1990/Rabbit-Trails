@@ -2,11 +2,14 @@ extends Node2D
 
 class_name BaseStage
 
+export(int) var passing_score = 10000
+
 ###
 # Parent class for all Stages to extend from.
 ###
 
 onready var tile_map = $TileMap
+onready var StageManager = get_parent()
 
 func _ready():
 	GlobalSignal.dispatch('active_camera_resize_bounds', {

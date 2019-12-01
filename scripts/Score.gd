@@ -21,6 +21,8 @@ func _ready():
 		UserData.set(TOTAL_SCORE_KEY, 0)
 
 func calculate_score(rabbits_alive, rabbits_dead, budget_remaining, time_elapsed):
+	if rabbits_alive == 0:
+		return 0
 	var raw_score = (rabbits_alive * RABBIT_ALIVE_SCORE) + \
 		(rabbits_dead * RABBIT_DEAD_SCORE) + \
 		(budget_remaining * BUDGET_SCORE) + \
