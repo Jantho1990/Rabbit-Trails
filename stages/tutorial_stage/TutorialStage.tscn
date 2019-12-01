@@ -70,8 +70,7 @@ trigger_name = "OpeningDialogue"
 [node name="RabbitHole" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1793.72, 377.322 )
 active = false
-maximum_entities = 1
-maximum_increase_limit = 1
+spawn_rate = 2.0
 target_container_id = "Rabbit"
 hole_type = 1
 
