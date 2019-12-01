@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/modals/MainMenuPopup.gd" type="Script" id=1]
+[ext_resource path="res://ui/modals/MainMenuModal.tscn" type="PackedScene" id=2]
+
+[node name="MainMenuPopup" type="CenterContainer"]
+margin_left = 516.0
+margin_right = 772.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 0 )
+script = ExtResource( 1 )
+
+[node name="MainMenuModal" parent="." instance=ExtResource( 2 )]

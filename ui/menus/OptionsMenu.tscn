@@ -42,7 +42,7 @@ margin_bottom = 134.0
 [node name="BackButton" type="Button" parent="."]
 margin_top = 154.0
 margin_right = 1024.0
-margin_bottom = 174.0
+margin_bottom = 168.0
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 4 )
