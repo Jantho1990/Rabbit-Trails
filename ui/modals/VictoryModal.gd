@@ -19,4 +19,15 @@ func _on_ContinueButton_pressed():
 # Overriding default
 func show():
 	visible = true
+	get_tree().paused = true
 	$MarginContainer/CenterContainer/VBoxContainer/EmployeeEfficiencyIndexDisplay.set_data()
+
+func _on_MenuButton_pressed():
+	get_tree().paused = false
+	ActiveCameraManager.deactivate_active_camera()
+	ActiveCameraManager.remove_all_cameras()
+	Rabbits.reset()
+	Rabbits.all_rabbits_added = false
+	GlobalSignal.clear()
+	Selection.reset()
+	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
