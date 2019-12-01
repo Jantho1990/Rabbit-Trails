@@ -21,7 +21,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
-        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but sometimes we sling acronyms like a corporation.",
+        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but we can sling acronyms like a corporation.",
         "next": "greetings_harriet_2"
     },
     "greetings_harriet_2": {

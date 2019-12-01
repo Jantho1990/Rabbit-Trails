@@ -90,7 +90,7 @@
         "type": "text",
         "name": "Harold",
         "background": "HaroldBackground",
-        "content": "You may have noticed our bionic test rabbit running around on the bottom of the screen.| Now, note the yellow '1' in the Rabbit Tracker. The yellow numbers indicate how many rabbits are out and running about.|@@The green numbers indicate how many rabbits have been captured, and the red numbers indicate how many rabbits are damaged beyond scientific usefulness.",
+        "content": "You may have noticed our bionic test rabbit running around on the bottom of the screen.| Now, note the yellow '1' in the Rabbit Tracker. The yellow numbers indicate how many rabbits are out and running about.",
         "next": "explanation_controls_harold_4a"
     },
     "explanation_controls_harold_4a": {
