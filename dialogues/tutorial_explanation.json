@@ -11,7 +11,7 @@
         "signal_data": {
             "mark_name": "RabbitHole"
         },
-        "next": "explanation_controls_harriet_1"
+        "next": "explanation_harold_2"
     },
     "explanation_harold_2": {
         "type": "text",
@@ -229,7 +229,7 @@
         "type": "action",
         "name": "Harriet",
         "background": "HarrietBackground",
-        "text": "Finally, we have the Scarecrow. When a rabbit sees a Scarecrow, they'll immediately turn around and move the opposite direction. This is useful in cases where a rabbit is heading somewhere you don't want it to go.",
+        "text": "Finally, we have the Scarecrow. When a rabbit sees a Scarecrow, they'll immediately turn around and move the opposite direction. This is useful in cases where a rabbit is heading somewhere you don't want it to go. Like the Jump Pad, the Scarecrow must be placed on the ground.",
         "operation": "global_signal_dispatch",
         "signal_name": "flash_button",
         "signal_data": {
