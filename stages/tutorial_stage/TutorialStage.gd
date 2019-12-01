@@ -10,7 +10,7 @@ onready var cinematics = $Cinematics
 onready var triggers = $Triggers
 
 func _ready():
-	Budget.set_money(5000)
+	Budget.set_money(starting_budget)
 	Rabbits.reset()
 	
 	# Dialogue variable resets

@@ -3,6 +3,7 @@ extends Node2D
 class_name BaseStage
 
 export(int) var passing_score = 10000
+export(int) var starting_budget = 5000
 
 ###
 # Parent class for all Stages to extend from.

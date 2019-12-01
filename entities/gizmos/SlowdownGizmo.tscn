@@ -22,6 +22,7 @@ points = PoolVector2Array( -96, -52, 96, -52, 96, 0, 48, 48, -48, 48, -96, 0 )
 
 [node name="SlowdownGizmo" type="Node2D"]
 script = ExtResource( 1 )
+budget_cost = 1200
 
 [node name="Art" type="Node2D" parent="."]
 
