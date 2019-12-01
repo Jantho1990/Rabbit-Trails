@@ -1,5 +1,83 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
 
-[node name="EmployeeEfficiencyIndexDisplay" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[ext_resource path="res://fonts/tomorrow/Tomorrow-BoldItalic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/eei/EEIStat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 3 )
+
+[node name="EmployeeEfficiencyIndexDisplay" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -186.0
+margin_bottom = 300.0
+custom_constants/separation = 36
+
+[node name="Title" type="Label" parent="."]
+margin_right = 326.0
+margin_bottom = 91.0
+custom_fonts/font = SubResource( 1 )
+text = "Employee Efficiency Index"
+align = 1
+autowrap = true
+
+[node name="StatContainer" type="VBoxContainer" parent="."]
+margin_top = 127.0
+margin_right = 326.0
+margin_bottom = 287.0
+
+[node name="RabbitsAlive" parent="StatContainer" instance=ExtResource( 2 )]
+margin_bottom = 37.0
+stat_title = "Rabbits Alive"
+
+[node name="RabbitsDead" parent="StatContainer" instance=ExtResource( 2 )]
+margin_top = 41.0
+margin_bottom = 78.0
+stat_title = "Rabbits Dead"
+stat_content = "-6000"
+
+[node name="BudgetRemaining" parent="StatContainer" instance=ExtResource( 2 )]
+margin_top = 82.0
+margin_bottom = 119.0
+stat_title = "Budget Remaining"
+stat_content = "200"
+
+[node name="TimeElapsed" parent="StatContainer" instance=ExtResource( 2 )]
+margin_top = 123.0
+margin_bottom = 160.0
+stat_title = "Time Spent"
+stat_content = "1500"
+
+[node name="TotalScore" type="HBoxContainer" parent="."]
+margin_top = 323.0
+margin_right = 326.0
+margin_bottom = 360.0
+
+[node name="Title" type="Label" parent="TotalScore"]
+margin_top = 1.0
+margin_right = 252.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Final Result"
+
+[node name="Content" type="Label" parent="TotalScore"]
+margin_left = 256.0
+margin_right = 326.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 3 )
+text = "40000"
