@@ -24,6 +24,8 @@ func _ready():
 	
 	connect('area_entered', self, '_on_Trigger_entered')
 	connect('area_exited', self, '_on_Trigger_exited')
+	connect('body_entered', self, '_on_Trigger_entered')
+	connect('body_exited', self, '_on_Trigger_exited')
 
 func _on_Trigger_entered(collider):
 	GlobalSignal.dispatch(trigger_entered, { 'collider': collider })

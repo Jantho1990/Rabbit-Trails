@@ -17,9 +17,15 @@ func _ready():
 	cinematics.focus_on_mark('LevelStart')
 #	GlobalSignal.dispatch('victory', { 'next_stage': 'SwitchTestStage' })
 #	GlobalSignal.dispatch('defeat', {})
+	GlobalSignal.listen('RabbitAdvanced_entered', self, '_on_RabbitAdvanced_entered')
 	Budget.set_money(5000)
 	Rabbits.reset()
 	GlobalSignal.dispatch('rabbit_hole_activate')
+	
+	if PROGRESS.variables.has('skip_tutorial'):
+		PROGRESS.variables.skip_tutorial = false
+	if PROGRESS.variables.has('tutorial_intro_complete'):
+		PROGRESS.variables.tutorial_intro_complete = false
 
 func _physics_process(delta):
 	if Rabbits.all_rabbits_added and Rabbits.rabbits_alive == 0:
@@ -35,6 +41,19 @@ func _on_OpeningDialogue_stopped():
 		'file_id': 'tutorial_0',
 	})
 	cinematics.move_to_mark('OpeningDialogue')
+
+func _on_RabbitAdvanced_entered(data):
+#	breakpoint
+	if data.collider is Rabbit:
+		if PROGRESS.variables.has('skip_tutorial') and PROGRESS.variables.skip_tutorial:
+			return # We already triggered this.
+		if not PROGRESS.variables.has('tutorial_intro_complete') or \
+			PROGRESS.variables.tutorial_intro_complete == false:
+				PROGRESS.variables['skip_tutorial'] = true
+				GlobalSignal.dispatch('dialogue', {
+					'func_name': 'initiate',
+					'file_id': 'skip_tutorial'
+				})
 
 func _on_Dialogue_finished(data):
 	var dialogue = data.dialogue

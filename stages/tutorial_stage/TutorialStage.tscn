@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://stages/tutorial_stage/TutorialStage.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/cave/cave_background.tres" type="TileSet" id=2]
@@ -9,9 +9,13 @@
 [ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://systems/triggers/TriggerManager.gd" type="Script" id=8]
 [ext_resource path="res://systems/triggers/TimedTrigger.tscn" type="PackedScene" id=9]
-[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=10]
-[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://systems/triggers/Trigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 100, 200 )
 
 [node name="TutorialStage" type="Node2D"]
 script = ExtResource( 1 )
@@ -61,20 +65,28 @@ mark_name = "OpeningDialogue"
 camera_name = "CinematicCamera"
 
 [node name="Triggers" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 8 )
 
 [node name="OpeningDialogue" parent="Triggers" instance=ExtResource( 9 )]
 trigger_name = "OpeningDialogue"
 
-[node name="RabbitHole" parent="." instance=ExtResource( 10 )]
+[node name="RabbitAdvanced" parent="Triggers" instance=ExtResource( 10 )]
+position = Vector2( 2600.48, 320.676 )
+trigger_name = "RabbitAdvanced"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/RabbitAdvanced"]
+shape = SubResource( 1 )
+
+[node name="RabbitHole" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1793.72, 377.322 )
 active = false
 spawn_rate = 2.0
+maximum_entities = 1
+maximum_increase_limit = 1
 target_container_id = "Rabbit"
 hole_type = 1
 
-[node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
+[node name="RabbitCatch" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1920, 1512 )
 
-[node name="RabbitContainer" parent="." instance=ExtResource( 12 )]
+[node name="RabbitContainer" parent="." instance=ExtResource( 13 )]

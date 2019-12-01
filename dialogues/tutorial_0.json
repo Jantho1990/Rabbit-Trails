@@ -1,21 +1,11 @@
 {
     "first": {
-        "type": "action",
-        "operation": "global_signal_dispatch",
-        "signal_name": "flash_button",
-        "signal_data": {
-            "button_name": "BuildPlatformGizmoButton",
-            "flash_times": 4
-        },
-        "next": "temp"
-    },
-    "temp": {
         "type": "text",
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
         "transition_time": 1.0,
-        "content": "Greetings! |I presume you're the new Rabbit Trail Manager we just hired. I'm Dr. Harold. Let me be the first to welcome you to [b][color=#3399ff]Rabbit Procural Technologies[/color][/b].",
+        "content": "Greetings! |I presume you're the new Rabbit Trail Manager we just hired. I'm Dr. Harold, from the Tracking and Surveillance department. Let me be the first to welcome you to [b][color=#3399ff]Rabbit Procural Technologies[/color][/b].",
         "next": "greetings_harriet_1"
     },
     "greetings_harriet_1": {
@@ -31,7 +21,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
-        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but we sling acronyms like a corporation.",
+        "content": "That's Animal Safety and Handling Specialist, by the way. We may be a startup, but sometimes we sling acronyms like a corporation.",
         "next": "greetings_harriet_2"
     },
     "greetings_harriet_2": {
@@ -49,6 +39,7 @@
         "background": "HaroldBackground",
         "transition": true,
         "content": "That's [i]Dr.[/i] Harold, excuse me. And you are, technically, Dr. Harriet.",
+        "wait_time": 2.0,
         "next": "greetings_harriet_3"
     },
     "greetings_harriet_3": {
@@ -56,6 +47,25 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do."
+        "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do.",
+        "next": "set_tutorial_intro_complete"
+    },
+    "set_tutorial_intro_complete": {
+        "type": "action",
+        "operation": "variable",
+        "dictionary": "variables",
+        "value": [
+            [ "tutorial_intro_complete", true ]
+        ]
+    },
+    "flash_platform": {
+        "type": "action",
+        "operation": "global_signal_dispatch",
+        "signal_name": "flash_button",
+        "signal_data": {
+            "button_name": "BuildPlatformGizmoButton",
+            "flash_times": 4
+        },
+        "next": "temp"
     }
 }

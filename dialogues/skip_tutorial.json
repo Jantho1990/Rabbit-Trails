@@ -1,0 +1,26 @@
+{
+    "first": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Ah, it seems our new RTM is already familiar with their job duties.| Excellent!",
+        "next": "skip_harriet_1"
+    },
+    "skip_harriet_1": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "Company policy mandates that you pass the intro exam, though, so go ahead and bring that test bunny to the ECC.",
+        "next": "set_tutorial_intro_complete"
+    },
+    "set_tutorial_intro_complete": {
+        "type": "action",
+        "operation": "variable",
+        "dictionary": "variables",
+        "value": [
+            [ "tutorial_intro_complete", true ]
+        ]
+    }
+}
