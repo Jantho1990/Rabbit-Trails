@@ -5,7 +5,7 @@
 [ext_resource path="res://handlers/MovementHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/state/StackStateMachine.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "dead"
 length = 0.08
 step = 0.08
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "fall"
 length = 0.32
 loop = true
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 10 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "hop"
 length = 0.48
 loop = true
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "hop_land"
 length = 0.24
 step = 0.08
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "hop_takeoff"
 length = 0.32
 step = 0.08
@@ -92,7 +92,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "midair"
 length = 0.08
 loop = true
@@ -124,7 +124,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 31.0848
 height = 26.5277
 
@@ -140,18 +140,18 @@ vframes = 5
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/dead = SubResource( 2 )
-anims/fall = SubResource( 3 )
-anims/hop = SubResource( 4 )
-anims/hop_land = SubResource( 5 )
-anims/hop_takeoff = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/midair = SubResource( 8 )
+anims/dead = SubResource( 1 )
+anims/fall = SubResource( 2 )
+anims/hop = SubResource( 3 )
+anims/hop_land = SubResource( 4 )
+anims/hop_takeoff = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/midair = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 32 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="MovementHandler" parent="." instance=ExtResource( 3 )]
 

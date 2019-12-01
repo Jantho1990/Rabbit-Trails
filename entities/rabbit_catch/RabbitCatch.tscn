@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/rabbit_catch/RabbitCatch.gd" type="Script" id=1]
 [ext_resource path="res://entities/rabbit_catch/rabbit shipping container.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 460, 128 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 1.41531e-43, 1 )
+colors = PoolColorArray( 0, 1, 0.741176, 1, 0.00784314, 0.929412, 1, 1, 0, 0.623529, 1, 1 )
 
 [node name="RabbitCatch" type="Node2D"]
 z_index = 90
@@ -24,7 +28,7 @@ position = Vector2( 0, -88 )
 shape = SubResource( 1 )
 
 [node name="CapturePoint" type="Node2D" parent="."]
-position = Vector2( 0, -20 )
+position = Vector2( 0, -88 )
 
 [node name="Art" type="Node2D" parent="."]
 
@@ -38,3 +42,30 @@ color = Color( 0.227451, 0.517647, 0.333333, 1 )
 [node name="Sprite" type="Sprite" parent="Art"]
 position = Vector2( 0, -88 )
 texture = ExtResource( 2 )
+
+[node name="TractorBeam" type="CPUParticles2D" parent="."]
+visible = false
+rotation = 0.785398
+amount = 80
+lifetime = 0.75
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+gravity = Vector2( 0, -500 )
+initial_velocity = 40.0
+linear_accel = 3.51
+scale_amount = 5.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+
+[node name="TractorCircle" type="CPUParticles2D" parent="."]
+visible = false
+rotation = 0.785398
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 13.8
+spread = 180.0
+gravity = Vector2( 0, -1 )
+initial_velocity = 40.0
+scale_amount = 5.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )

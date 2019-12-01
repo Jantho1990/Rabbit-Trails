@@ -56,6 +56,7 @@ var hop_timer = Timer.new()
 # Death
 var falling_at_death_speed = false
 var dead = false
+var safe_from_death = false
 
 ###
 # ONREADY PROPERTIES
@@ -226,6 +227,8 @@ func state_dead():
 
 # Kill the rabbit
 func die():
+	if safe_from_death:
+		return
 	dead = true
 	state.push('dead')
 	Rabbits.kill_rabbit()
