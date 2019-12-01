@@ -26,7 +26,7 @@
         "name": "Harold",
         "background": "HaroldBackground",
         "transition": true,
-        "text": "I can also point out potential hazard areas in the environment, such as this steep precipice.@@|If a rabbit falls too far and hits the ground|.|.|.well, let's just say that would be bad for the rabbit.",
+        "text": "I can also point out potential hazard areas in the environment, such as this steep precipice.|@@If a rabbit falls too far and hits the ground|.|.|.well, let's just say that would be bad for the rabbit.",
         "operation": "global_signal_dispatch",
         "signal_name": "tutorial_cinematic_mark",
         "signal_data": {
