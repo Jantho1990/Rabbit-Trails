@@ -34,6 +34,7 @@ custom_styles/normal = ExtResource( 4 )
 text = "Continue"
 
 [node name="StageSelectButton" type="Button" parent="."]
+visible = false
 margin_top = 68.0
 margin_right = 192.0
 margin_bottom = 82.0
@@ -44,9 +45,9 @@ custom_styles/normal = ExtResource( 4 )
 text = "Select Stage"
 
 [node name="OptionsButton" type="Button" parent="."]
-margin_top = 102.0
+margin_top = 68.0
 margin_right = 192.0
-margin_bottom = 116.0
+margin_bottom = 82.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 3 )
@@ -54,9 +55,9 @@ custom_styles/normal = ExtResource( 4 )
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="."]
-margin_top = 136.0
+margin_top = 102.0
 margin_right = 192.0
-margin_bottom = 150.0
+margin_bottom = 116.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 3 )
