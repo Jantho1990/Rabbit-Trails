@@ -37,6 +37,97 @@
         "name": "Harriet",
         "background": "HarrietBackground",
         "transition": true,
-        "content": "And R-Tech's bottom line."
+        "content": "And R-Tech's bottom line.",
+        "next": "explanation_harriet_2"
+    },
+    "explanation_harriet_2": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "text": "Let's take a look at the [b][color=#3399ff]Ethic Containment Chamber[/color][/b], or [b][color=#3399ff]ECC[/color][/b]. This is where we capture the rabbits and secure them for transport to one of our mass care centers. My job is to oversee the containment and transport processes, and ensure none of these valuable commodities comes to harm.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "tutorial_cinematic_mark",
+        "signal_data": {
+            "mark_name": "ECC"
+        },
+        "next": "explanation_harriet_3"
+    },
+    "explanation_harriet_3": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "content": "As the Rabbit Trail Manager, your job is to get those rabbits safely from their Rabbit Hole to the ECC.",
+        "next": "explanation_controls_harold_1"
+    },
+    "explanation_controls_harold_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "On that note, let's give you a brief overview of the control console, at the bottom of your screen.",
+        "next": "explanation_controls_harold_2"
+    },
+    "explanation_controls_harold_2": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "The visa-textual screen is where other R-Tech employees or authorized third-party agents can communicate with you. If you can see me, you know where this is.",
+        "next": "explanation_controls_harold_3"
+    },
+    "explanation_controls_harold_3": {
+        "type": "action",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "text": "Next, the Statistic displays. The first one is the Rabbit Tracker, aptly indicated by the rabbit head icon.",
+        "operation": "global_signal_dispatch",
+        "signal_name": "tutorial_cinematic_mark",
+        "signal_data": {
+            "mark_name": "RabbitHole"
+        },
+        "next": "explanation_controls_harold_4"
+    },
+    "explanation_controls_harold_4": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "You may have noticed our bionic test rabbit running around on the bottom of the screen.| Now, note the yellow '1' in the Rabbit Tracker. The yellow numbers indicate how many rabbits are out and running about.|@@The green numbers indicate how many rabbits have been captured, and the red numbers indicate how many rabbits are damaged beyond scientific usefulness.",
+        "next": "harriet_interjection_1"
+    },
+    "harriet_interjection_1": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "It's okay to say they're dead, you know.",
+        "next": "explanation_controls_harold_5"
+    },
+    "explanation_controls_harold_5": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Just using the suggested terminology from the latest revision of the company policy handbook.|@@The next Stat Display is the Budget Tracker. This shows you how much of the mission's allotted funds you have left to spend. We'll get into more detail on the budget shortly.",
+        "next": "explanation_controls_harold_6"
+    },
+    "explanation_controls_harold_6": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "The last Stat Display is the Time Tracker. This keeps track of how much time you've spent on the current mission. This factors into your Employee Efficiency Index calculation during post-mission review.",
+        "next": "explanation_eei_harold_1"
+    },
+    "explanation_eei_harold_1": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "content": "EEI is how R-Tech evaluates you as an employee. Several factors go into the calculation, but the gist is this: if you capture enough rabbits, in a modestly efficient manner, you'll pass. The more rabbits you capture, and the more efficiently you do so, the better your EEI rating will be.",
+        "next": "explanation_controls_harriet_1"
+    },
+    "explanation_controls_harriet_1": {
+        "type": "text",
+        "name": "Harriet",
+        "background": "HarrietBackground",
+        "transition": true,
+        "content": "Ai yai yai, yadda yadda yadda. Let's move on to the fun stuff: the Command Card."
     }
 }
