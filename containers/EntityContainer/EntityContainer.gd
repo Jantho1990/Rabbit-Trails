@@ -20,6 +20,11 @@ func _ready():
 	else:
 		print("Container requires GlobalSignal.")
 
+func _exit_tree():
+	if GlobalSignal:
+		GlobalSignal.remove("add_" + container_type, self, container_callback)
+		GlobalSignal.remove("remove_" + container_type, self, container_callback_remove)
+
 func on_Add_entity(data):
 	if data.container_id == container_id:
 		var entity = data.entity

@@ -28,6 +28,6 @@ func _on_MenuButton_pressed():
 	ActiveCameraManager.remove_all_cameras()
 	Rabbits.reset()
 	Rabbits.all_rabbits_added = false
-	GlobalSignal.clear()
+#	GlobalSignal.clear()
 	Selection.reset()
 	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
