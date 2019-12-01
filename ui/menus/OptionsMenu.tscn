@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/menus/OptionsMenu.gd" type="Script" id=1]
-[ext_resource path="res://ui/menus/VolumeSubmenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/themes/button_hover_stylebox.tres" type="StyleBox" id=3]
-[ext_resource path="res://ui/themes/button_pressed_stylebox.tres" type="StyleBox" id=4]
-[ext_resource path="res://ui/themes/button_stylebox.tres" type="StyleBox" id=5]
+[ext_resource path="res://fonts/tomorrow/tomorrow_regular_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/VolumeSubmenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/themes/button_hover_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/themes/button_pressed_stylebox.tres" type="StyleBox" id=5]
+[ext_resource path="res://ui/themes/button_stylebox.tres" type="StyleBox" id=6]
 
 [node name="OptionsMenu" type="VBoxContainer"]
 anchor_right = 1.0
@@ -19,23 +20,23 @@ margin_bottom = 20.0
 text = "Option 1"
 
 [node name="Fullscreen" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 40.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="Fullscreen"]
-margin_top = 13.0
-margin_right = 66.0
-margin_bottom = 27.0
+margin_top = 10.0
+margin_right = 80.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 2 )
 text = "Fullscreen"
 
 [node name="CheckButton" type="CheckButton" parent="Fullscreen"]
-margin_left = 116.0
-margin_right = 192.0
+margin_left = 130.0
+margin_right = 206.0
 margin_bottom = 40.0
 
-[node name="VolumeSubmenu" parent="." instance=ExtResource( 2 )]
+[node name="VolumeSubmenu" parent="." instance=ExtResource( 3 )]
 margin_top = 60.0
 margin_bottom = 134.0
 
@@ -43,8 +44,9 @@ margin_bottom = 134.0
 margin_top = 154.0
 margin_right = 1024.0
 margin_bottom = 168.0
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 3 )
-custom_styles/focus = ExtResource( 4 )
-custom_styles/normal = ExtResource( 5 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 2 )
 text = "Back"

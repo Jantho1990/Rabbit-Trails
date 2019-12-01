@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/menus/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://ui/themes/button_hover_stylebox.tres" type="StyleBox" id=2]
 [ext_resource path="res://ui/themes/button_pressed_stylebox.tres" type="StyleBox" id=3]
 [ext_resource path="res://ui/themes/button_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://fonts/tomorrow/tomorrow_regular_16.tres" type="DynamicFont" id=5]
 
 [node name="PauseMenu" type="VBoxContainer"]
 margin_left = 478.0
@@ -14,30 +15,33 @@ custom_constants/separation = 20
 script = ExtResource( 1 )
 
 [node name="OptionsButton" type="Button" parent="."]
-margin_right = 80.0
-margin_bottom = 14.0
+margin_right = 94.0
+margin_bottom = 20.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Options"
 
 [node name="ResumeButton" type="Button" parent="."]
-margin_top = 34.0
-margin_right = 80.0
-margin_bottom = 48.0
+margin_top = 40.0
+margin_right = 94.0
+margin_bottom = 60.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="."]
-margin_top = 68.0
-margin_right = 80.0
-margin_bottom = 82.0
+margin_top = 80.0
+margin_right = 94.0
+margin_bottom = 100.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Exit to Menu"
