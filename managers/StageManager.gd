@@ -41,6 +41,8 @@ func _on_Victory(data):
 		next_stage_name = data.next_stage
 
 func _on_Advance_stage():
+	if get_tree().paused:
+		get_tree().paused = false
 	GlobalSignal.dispatch('kill_dialogue') # If we are somehow in the middle of a scene, stop it.
 	unload_current_stage()
 	load_stage(get_stage_with_name(next_stage_name))
