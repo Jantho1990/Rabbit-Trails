@@ -27,7 +27,8 @@ func register(camera_name, camera):
 
 func remove_all_cameras():
 	for camera in cameras.values():
-		camera.camera.queue_free()
+		if is_instance_valid(camera):
+			camera.camera.queue_free()
 	cameras = {}
 
 # Allows the camera limits to be resized, e.g. by a tilemap to prevent scrolling outside the map.
