@@ -30,9 +30,24 @@ func get(key):
 	var keys = key.split('.')
 	var ret = _data
 	for _key in keys:
-		if ret.has(_key):
+		if not ret.has(_key):
 			print("Key not found in global data: ", _key)
 			return
 		ret = ret[_key]
 	# Should we add an event here to say data was retrieved?
 	return ret
+
+func has(key):
+	# Should we add an event here to say data is being accessed?
+	if key.find('.') == -1:
+		return _data.has(key)
+		
+	var keys = key.split('.')
+	var ret = _data
+	for _key in keys:
+		if not ret.has(_key):
+			return false
+		ret = ret[_key]
+	# Should we add an event here to say data was retrieved?
+	# If we make it here, then the data was found, so return true.
+	return true
