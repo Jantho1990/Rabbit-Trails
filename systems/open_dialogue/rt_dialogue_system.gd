@@ -154,6 +154,8 @@ func _on_Kill_dialogue():
 	timer.stop()
 	continue_timer.stop()
 	transition_timer.stop()
+	wait_time = 0
+	on_animation = false
 	next()
 
 
