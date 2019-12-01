@@ -26,8 +26,14 @@ func set_data():
 	
 	stats_container.get_node('RabbitsCaptured').set_content(captured_score)
 	stats_container.get_node('RabbitsDead').set_content(dead_score)
-	stats_container.get_node('BudgetRemaining').set_content(funds_score)
-	stats_container.get_node('TimeElapsed').set_content(time_score)
+	if captured_score == 0:
+		stats_container.get_node('BudgetRemaining').hide()
+		stats_container.get_node('TimeElapsed').hide()
+	else:
+		stats_container.get_node('BudgetRemaining').show()
+		stats_container.get_node('BudgetRemaining').set_content(funds_score)
+		stats_container.get_node('TimeElapsed').show()
+		stats_container.get_node('TimeElapsed').set_content(time_score)
 #	breakpoint
 	
 	total_score_node.text = String(final_score)
