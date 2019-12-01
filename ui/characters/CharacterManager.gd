@@ -88,6 +88,11 @@ func get_character(character_name):
 func hide_character():
 	if current_character:
 		remove_child(current_character)
+		current_character = null
+
+func reset_character():
+	hide_character()
+	current_character = null
 
 func get_background(background_name):
 	if _loaded_backgrounds.has(background_name):
