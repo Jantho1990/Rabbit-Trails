@@ -26,3 +26,7 @@ func _on_MenuButton_pressed():
 #	GlobalSignal.clear()
 	Selection.reset()
 	get_tree().change_scene('res://screens/MainMenuScreen.tscn')
+
+func _on_ReplayButton_pressed():
+	get_tree().paused = false
+	GlobalSignal.dispatch('restart_stage')

@@ -24,9 +24,10 @@ func _init():
 func _ready():
 	GlobalSignal.listen('victory', self, '_on_Victory')
 	GlobalSignal.listen('advance_stage', self, '_on_Advance_stage')
+	GlobalSignal.listen('restart_stage', self, '_on_Restart_stage')
 	if stages.size() > 0:
 		for stage in stages:
-			var loaded_stage = load(stage).instance()
+			var loaded_stage = load(stage)
 			loaded_stages.push_back(loaded_stage)
 	load_stage(get_stage_with_name(current_stage_name))
 
@@ -44,23 +45,36 @@ func _on_Advance_stage():
 	unload_current_stage()
 	load_stage(get_stage_with_name(next_stage_name))
 
+func _on_Restart_stage():
+	var next_stage_name = current_stage_name
+	GlobalSignal.dispatch('kill_dialogue') # If we are somehow in the middle of a scene, stop it.
+	unload_current_stage()
+	load_stage(get_stage_with_name(next_stage_name))
+
 func get_stage_at_index(stage_index):
 	return loaded_stages[stage_index]
 
 func get_stage_with_name(stage_name):
 	for stage in loaded_stages:
-		if stage.name == stage_name:
-			return stage
+		var inst_stage = stage.instance() # This feels ugly
+		if inst_stage.name == stage_name:
+			return inst_stage
+		inst_stage.queue_free() # Don't need itnow, remove it
 	return null
 
 func load_stage(stage):
 	current_stage = stage
 	current_stage_name = stage.name
 	add_child(current_stage)
+	Score.reset_current_score()
+	Rabbits.reset()
+	Rabbits.all_rabbits_added = false
+	Selection.reset()
 	start_stage_time()
 
 func unload_current_stage():
 	remove_child(current_stage)
+	current_stage.queue_free()
 	current_stage = null
 	current_stage_name = ''
 

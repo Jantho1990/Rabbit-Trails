@@ -12,6 +12,7 @@ func _ready():
 #	GlobalSignal.listen('defeat', self, '_on_Defeat')
 	GlobalSignal.listen('end_stage', self, '_on_End_stage')
 	GlobalSignal.listen('advance_stage', self, '_on_Advance_stage')
+	GlobalSignal.listen('restart_stage', self, '_on_Restart_stage')
 
 func _on_End_stage(data):
 	screen.show()
@@ -37,6 +38,10 @@ func _on_Defeat(data):
 	defeat_modal.show()
 
 func _on_Advance_stage():
+	hide_modals()
+	screen.hide()
+
+func _on_Restart_stage():
 	hide_modals()
 	screen.hide()
 

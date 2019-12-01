@@ -85,4 +85,5 @@ custom_styles/pressed = ExtResource( 4 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 6 )
 text = "Exit to Menu"
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ReplayButton" to="." method="_on_ReplayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
