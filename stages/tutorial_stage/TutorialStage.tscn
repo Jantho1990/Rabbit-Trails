@@ -68,11 +68,12 @@ script = ExtResource( 8 )
 trigger_name = "OpeningDialogue"
 
 [node name="RabbitHole" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2816, 1472 )
+position = Vector2( 1793.72, 377.322 )
 active = false
 maximum_entities = 1
 maximum_increase_limit = 1
 target_container_id = "Rabbit"
+hole_type = 1
 
 [node name="RabbitCatch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1920, 1512 )
