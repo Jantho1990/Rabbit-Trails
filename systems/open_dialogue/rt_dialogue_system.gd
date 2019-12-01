@@ -154,9 +154,11 @@ func _on_Kill_dialogue():
 	timer.stop()
 	continue_timer.stop()
 	transition_timer.stop()
-	wait_time = 0
 	on_animation = false
+	var old_wait_time = wait_time
+	wait_time = 0 # This causes dialogue to immediately stop the typewriter effect so next can be processed.
 	next()
+	wait_time = old_wait_time # Need to reset the wait time so new dialogues still gain the typewriter effect.
 
 
 func _on_Dialogue(data):
