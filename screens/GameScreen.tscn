@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 mouse_filter = 2
 
 [node name="StageManager" parent="." instance=ExtResource( 5 )]
-stages = [ "res://stages/switch_test/SwitchTestStage.tscn", "res://stages/tutorial_stage/TutorialStage.tscn" ]
+stages = [ "res://stages/grass_1/Grass1Stage.tscn", "res://stages/tutorial_stage/TutorialStage.tscn" ]
 
 [node name="GizmoContainerHandler" parent="." instance=ExtResource( 6 )]
 

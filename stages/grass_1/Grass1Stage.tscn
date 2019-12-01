@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://stages/grass_1/Grass1Stage.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/grass/sky_background.tres" type="TileSet" id=2]
 [ext_resource path="res://tilesets/grass/grass.tres" type="TileSet" id=3]
 [ext_resource path="res://maps/TileMap.gd" type="Script" id=4]
-[ext_resource path="res://systems/cinematics/CinematicMark2D.gd" type="Script" id=5]
-[ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=6]
-[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=7]
-[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=8]
-[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://systems/cinematics/CinematicsManager.gd" type="Script" id=5]
+[ext_resource path="res://systems/cinematics/CinematicMark2D.gd" type="Script" id=6]
+[ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://systems/triggers/TriggerManager.gd" type="Script" id=8]
+[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=11]
 
 [node name="Grass1Stage" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,21 +32,27 @@ tile_data = PoolIntArray( -196616, 0, 0, -196615, 0, 0, -196614, 0, 0, -196613, 
 script = ExtResource( 4 )
 
 [node name="Cinematics" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [node name="Marks" type="Node" parent="Cinematics"]
 
 [node name="LevelStart" type="Position2D" parent="Cinematics/Marks"]
 position = Vector2( 2185.8, 125.228 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
+mark_name = "LevelStart"
 
-[node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 6 )]
+[node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 7 )]
 
 [node name="Triggers" type="Node" parent="."]
+script = ExtResource( 8 )
 
-[node name="RabbitHole" parent="." instance=ExtResource( 7 )]
+[node name="RabbitHole" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2420.81, 219.642 )
+spawn_rate = 5.0
+maximum_entities = 15
+maximum_increase_limit = 15
 
-[node name="RabbitCatch" parent="." instance=ExtResource( 8 )]
+[node name="RabbitCatch" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1146.42, 2074.51 )
 
-[node name="RabbitContainer" parent="." instance=ExtResource( 9 )]
+[node name="RabbitContainer" parent="." instance=ExtResource( 11 )]

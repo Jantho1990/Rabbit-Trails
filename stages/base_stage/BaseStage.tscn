@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://stages/base_stage/BaseStage.gd" type="Script" id=1]
 [ext_resource path="res://maps/TileMap.gd" type="Script" id=2]
-[ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://systems/cinematics/CinematicsManager.gd" type="Script" id=3]
+[ext_resource path="res://systems/cinematics/CinematicCamera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/triggers/TriggerManager.gd" type="Script" id=5]
+[ext_resource path="res://entities/rabbit_hole/RabbitHole.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/rabbit_catch/RabbitCatch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://containers/RabbitContainer/RabbitContainer.tscn" type="PackedScene" id=8]
 
 [node name="BaseStage" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,15 +24,17 @@ format = 1
 script = ExtResource( 2 )
 
 [node name="Cinematics" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [node name="Marks" type="Node" parent="Cinematics"]
 
-[node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 3 )]
+[node name="CinematicCamera2D" parent="Cinematics" instance=ExtResource( 4 )]
 
 [node name="Triggers" type="Node" parent="."]
+script = ExtResource( 5 )
 
-[node name="RabbitHole" parent="." instance=ExtResource( 4 )]
+[node name="RabbitHole" parent="." instance=ExtResource( 6 )]
 
-[node name="RabbitCatch" parent="." instance=ExtResource( 5 )]
+[node name="RabbitCatch" parent="." instance=ExtResource( 7 )]
 
-[node name="RabbitContainer" parent="." instance=ExtResource( 6 )]
+[node name="RabbitContainer" parent="." instance=ExtResource( 8 )]
