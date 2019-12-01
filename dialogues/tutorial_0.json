@@ -48,6 +48,15 @@
         "background": "HarrietBackground",
         "transition": true,
         "content": "Jeez, I said [i]relax[/i]. Anyway, I'm sure our friendly new RTM would like to move on and actually learn what they're going to do.",
+        "next": "greetings_harold_4"
+    },
+    "greetings_harold_4": {
+        "type": "text",
+        "name": "Harold",
+        "background": "HaroldBackground",
+        "transition": true,
+        "content": "Uh, um, yes, of course. Sorry about that. Without further ado, let's begin the training.",
+        "wait_time": 1.0,
         "next": "set_tutorial_intro_complete"
     },
     "set_tutorial_intro_complete": {
