@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://screens/MainMenuScreen.gd" type="Script" id=1]
 [ext_resource path="res://ui/main_menu_backgrounds/MainMenuBackgroundCave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/Rabbit Trails.png" type="Texture" id=3]
 
 [node name="MainMenuScreen" type="Control"]
 anchor_right = 1.0
@@ -30,52 +31,66 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
-margin_right = 1024.0
+margin_right = 1121.0
 margin_bottom = 600.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
-margin_left = 467.0
-margin_top = 229.0
-margin_right = 556.0
-margin_bottom = 371.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
+margin_left = 2.0
+margin_top = 44.0
+margin_right = 1119.0
+margin_bottom = 556.0
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 512.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/CenterContainer"]
+margin_right = 1024.0
+margin_bottom = 512.0
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 1028.0
+margin_right = 1117.0
+margin_bottom = 512.0
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_right = 89.0
 margin_bottom = 14.0
 text = "Rabbit Trails"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 89.0
 margin_bottom = 22.0
 
-[node name="NewGameButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 26.0
 margin_right = 89.0
 margin_bottom = 46.0
 text = "New Game"
 
-[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 50.0
 margin_right = 89.0
 margin_bottom = 70.0
 text = "Continue"
 
-[node name="StageSelectButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="StageSelectButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 74.0
 margin_right = 89.0
 margin_bottom = 94.0
 text = "Select Stage"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 98.0
 margin_right = 89.0
 margin_bottom = 118.0
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer"]
 margin_top = 122.0
 margin_right = 89.0
 margin_bottom = 142.0
 text = "Quit"
-[connection signal="pressed" from="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]

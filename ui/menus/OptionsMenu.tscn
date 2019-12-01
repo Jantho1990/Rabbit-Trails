@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/menus/OptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://ui/menus/VolumeSubmenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/themes/button_hover_stylebox.tres" type="StyleBox" id=3]
+[ext_resource path="res://ui/themes/button_pressed_stylebox.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/themes/button_stylebox.tres" type="StyleBox" id=5]
 
 [node name="OptionsMenu" type="VBoxContainer"]
 anchor_right = 1.0
@@ -40,4 +43,8 @@ margin_bottom = 134.0
 margin_top = 154.0
 margin_right = 1024.0
 margin_bottom = 174.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
 text = "Back"
