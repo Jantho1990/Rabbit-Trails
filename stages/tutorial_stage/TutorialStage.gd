@@ -6,9 +6,6 @@ class_name TutorialStage
 # Tutorial stage, where we teach the player how to play the game.
 ###
 
-onready var cinematics = $Cinematics
-onready var triggers = $Triggers
-
 func _ready():
 	Budget.set_money(starting_budget)
 	Rabbits.reset()

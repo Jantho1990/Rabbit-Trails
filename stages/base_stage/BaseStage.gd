@@ -11,6 +11,8 @@ export(int) var starting_budget = 5000
 
 onready var tile_map = $TileMap
 onready var StageManager = get_parent()
+onready var cinematics = $Cinematics
+onready var triggers = $Triggers
 
 func _ready():
 	GlobalSignal.dispatch('active_camera_resize_bounds', {
