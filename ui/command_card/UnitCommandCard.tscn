@@ -37,13 +37,13 @@ size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="MoveCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
-hint_tooltip = "Move this unit."
+hint_tooltip = "Move this gizmo."
 command_name = "move_unit"
 
 [node name="CancelCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 80.0
 margin_right = 150.0
-hint_tooltip = "Delete this unit."
+hint_tooltip = "Cancel gizmo order."
 texture_normal = ExtResource( 3 )
 command_name = "cancel_placement"
 command_card_key = "E"
@@ -51,7 +51,7 @@ command_card_key = "E"
 [node name="DeleteCommandButton" parent="MarginContainer/InputRowContainer/InputRow1" instance=ExtResource( 2 )]
 margin_left = 160.0
 margin_right = 230.0
-hint_tooltip = "Delete this unit."
+hint_tooltip = "Delete this gizmo."
 texture_normal = ExtResource( 4 )
 command_name = "delete_unit"
 command_card_key = "W"
@@ -65,6 +65,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="LeftRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 5 )]
+hint_tooltip = "Rotate gizmo left."
 texture_normal = ExtResource( 6 )
 command_name = "rotate_unit_left"
 command_card_key = "A"
@@ -73,6 +74,7 @@ allow_auto_activate = false
 [node name="RightRotateUnitCommandButton" parent="MarginContainer/InputRowContainer/InputRow2" instance=ExtResource( 5 )]
 margin_left = 80.0
 margin_right = 150.0
+hint_tooltip = "Rotate gizmo right."
 command_name = "rotate_unit_right"
 command_card_key = "S"
 allow_auto_activate = false
