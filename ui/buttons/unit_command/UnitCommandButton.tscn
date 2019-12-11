@@ -18,4 +18,3 @@ mouse_filter = 1
 color = Color( 0.243137, 0.25098, 0.333333, 1 )
 
 [node name="FlashTween" type="Tween" parent="."]
-[connection signal="pressed" from="." to="." method="_on_UnitCommandButton_pressed"]

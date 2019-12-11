@@ -13,17 +13,13 @@ func _ready():
 	eei_stat_title.text = stat_title
 	set_content(stat_content)
 
-func set(property, value):
-	match property:
-		'stat_title':
-			eei_stat_title.text = value
-		'stat_content':
-			set_content(value)
-	
-	self._set(property, value)
+func set_title(value):
+	eei_stat_title.text = stat_title
+	stat_title = value
 
 func set_content(value):
 	eei_stat_content.text = String(abs(int(value)))
+	stat_content = value
 	match int(sign(float(value))):
 		1:
 			plus_sign.show()

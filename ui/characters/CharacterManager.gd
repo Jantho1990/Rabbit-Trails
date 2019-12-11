@@ -11,8 +11,8 @@ export(Array, String, FILE, '*.tscn') var backgrounds
 var _loaded_characters = {} setget _private_set,get_loaded_characters
 var _loaded_backgrounds = {} setget _private_set,get_loaded_backgrounds
 
-var current_character
-var current_background
+var current_character = null
+var current_background = null
 
 export(String) var default_background = 'SolidBackground'
 export(String) var transition_background = 'Static'
@@ -86,7 +86,7 @@ func get_character(character_name):
 	print('No character found named ', character_name)
 
 func hide_character():
-	if current_character:
+	if current_character != null:
 		remove_child(current_character)
 		current_character = null
 
@@ -102,7 +102,8 @@ func get_background(background_name):
 func display_character(character_name):
 	var character = get_character(character_name)
 	if current_character != character:
-		remove_child(current_character)
+		if current_character != null:
+			remove_child(current_character)
 		current_character = character
 		add_child(current_character)
 		current_character.position = Vector2(rect_size.x / 2, rect_size.y / 2)
@@ -110,7 +111,8 @@ func display_character(character_name):
 func display_background(background_name):
 	var background = get_background(background_name)
 	if current_background != background:
-		remove_child(current_background)
+		if current_background != null:
+			remove_child(current_background)
 		current_background = background
 		add_child(current_background)
 		current_background.position = Vector2(rect_size.x / 2, rect_size.y / 2)

@@ -17,4 +17,3 @@ bbcode_enabled = true
 bbcode_text = "Choice Text"
 text = "Choice Text"
 scroll_active = false
-

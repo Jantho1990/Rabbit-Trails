@@ -89,11 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://containers/JumpPadGizmoContainer/JumpPadGizmoContainer.gd"
 }, {
-"base": "Node",
-"class": "LifeEventsHandler",
-"language": "GDScript",
-"path": "res://systems/life_events/LifeEventsHandler.gd"
-}, {
 "base": "Gizmo",
 "class": "LiftGizmo",
 "language": "GDScript",
@@ -211,7 +206,6 @@ _global_script_class_icons={
 "GravGizmoContainer": "",
 "JumpPadGizmo": "",
 "JumpPadGizmoContainer": "",
-"LifeEventsHandler": "",
 "LiftGizmo": "",
 "LiftGizmoContainer": "",
 "PlatformGizmo": "",
