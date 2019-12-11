@@ -75,10 +75,11 @@ func load_stage(stage):
 	start_stage_time()
 
 func unload_current_stage():
-	remove_child(current_stage)
-	current_stage.queue_free()
-	current_stage = null
-	current_stage_name = ''
+	if current_stage != null:
+		remove_child(current_stage)
+		current_stage.queue_free()
+		current_stage = null
+		current_stage_name = ''
 
 func start_stage_time():
 	track_stage_time = true

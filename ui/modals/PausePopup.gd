@@ -1,5 +1,7 @@
 extends Control
 
+signal popup_hide
+
 var refresh_needed = false
 
 var active_menu
