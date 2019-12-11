@@ -20,7 +20,7 @@ func set(property, value):
 		'stat_content':
 			set_content(value)
 	
-	self._set(property, value)
+	self[property] = value
 
 func set_content(value):
 	eei_stat_content.text = String(abs(int(value)))
