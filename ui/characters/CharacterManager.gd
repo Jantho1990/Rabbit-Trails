@@ -102,7 +102,8 @@ func get_background(background_name):
 func display_character(character_name):
 	var character = get_character(character_name)
 	if current_character != character:
-		remove_child(current_character)
+		if current_character != null:
+			remove_child(current_character)
 		current_character = character
 		add_child(current_character)
 		current_character.position = Vector2(rect_size.x / 2, rect_size.y / 2)
