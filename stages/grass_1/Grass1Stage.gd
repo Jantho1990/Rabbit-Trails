@@ -2,6 +2,8 @@ extends BaseStage
 
 class_name Grass1Stage
 
+var stage_over = false
+
 ###
 # Grass Stage 1.
 ###
@@ -27,11 +29,14 @@ func _ready():
 	})
 
 func _physics_process(delta):
-	if Rabbits.all_rabbits_added and Rabbits.rabbits_alive == 0:
-		GlobalSignal.dispatch('dialogue', {
-			'func_name': 'initiate',
-			'file_id': 'grass_1_end',
-		})
+	if not stage_over and \
+		Rabbits.all_rabbits_added and \
+		Rabbits.rabbits_alive == 0:
+			stage_over = true
+			GlobalSignal.dispatch('dialogue', {
+				'func_name': 'initiate',
+				'file_id': 'grass_1_end',
+			})
 		
 
 func _on_Cinematic_mark(data):

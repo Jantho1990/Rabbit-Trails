@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_NewGameButton_pressed():
+#func _on_NewGameButton_pressed():
 #	breakpoint
-	UserData.set('current_stage_name', 'TutorialStage')
-	get_tree().change_scene('res://screens/GameScreen.tscn')
+#	UserData.set('current_stage_name', 'TutorialStage')
+#	get_tree().change_scene('res://screens/GameScreen.tscn')
